@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.RegistroActivity">
+
+    <EditText
+        android:id="@+id/RegistroActivity_Nombre"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Nombres"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/RegistroActivity_ApellidoPaterno"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Apellido Paterno"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/RegistroActivity_Nombre" />
+
+    <EditText
+        android:id="@+id/RegistroActivity_ApellidoMaterno"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Apellido Materno"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/RegistroActivity_ApellidoPaterno" />
+
+    <EditText
+        android:id="@+id/RegistroActivity_Usuario"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Nombre de Usuario"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/RegistroActivity_ApellidoMaterno" />
+
+    <EditText
+        android:id="@+id/RegistroActivity_Contraseña1"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Contraseña"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/RegistroActivity_Usuario" />
+
+    <EditText
+        android:id="@+id/RegistroActivity_Contrasena2"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Confirme Contraseña"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/RegistroActivity_Contraseña1" />
+
+    <EditText
+        android:id="@+id/RegistroActivity_Email"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Correo Electrónico"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/RegistroActivity_Contrasena2" />
+
+    <EditText
+        android:id="@+id/RegistroActivity_Telefono"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Teléfono"
+        android:inputType="phone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/RegistroActivity_Email" />
+
+    <LinearLayout
+        android:id="@+id/RegistroActivity_RUT"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/RegistroActivity_Telefono">
+
+        <EditText
+            android:id="@+id/RegistroActivity_Rut1"
+            android:layout_width="153dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="RUT"
+            android:inputType="number" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-" />
+
+        <EditText
+            android:id="@+id/RegistroActivity_Rut2"
+            android:layout_width="148dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+    </LinearLayout>
+
+    <RadioGroup
+        android:id="@+id/RegistroActivity_Sexo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/RegistroActivity_RUT">
+
+        <RadioButton
+            android:id="@+id/RegistroActivity_SexoM"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hombre" />
+
+        <RadioButton
+            android:id="@+id/RegistroActivity_SexoF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mujer" />
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/RegistroActivity_TipoUsuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/RegistroActivity_Sexo">
+
+        <RadioButton
+            android:id="@+id/RegistroActivity_Conductor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Conductor" />
+
+        <RadioButton
+            android:id="@+id/RegistroActivity_Pasajero"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Pasajero" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/RegistroActivity_BotonRegistro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:onClick="Registrar"
+        android:text="Registrarme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/RegistroActivity_TipoUsuario" />
+
+</android.support.constraint.ConstraintLayout>
