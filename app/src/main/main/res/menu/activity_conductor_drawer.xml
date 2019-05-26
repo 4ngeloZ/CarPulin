@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/ConductorActivity_perfil"
+            android:icon="@drawable/perfil_icono"
+            android:title="Perfil" />
+        <item
+            android:id="@+id/ConductorActivity_crearviaje"
+            android:icon="@drawable/crearviaje_icono"
+            android:title="Crear Viaje" />
+        <item
+            android:id="@+id/ConductorActivity_verviajes"
+            android:icon="@drawable/ver_icono"
+            android:title="Mis viajes" />
+        <item
+            android:id="@+id/ConductorActivity_salir"
+            android:icon="@drawable/salir_icono"
+            android:title="Cerrar Sesión" />
+    </group>
+
+</menu>
