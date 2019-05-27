@@ -59,7 +59,9 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Fecha Inicio"
-            android:inputType="textPersonName" />
+            android:inputType="date"
+            android:focusable="false"
+            android:clickable="true" />
 
         <EditText
             android:id="@+id/CrearViajeActivity_horaInicio"
@@ -67,7 +69,9 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Hora Inicio"
-            android:inputType="textPersonName" />
+            android:inputType="time"
+            android:focusable="false"
+            android:clickable="true" />
 
         <EditText
             android:id="@+id/CrearViajeActivity_valorTotal"
@@ -95,7 +99,9 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint=" Fecha Llegada"
-            android:inputType="textPersonName" />
+            android:inputType="date"
+            android:focusable="false"
+            android:clickable="true" />
 
         <EditText
             android:id="@+id/CrearViajeActivity_horaLlegada"
@@ -103,7 +109,9 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Hora Llegada"
-            android:inputType="textPersonName" />
+            android:inputType="time"
+            android:focusable="false"
+            android:clickable="true" />
     </LinearLayout>
 
     <Button
@@ -168,7 +176,9 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Fecha"
-            android:inputType="textPersonName" />
+            android:inputType="date"
+            android:focusable="false"
+            android:clickable="true" />
 
         <EditText
             android:id="@+id/CrearViajeActivity_hora1"
@@ -176,7 +186,9 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Hora"
-            android:inputType="textPersonName" />
+            android:inputType="time"
+            android:focusable="false"
+            android:clickable="true" />
 
         <EditText
             android:id="@+id/CrearViajeActivity_valor1"
@@ -212,7 +224,9 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Fecha"
-            android:inputType="textPersonName" />
+            android:inputType="date"
+            android:focusable="false"
+            android:clickable="true" />
 
         <EditText
             android:id="@+id/CrearViajeActivity_hora2"
@@ -220,7 +234,9 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Hora"
-            android:inputType="textPersonName" />
+            android:inputType="time"
+            android:focusable="false"
+            android:clickable="true" />
 
         <EditText
             android:id="@+id/CrearViajeActivity_valor2"
@@ -256,7 +272,9 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Fecha"
-            android:inputType="textPersonName" />
+            android:inputType="date"
+            android:focusable="false"
+            android:clickable="true" />
 
         <EditText
             android:id="@+id/CrearViajeActivity_hora3"
@@ -264,7 +282,9 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Hora"
-            android:inputType="textPersonName" />
+            android:inputType="time"
+            android:focusable="false"
+            android:clickable="true" />
 
         <EditText
             android:id="@+id/CrearViajeActivity_valor3"
@@ -301,7 +321,9 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Fecha"
-            android:inputType="textPersonName" />
+            android:inputType="date"
+            android:focusable="false"
+            android:clickable="true" />
 
         <EditText
             android:id="@+id/CrearViajeActivity_hora4"
@@ -309,7 +331,9 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Hora"
-            android:inputType="date" />
+            android:inputType="time"
+            android:focusable="false"
+            android:clickable="true" />
 
         <EditText
             android:id="@+id/CrearViajeActivity_valor4"
