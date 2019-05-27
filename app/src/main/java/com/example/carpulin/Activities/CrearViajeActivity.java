@@ -5,6 +5,7 @@ import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,6 +15,7 @@ import com.example.carpulin.DB.AdminSQLiteOpenHelper;
 import com.example.carpulin.DB.DBQueries;
 import com.example.carpulin.Entidades.Conductor;
 import com.example.carpulin.R;
+
 
 public class CrearViajeActivity extends AppCompatActivity {
 
@@ -46,11 +48,14 @@ public class CrearViajeActivity extends AppCompatActivity {
     private int cantidadparadas=0;
     private Conductor conductor;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //Places.initialize(getApplicationContext(), apiKey);
+        // Create a new Places client instance.
+        //PlacesClient placesClient = Places.createClient(this);
         setContentView(R.layout.activity_crear_viaje);
+        // Initialize the AutocompleteSupportFragment.
 
         origen = (EditText)findViewById(R.id.CrearViajeActivity_origen);
         destino = (EditText)findViewById(R.id.CrearViajeActivity_destino);
@@ -98,6 +103,8 @@ public class CrearViajeActivity extends AppCompatActivity {
         menos.setVisibility(View.INVISIBLE);
 
         conductor = (Conductor)getIntent().getSerializableExtra("conductor_entidad");
+
+
     }
 
     public void ModificarParadas(View view){

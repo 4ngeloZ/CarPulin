@@ -10,7 +10,7 @@
         android:id="@+id/BuscarViajeActivity_origen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="204dp"
         android:ems="10"
         android:hint="Origen"
         android:inputType="textPersonName"
@@ -22,12 +22,11 @@
         android:id="@+id/BuscarViajeActivity_destino"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="Destino"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/BuscarViajeActivity_origen" />
 
@@ -66,4 +65,35 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/BuscarViajeActivity_plazas" />
+
+    <FrameLayout
+        android:layout_width="215dp"
+        android:layout_height="51dp"
+        android:layout_marginBottom="28dp"
+        app:layout_constraintBottom_toTopOf="@+id/frameLayout3"
+        tools:layout_editor_absoluteX="97dp">
+
+        <fragment
+            android:id="@+id/frOrigen"
+            android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
+            android:layout_width="match_parent"
+            android:layout_height="39dp" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/frameLayout3"
+        android:layout_width="213dp"
+        android:layout_height="49dp"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toTopOf="@+id/BuscarViajeActivity_origen"
+        tools:layout_editor_absoluteX="99dp">
+
+        <fragment
+            android:id="@+id/frDest"
+            android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
+            android:layout_width="match_parent"
+            android:layout_height="36dp" />
+    </FrameLayout>
+
+
 </android.support.constraint.ConstraintLayout>
