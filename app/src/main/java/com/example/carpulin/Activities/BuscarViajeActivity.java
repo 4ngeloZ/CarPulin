@@ -65,14 +65,14 @@ public class BuscarViajeActivity extends AppCompatActivity {
             @Override
             public void onPlaceSelected(Place place) {
                 // TODO: Get info about the selected place.
-                Log.i("Activity", "Place: " + place.getName() + ", " + place.getId());
+                Log.i("Origen", "Place: " + place.getName() + ", " + place.getId());
                 Or = place.getName();
             }
 
             @Override
             public void onError(Status status) {
                 // TODO: Handle the error.
-                Log.i("Activity", "An error occurred: " + status);
+                Log.i("Origen", "An error occurred: " + status);
             }
         });
         // Initialize the AutocompleteSupportFragment.
@@ -87,14 +87,14 @@ public class BuscarViajeActivity extends AppCompatActivity {
             @Override
             public void onPlaceSelected(Place place) {
                 // TODO: Get info about the selected place.
-                Log.i("Activity", "Place: " + place.getName() + ", " + place.getId());
+                Log.i("Destino", "Place: " + place.getName() + ", " + place.getId());
                 Dest = place.getName();
             }
 
             @Override
             public void onError(Status status) {
                 // TODO: Handle the error.
-                Log.i("Activity", "An error occurred: " + status);
+                Log.i("Destino", "An error occurred: " + status);
             }
         });
     }
