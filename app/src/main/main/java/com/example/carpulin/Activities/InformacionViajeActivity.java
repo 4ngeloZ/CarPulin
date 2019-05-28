@@ -213,7 +213,7 @@ public class InformacionViajeActivity extends AppCompatActivity {
         if(tipoViaje==0){
             origen1.setText(viaje.getOrigen());
             destino1.setText(viaje.getDestino());
-            precio1.setText("$"+Integer.toString(viaje.getValorTotal()));
+            precio1.setText(Integer.toString(viaje.getValorTotal()));
             fecha1.setText(viaje.getFechaInicio());
             hora1.setText(viaje.getHoraInicio());
 
@@ -227,12 +227,12 @@ public class InformacionViajeActivity extends AppCompatActivity {
         else if(tipoViaje==1){
             origen1.setText(viaje.getOrigen());
             destino1.setText(viaje.getParada1());
-            precio1.setText("$"+Integer.toString(viaje.getValor1()));
+            precio1.setText(Integer.toString(viaje.getValor1()));
             fecha1.setText(viaje.getFechaInicio());
             hora1.setText(viaje.getHoraInicio());
             origen2.setText(viaje.getParada1());
             destino2.setText(viaje.getDestino());
-            precio2.setText("$"+Integer.toString(viaje.getValorTotal()-viaje.getValor1()));
+            precio2.setText(Integer.toString(viaje.getValorTotal()-viaje.getValor1()));
             fecha2.setText(viaje.getFecha1());
             hora2.setText(viaje.getHora1());
 
@@ -251,17 +251,17 @@ public class InformacionViajeActivity extends AppCompatActivity {
         else if(tipoViaje==2){
             origen1.setText(viaje.getOrigen());
             destino1.setText(viaje.getParada1());
-            precio1.setText("$"+Integer.toString(viaje.getValor1()));
+            precio1.setText(Integer.toString(viaje.getValor1()));
             fecha1.setText(viaje.getFechaInicio());
             hora1.setText(viaje.getHoraInicio());
             origen2.setText(viaje.getParada1());
             destino2.setText(viaje.getParada2());
-            precio2.setText("$"+Integer.toString(viaje.getValor2()));
+            precio2.setText(Integer.toString(viaje.getValor2()));
             fecha2.setText(viaje.getFecha1());
             hora2.setText(viaje.getHora1());
             origen3.setText(viaje.getParada2());
             destino3.setText(viaje.getDestino());
-            precio3.setText("$"+ Integer.toString(viaje.getValorTotal()-viaje.getValor1()-viaje.getValor2()));
+            precio3.setText(Integer.toString(viaje.getValorTotal()-viaje.getValor1()-viaje.getValor2()));
             fecha3.setText(viaje.getFecha2());
             hora3.setText(viaje.getHora2());
 
@@ -286,22 +286,22 @@ public class InformacionViajeActivity extends AppCompatActivity {
         else if(tipoViaje==3){
             origen1.setText(viaje.getOrigen());
             destino1.setText(viaje.getParada1());
-            precio1.setText("$"+Integer.toString(viaje.getValor1()));
+            precio1.setText(Integer.toString(viaje.getValor1()));
             fecha1.setText(viaje.getFechaInicio());
             hora1.setText(viaje.getHoraInicio());
             origen2.setText(viaje.getParada1());
             destino2.setText(viaje.getParada2());
-            precio2.setText("$"+Integer.toString(viaje.getValor2()));
+            precio2.setText(Integer.toString(viaje.getValor2()));
             fecha2.setText(viaje.getFecha1());
             hora2.setText(viaje.getHora1());
             origen3.setText(viaje.getParada2());
             destino3.setText(viaje.getParada3());
-            precio3.setText("$"+Integer.toString(viaje.getValor3()));
+            precio3.setText(Integer.toString(viaje.getValor3()));
             fecha3.setText(viaje.getFecha2());
             hora3.setText(viaje.getHora2());
             origen4.setText(viaje.getParada3());
             destino4.setText(viaje.getDestino());
-            precio4.setText("$"+Integer.toString(viaje.getValorTotal()-viaje.getValor1()-viaje.getValor2()-viaje.getValor3()));
+            precio4.setText(Integer.toString(viaje.getValorTotal()-viaje.getValor1()-viaje.getValor2()-viaje.getValor3()));
             fecha4.setText(viaje.getFecha3());
             hora4.setText(viaje.getHora3());
 
@@ -332,27 +332,27 @@ public class InformacionViajeActivity extends AppCompatActivity {
         else if(tipoViaje==4){
             origen1.setText(viaje.getOrigen());
             destino1.setText(viaje.getParada1());
-            precio1.setText("$"+Integer.toString(viaje.getValor1()));
+            precio1.setText(Integer.toString(viaje.getValor1()));
             fecha1.setText(viaje.getFechaInicio());
             hora1.setText(viaje.getHoraInicio());
             origen2.setText(viaje.getParada1());
             destino2.setText(viaje.getParada2());
-            precio2.setText("$"+Integer.toString(viaje.getValor2()));
+            precio2.setText(Integer.toString(viaje.getValor2()));
             fecha2.setText(viaje.getFecha1());
             hora2.setText(viaje.getHora1());
             origen3.setText(viaje.getParada2());
             destino3.setText(viaje.getParada3());
-            precio3.setText("$"+Integer.toString(viaje.getValor3()));
+            precio3.setText(Integer.toString(viaje.getValor3()));
             fecha3.setText(viaje.getFecha2());
             hora3.setText(viaje.getHora2());
             origen4.setText(viaje.getParada3());
             destino4.setText(viaje.getParada4());
-            precio4.setText("$"+Integer.toString(viaje.getValor4()));
+            precio4.setText(Integer.toString(viaje.getValor4()));
             fecha4.setText(viaje.getFecha3());
             hora4.setText(viaje.getHora3());
             origen5.setText(viaje.getParada4());
             destino5.setText(viaje.getDestino());
-            precio5.setText("$"+Integer.toString(viaje.getValorTotal()-viaje.getValor1()-viaje.getValor2()-viaje.getValor3()-viaje.getValor4()));
+            precio5.setText(viaje.getValorTotal()-viaje.getValor1()-viaje.getValor2()-viaje.getValor3()-viaje.getValor4());
             fecha5.setText(viaje.getFecha4());
             hora5.setText(viaje.getHora4());
 
@@ -396,7 +396,7 @@ public class InformacionViajeActivity extends AppCompatActivity {
 
             ContentValues values = new ContentValues();
             String randID = Integer.toString((int) (Math.random() * 999999999));
-            while (DBQueries.isReservaIdOcupado(randID, this)) {
+            while (DBQueries.isViajeIdOcupado(randID, this)) {
                 randID = Integer.toString((int) (Math.random() * 999999999));
             }
 

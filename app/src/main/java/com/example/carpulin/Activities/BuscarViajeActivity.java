@@ -113,6 +113,7 @@ public class BuscarViajeActivity extends AppCompatActivity {
                 ViajesEncontradosActivity.putExtra("origen_busqueda", str_origen);
                 ViajesEncontradosActivity.putExtra("destino_busqueda", str_destino);
                 ViajesEncontradosActivity.putExtra("fecha_busqueda", str_fecha);
+                ViajesEncontradosActivity.putExtra("pasajero_entidad", pasajero);
                 startActivity(ViajesEncontradosActivity);
             }
             else Toast.makeText(this, "No hay viajes que satisfagan su búsqueda", Toast.LENGTH_SHORT).show();

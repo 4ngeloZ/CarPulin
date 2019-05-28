@@ -1,9 +1,7 @@
 package com.example.carpulin.Activities;
 
-import android.content.ContentValues;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
@@ -18,26 +16,23 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.carpulin.DB.AdminSQLiteOpenHelper;
-import com.example.carpulin.DB.DBQueries;
-import com.example.carpulin.Entidades.Pasajero;
+import com.example.carpulin.Entidades.Conductor;
 import com.example.carpulin.R;
 
-public class PasajeroActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class ConductorActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    private Pasajero pasajero;
-    private TextView HeaderPasajero_username;
-    private TextView HeaderPasajero_nombre;
-    private ImageView HeaderPasajero_foto;
-
+    private Conductor conductor;
+    private TextView HeaderConductor_username;
+    private TextView HeaderConductor_nombre;
+    private ImageView HeaderConductor_foto;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pasajero);
+        setContentView(R.layout.activity_conductor);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -56,15 +51,18 @@ public class PasajeroActivity extends AppCompatActivity implements NavigationVie
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
 
-        pasajero=(Pasajero)getIntent().getSerializableExtra("pasajero_entidad");
+        conductor=(Conductor)getIntent().getSerializableExtra("conductor_entidad");
 
         View headView = navigationView.getHeaderView(0);
-        HeaderPasajero_nombre = (TextView)headView.findViewById(R.id.HeaderPasajero_username);
-        HeaderPasajero_username = (TextView)headView.findViewById(R.id.HeaderPasajero_nombre);
-        HeaderPasajero_foto = (ImageView)headView.findViewById(R.id.HeaderPasajero_foto);
-        HeaderPasajero_username.setText(pasajero.getUsername());
-        HeaderPasajero_nombre.setText(pasajero.getNombre());
-        HeaderPasajero_foto.setImageResource(R.drawable.user);
+        HeaderConductor_nombre = (TextView)headView.findViewById(R.id.HeaderConductor_nombre);
+        HeaderConductor_username = (TextView)headView.findViewById(R.id.HeaderConductor_username);
+        HeaderConductor_foto = (ImageView)headView.findViewById(R.id.HeaderConductor_foto);
+        HeaderConductor_username.setText(conductor.getUsername());
+        HeaderConductor_nombre.setText(conductor.getNombre());
+        HeaderConductor_foto.setImageResource(R.drawable.user);
+
+
+
     }
 
     @Override
@@ -80,7 +78,7 @@ public class PasajeroActivity extends AppCompatActivity implements NavigationVie
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.pasajero, menu);
+        getMenuInflater().inflate(R.menu.conductor, menu);
         return true;
     }
 
@@ -102,18 +100,18 @@ public class PasajeroActivity extends AppCompatActivity implements NavigationVie
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.PasajeroActivity_perfil){
-            DBQueries.ProbandoReserva(pasajero.getUsername(),this);
+        if (id == R.id.ConductorActivity_perfil){
+            // Handle the camera action
         }
-        else if (id == R.id.PasajeroActivity_buscarviaje){
-            Intent BuscarViajeActivity = new Intent(this, BuscarViajeActivity.class);
-            BuscarViajeActivity.putExtra("pasajero_entidad", pasajero);
-            startActivity(BuscarViajeActivity);
+        else if (id == R.id.ConductorActivity_crearviaje){
+            Intent CrearViajeActivity = new Intent(this, CrearViajeActivity.class);
+            CrearViajeActivity.putExtra("conductor_entidad", conductor);
+            startActivity(CrearViajeActivity);
         }
-        else if (id == R.id.PasajeroActivity_verviajes) {
+        else if (id == R.id.ConductorActivity_verviajes) {
 
         }
-        else if (id == R.id.PasajeroActivity_salir){
+        else if (id == R.id.ConductorActivity_salir){
             SharedPreferences sharedPreferences;
             sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
             SharedPreferences.Editor editor = sharedPreferences.edit();
