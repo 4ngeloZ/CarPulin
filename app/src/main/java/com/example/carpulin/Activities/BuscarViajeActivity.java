@@ -10,7 +10,6 @@ import android.widget.Toast;
 
 import com.example.carpulin.DB.DBQueries;
 import com.example.carpulin.Entidades.Pasajero;
-import com.example.carpulin.Entidades.Viaje;
 import com.example.carpulin.R;
 import com.example.carpulin.ViajeModelo;
 import com.google.android.gms.common.api.Status;
@@ -28,8 +27,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BuscarViajeActivity extends AppCompatActivity {
-    private EditText origen;
-    private EditText destino;
     private EditText fecha;
     private EditText plazas;
     private Pasajero pasajero;
@@ -41,8 +38,6 @@ public class BuscarViajeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buscar_viaje);
 
-        origen = (EditText)findViewById(R.id.BuscarViajeActivity_origen);
-        destino = (EditText)findViewById(R.id.BuscarViajeActivity_destino);
         fecha = (EditText)findViewById(R.id.BuscarViajeActivity_fecha);
         plazas = (EditText)findViewById(R.id.BuscarViajeActivity_plazas);
 
@@ -50,8 +45,7 @@ public class BuscarViajeActivity extends AppCompatActivity {
 
         Places.initialize(getApplicationContext(), "AIzaSyA7MSYdDD3aQarHYYYamIaKnSiyZ4W2aoU");
         // Create a new Places client instance.
-        PlacesClient placesClient = Places.createClient(this);
-
+        //PlacesClient placesClient = Places.createClient(this);
         // Initialize the AutocompleteSupportFragment.
         AutocompleteSupportFragment autocompleteOrigen = (AutocompleteSupportFragment)
                 getSupportFragmentManager().findFragmentById(R.id.frOrigen);
@@ -59,6 +53,7 @@ public class BuscarViajeActivity extends AppCompatActivity {
         // Specify the types of place data to return.
         autocompleteOrigen.setPlaceFields(Arrays.asList(Place.Field.ID, Place.Field.NAME));
         autocompleteOrigen.setHint("Origen");
+        autocompleteOrigen.setCountry("CL");
 
         // Set up a PlaceSelectionListener to handle the response.
         autocompleteOrigen.setOnPlaceSelectedListener(new PlaceSelectionListener() {
@@ -82,6 +77,7 @@ public class BuscarViajeActivity extends AppCompatActivity {
         // Specify the types of place data to return.
         autocompleteDestino.setPlaceFields(Arrays.asList(Place.Field.ID, Place.Field.NAME));
         autocompleteDestino.setHint("Destino");
+        autocompleteDestino.setCountry("CL");
         // Set up a PlaceSelectionListener to handle the response.
         autocompleteDestino.setOnPlaceSelectedListener(new PlaceSelectionListener() {
             @Override
@@ -101,8 +97,8 @@ public class BuscarViajeActivity extends AppCompatActivity {
 
     public void Buscar(View view){
 
-        String str_origen = origen.getText().toString();
-        String str_destino = destino.getText().toString();
+        String str_origen = Or;
+        String str_destino = Dest;
         String str_fecha = fecha.getText().toString();
 
         List<ViajeModelo> viajes = DBQueries.getViajes(str_origen, str_destino, str_fecha, this);
