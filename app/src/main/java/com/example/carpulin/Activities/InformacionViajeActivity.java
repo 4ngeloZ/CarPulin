@@ -1,5 +1,7 @@
 package com.example.carpulin.Activities;
 
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,7 +12,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.carpulin.DB.AdminSQLiteOpenHelper;
 import com.example.carpulin.DB.DBQueries;
+import com.example.carpulin.Entidades.Pasajero;
 import com.example.carpulin.Entidades.Viaje;
 import com.example.carpulin.R;
 
@@ -20,6 +24,7 @@ public class InformacionViajeActivity extends AppCompatActivity {
     private ImageView foto;
     private Viaje viaje;
     private int tipoViaje;
+    private Pasajero pasajero;
 
     private TextView nombreConductor;
     private TextView vehiculo;
@@ -67,6 +72,8 @@ public class InformacionViajeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_informacion_viaje);
 
         idViaje=getIntent().getStringExtra("idViaje");
+        pasajero = (Pasajero)getIntent().getSerializableExtra("pasajero_entidad");
+
         foto = (ImageView)findViewById(R.id.InformacionViajeActivity_foto);
         foto.setImageResource(R.drawable.user);
         viaje = DBQueries.getfullViaje(idViaje,this);
@@ -382,8 +389,63 @@ public class InformacionViajeActivity extends AppCompatActivity {
         }
     }
 
-    public void Reservar(View view){
-        Toast.makeText(this, "Falta guardarlo en la base", Toast.LENGTH_SHORT).show();
+    public void Reservar(View view) {
+        if (!(reserva1==0 && reserva2==0 && reserva3==0 && reserva4==0 && reserva5==0)) {
+            AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "db", null, 1);
+            SQLiteDatabase db = admin.getWritableDatabase();
+
+            ContentValues values = new ContentValues();
+            String randID = Integer.toString((int) (Math.random() * 999999999));
+            while (DBQueries.isViajeIdOcupado(randID, this)) {
+                randID = Integer.toString((int) (Math.random() * 999999999));
+            }
+
+            values.put("id", randID);
+            values.put("idviaje", viaje.getId());
+            values.put("username", pasajero.getUsername());
+            if (tipoViaje == 0) {
+                values.put("plazas1", reserva1);
+                values.put("valor", reserva1 * viaje.getValorTotal());
+            } else if (tipoViaje == 1) {
+                values.put("plazas1", reserva1);
+                values.put("plazas2", reserva2);
+                values.put("valor", reserva1 * viaje.getValor1() +
+                        reserva2 * (viaje.getValorTotal() - viaje.getValor1()));
+            } else if (tipoViaje == 2) {
+                values.put("plazas1", reserva1);
+                values.put("plazas2", reserva2);
+                values.put("plazas3", reserva3);
+                values.put("valor", reserva1 * viaje.getValor1() +
+                        reserva2 * viaje.getValor2() +
+                        reserva3 * (viaje.getValorTotal() - viaje.getValor1() - viaje.getValor2()));
+            } else if (tipoViaje == 3) {
+                values.put("plazas1", reserva1);
+                values.put("plazas2", reserva2);
+                values.put("plazas3", reserva3);
+                values.put("plazas4", reserva4);
+                values.put("valor", reserva1 * viaje.getValor1() +
+                        reserva2 * viaje.getValor2() +
+                        reserva3 * viaje.getValor3() +
+                        reserva3 * (viaje.getValorTotal() - viaje.getValor1() - viaje.getValor2() - viaje.getValor3()));
+            } else if (tipoViaje == 4) {
+                values.put("plazas1", reserva1);
+                values.put("plazas2", reserva2);
+                values.put("plazas3", reserva3);
+                values.put("plazas4", reserva4);
+                values.put("plazas5", reserva5);
+                values.put("valor", reserva1 * viaje.getValor1() +
+                        reserva2 * viaje.getValor2() +
+                        reserva3 * viaje.getValor3() +
+                        reserva4 * viaje.getValor4() +
+                        reserva3 * (viaje.getValorTotal() - viaje.getValor1() - viaje.getValor2() - viaje.getValor3() - viaje.getValor4()));
+            }
+            //values.put("procesada", 0);
+            db.insert("reserva", null, values);
+            db.close();
+            Toast.makeText(this, "Reserva solicitada con éxito", Toast.LENGTH_SHORT).show();
+            this.finish();
+        }
+        else Toast.makeText(this, "Seleccione plazas para reservar", Toast.LENGTH_SHORT).show();
     }
 
     private void ActualizacionValorReserva(){
