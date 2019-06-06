@@ -187,4 +187,18 @@ public class DBQueries {
         }
         return null;
     }
+
+    public static void ProbandoReserva(String username, Context context){
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(context, "db", null, 1);
+        SQLiteDatabase db = admin.getWritableDatabase();
+        String query = "SELECT * FROM reserva WHERE username = '" + username + "'";
+        Cursor cursor = db.rawQuery(query, null);
+        int i=0;
+        if (cursor.moveToFirst()){
+            i++;
+            while(cursor.moveToNext())i++;
+        }
+        if(i==0) Toast.makeText(context, "No hay reservas con ese usuario", Toast.LENGTH_SHORT).show();
+        else Toast.makeText(context, "Cantidad de reservas: " + Integer.toString(i), Toast.LENGTH_SHORT).show();
+    }
 }
