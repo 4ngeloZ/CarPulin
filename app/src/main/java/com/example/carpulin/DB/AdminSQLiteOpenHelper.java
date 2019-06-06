@@ -16,6 +16,8 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
             "fecha1 text, fecha2 text, fecha3 text, fecha4 text, hora1 text, hora2 text, hora3 text, hora4 text, " +
             "valor1 int, valor2 int, valor3 int, valor4 int, plazas1 int, plazas2 int, plazas3 int, plazas4 int, plazas5 int, " +
             "conductor text)";
+    private static final String CREATE_TABLE_RESERVA = "CREATE TABLE reserva(id text PRIMARY KEY, " +
+            "idviaje text, username text, plazas1 int, plazas2 int, plazas3 int, plazas4 int, plazas5 int, valor int, procesada int)"; //procesada: 0=no procesada, 1=aceptada, 2=rechazada
 
     public AdminSQLiteOpenHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
@@ -26,6 +28,7 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_CONDUCTOR);
         db.execSQL(CREATE_TABLE_PASAJERO);
         db.execSQL(CREATE_TABLE_VIAJE);
+        db.execSQL(CREATE_TABLE_RESERVA);
     }
 
     @Override

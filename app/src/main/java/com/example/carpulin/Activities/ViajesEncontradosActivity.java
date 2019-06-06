@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.carpulin.DB.DBQueries;
+import com.example.carpulin.Entidades.Pasajero;
 import com.example.carpulin.R;
 import com.example.carpulin.RecyclerViewAdapterViajes;
 import com.example.carpulin.ViajeModelo;
@@ -19,6 +20,7 @@ public class ViajesEncontradosActivity extends AppCompatActivity {
 
     private RecyclerView recyclerViewViaje;
     private RecyclerViewAdapterViajes adaptadorViaje;
+    private Pasajero pasajero;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,8 @@ public class ViajesEncontradosActivity extends AppCompatActivity {
 
         adaptadorViaje = new RecyclerViewAdapterViajes(getViajes(bundle.getString("origen_busqueda"),bundle.getString("destino_busqueda"), bundle.getString("fecha_busqueda")));
         recyclerViewViaje.setAdapter(adaptadorViaje);
+
+        pasajero = (Pasajero)getIntent().getSerializableExtra("pasajero_entidad");
     }
 
     public List<ViajeModelo> getViajes(String origen, String destino, String fecha){
@@ -42,6 +46,7 @@ public class ViajesEncontradosActivity extends AppCompatActivity {
         String idViaje=adaptadorViaje.getId(view);
         Intent ViajesEncontradosActivity = new Intent(this, InformacionViajeActivity.class);
         ViajesEncontradosActivity.putExtra("idViaje", idViaje);
+        ViajesEncontradosActivity.putExtra("pasajero_entidad", pasajero);
         startActivity(ViajesEncontradosActivity);
     }
 

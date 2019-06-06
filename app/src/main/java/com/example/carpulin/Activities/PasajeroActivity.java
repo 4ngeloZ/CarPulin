@@ -1,7 +1,9 @@
 package com.example.carpulin.Activities;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
@@ -18,7 +20,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.carpulin.DB.AdminSQLiteOpenHelper;
+import com.example.carpulin.DB.DBQueries;
 import com.example.carpulin.Entidades.Pasajero;
 import com.example.carpulin.R;
 
@@ -97,8 +102,8 @@ public class PasajeroActivity extends AppCompatActivity implements NavigationVie
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.ConductorActivity_perfil){
-            // Handle the camera action
+        if (id == R.id.PasajeroActivity_perfil){
+            DBQueries.ProbandoReserva(pasajero.getUsername(),this);
         }
         else if (id == R.id.PasajeroActivity_buscarviaje){
             Intent BuscarViajeActivity = new Intent(this, BuscarViajeActivity.class);
