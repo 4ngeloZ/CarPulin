@@ -396,9 +396,9 @@ public class InformacionViajeActivity extends AppCompatActivity {
 
             ContentValues values = new ContentValues();
             String randID = Integer.toString((int) (Math.random() * 999999999));
-            //while (DBQueries.isReservaIdOcupado(randID, this)) {
-            //    randID = Integer.toString((int) (Math.random() * 999999999));
-            //}
+            while (DBQueries.isReservaIdOcupado(randID, this)) {
+                randID = Integer.toString((int) (Math.random() * 999999999));
+            }
 
             values.put("id", randID);
             values.put("idviaje", viaje.getId());

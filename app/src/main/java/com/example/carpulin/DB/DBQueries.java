@@ -96,6 +96,15 @@ public class DBQueries {
         else return false;
     }
 
+    public static boolean isReservaIdOcupado(String ID, Context context){
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(context, "db", null, 1);
+        SQLiteDatabase db = admin.getWritableDatabase();
+        String query = "SELECT id FROM reserva WHERE id = '" + ID +"'";
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor.moveToFirst()) return true;
+        else return false;
+    }
+
     public static List<ViajeModelo> getViajes(String origen, String destino, String fecha, Context context) {
         List<ViajeModelo> viajes = new ArrayList<>();
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(context, "db", null, 1);
