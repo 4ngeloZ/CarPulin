@@ -2,18 +2,20 @@ package com.example.carpulin.Activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.TextView;
 
 import com.example.carpulin.R;
 
 public class PerfilConductorActivity extends AppCompatActivity {
 
-    private EditText et1,et2,et3,et4,et5;
+    private EditText nombre,apellido,run,telefono,mail;
     private RadioButton rb1,rb2,rb3;
     private Button b1, b2;
-
+    private TextView usuario;
 
 
     @Override
@@ -21,11 +23,17 @@ public class PerfilConductorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil_conductor);
 
-        et1 = (EditText)findViewById(R.id.editTextNombre);
-        et2 =(EditText)findViewById(R.id.editTextApellido);
-        et3 =(EditText)findViewById(R.id.editTextRUN);
-        et4 =(EditText)findViewById(R.id.Telefono);
-        et5 =(EditText)findViewById(R.id.editTextMail);
+        nombre = (EditText)findViewById(R.id.editTextNombre);
+        apellido =(EditText)findViewById(R.id.editTextContraseñaA);
+        run =(EditText)findViewById(R.id.editTextRUN);
+        telefono =(EditText)findViewById(R.id.Telefono);
+        mail =(EditText)findViewById(R.id.editTextMail);
+        usuario = (TextView)findViewById(R.id.textViewUsuario);
+
+    }
+
+    public void Actualizar (View view) {
+        String str_nombre = nombre.getText().toString();
 
     }
 }
