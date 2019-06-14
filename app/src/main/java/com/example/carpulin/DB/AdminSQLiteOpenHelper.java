@@ -17,7 +17,8 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
             "valor1 int, valor2 int, valor3 int, valor4 int, plazas1 int, plazas2 int, plazas3 int, plazas4 int, plazas5 int, " +
             "conductor text)";
     private static final String CREATE_TABLE_RESERVA = "CREATE TABLE reserva(id text PRIMARY KEY, " +
-            "idviaje text, username text, plazas1 int, plazas2 int, plazas3 int, plazas4 int, plazas5 int, valor int, procesada int)"; //procesada: 0=no procesada, 1=aceptada, 2=rechazada
+            "idviaje text, username text, origen text, destino text, plazas int, valor int, procesada int, " +
+            "plazas1 int, plazas2 int, plazas3 int, plazas4 int, plazas5 int)"; //procesada: 0=no procesada, 1=aceptada, 2=rechazada
 
     public AdminSQLiteOpenHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);

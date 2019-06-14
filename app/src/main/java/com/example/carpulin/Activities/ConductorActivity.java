@@ -20,6 +20,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.carpulin.DB.DBQueries;
 import com.example.carpulin.Entidades.Conductor;
 import com.example.carpulin.R;
 
@@ -101,6 +102,7 @@ public class ConductorActivity extends AppCompatActivity implements NavigationVi
         int id = item.getItemId();
 
         if (id == R.id.ConductorActivity_perfil){
+            //DBQueries.getReservas(conductor.getUsername(), this);
             // Handle the camera action
         }
         else if (id == R.id.ConductorActivity_crearviaje){
@@ -110,6 +112,11 @@ public class ConductorActivity extends AppCompatActivity implements NavigationVi
         }
         else if (id == R.id.ConductorActivity_verviajes) {
 
+        }
+        else if (id == R.id.ConductorActivity_verreservas) {
+            Intent ReservasSolicitadasActivity = new Intent(this, ReservasSolicitadasActivity.class);
+            ReservasSolicitadasActivity.putExtra("conductor_entidad", conductor);
+            startActivity(ReservasSolicitadasActivity);
         }
         else if (id == R.id.ConductorActivity_salir){
             SharedPreferences sharedPreferences;
