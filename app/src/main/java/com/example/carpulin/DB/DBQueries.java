@@ -80,10 +80,10 @@ public class DBQueries {
     public static Pasajero getPasajero(String username, Context context){
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(context, "db", null, 1);
         SQLiteDatabase db = admin.getWritableDatabase();
-        String query = "SELECT username, nombre, password, correo, telefono, rut, sexo FROM pasajero WHERE username = '" + username +"'";
+        String query = "SELECT username, nombre, password, correo, telefono, rut, sexo, preferencias FROM pasajero WHERE username = '" + username +"'";
         Cursor cursor = db.rawQuery(query, null);
         if (cursor.moveToFirst()){
-            Pasajero pasajero = new Pasajero(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5), cursor.getString(6));
+            Pasajero pasajero = new Pasajero(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5), cursor.getString(6), cursor.getString(7));
             return pasajero;
         }
         return null;
@@ -365,5 +365,32 @@ public class DBQueries {
         }
         if(i==0) Toast.makeText(context, "No hay reservas con ese usuario", Toast.LENGTH_SHORT).show();
         else Toast.makeText(context, "Cantidad de reservas: " + Integer.toString(i), Toast.LENGTH_SHORT).show();
+    }
+
+    public static boolean actualizarCorreoPasajero(String nuevocorreo, String username, Context context){
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(context, "db", null, 1);
+        SQLiteDatabase db = admin.getWritableDatabase();
+        String query = "UPDATE pasajero SET correo = '" + nuevocorreo + "' WHERE username = '" + username + "'";
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor.moveToFirst()) return true;
+        else return false;
+    }
+
+    public static boolean actualizarTelefonoPasajero(String nuevotelefono, String username, Context context){
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(context, "db", null, 1);
+        SQLiteDatabase db = admin.getWritableDatabase();
+        String query = "UPDATE pasajero SET telefono = '" + nuevotelefono + "' WHERE username = '" + username + "'";
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor.moveToFirst()) return true;
+        else return false;
+    }
+
+    public static boolean actualizarPreferenciasPasajero(String nuevaspreferencias, String username, Context context){
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(context, "db", null, 1);
+        SQLiteDatabase db = admin.getWritableDatabase();
+        String query = "UPDATE pasajero SET preferencias = '" + nuevaspreferencias + "' WHERE username = '" + username + "'";
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor.moveToFirst()) return true;
+        else return false;
     }
 }

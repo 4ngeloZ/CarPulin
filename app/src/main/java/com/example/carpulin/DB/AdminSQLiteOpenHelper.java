@@ -9,7 +9,7 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
     private static final String CREATE_TABLE_CONDUCTOR = "CREATE TABLE conductor(username text PRIMARY KEY, " +
             "nombre text, password text, correo text, telefono int, rut text, sexo text)";
     private static final String CREATE_TABLE_PASAJERO = "CREATE TABLE pasajero(username text PRIMARY KEY, " +
-            "nombre text, password text, correo text, telefono int, rut text, sexo text)";
+            "nombre text, password text, correo text, telefono int, rut text, sexo text, preferencias text)";
     private static final String CREATE_TABLE_VIAJE = "CREATE TABLE viaje(id text PRIMARY KEY, " +
             "origen text, destino text, fechainicio text, horainicio text, valortotal int, " +
             "fechallegada text, horallegada text, parada1 text, parada2 text, parada3 text, parada4 text, " +
