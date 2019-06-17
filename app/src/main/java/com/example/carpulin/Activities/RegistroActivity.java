@@ -87,6 +87,9 @@ public class RegistroActivity extends AppCompatActivity {
 
                         if(!DBQueries.isConductorRegistrado(str_username, this)){
                             db.insert("conductor", null, values);
+                            ContentValues v = new ContentValues();
+                            v.put("username", str_username );
+                            db.insert("vehiculo", null, v);
                             Toast.makeText(this, "Registro Exitoso", Toast.LENGTH_SHORT).show();
                             this.finish();
                         }

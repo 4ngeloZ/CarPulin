@@ -19,9 +19,7 @@ import android.view.Menu;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.carpulin.DB.DBQueries;
 import com.example.carpulin.Entidades.Conductor;
 import com.example.carpulin.R;
 
@@ -72,8 +70,6 @@ public class ConductorActivity extends AppCompatActivity implements NavigationVi
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
         }
     }
 
@@ -103,8 +99,9 @@ public class ConductorActivity extends AppCompatActivity implements NavigationVi
         int id = item.getItemId();
 
         if (id == R.id.ConductorActivity_perfil){
-            //DBQueries.getReservas(conductor.getUsername(), this);
-            // Handle the camera action
+            Intent PerfilConductorActivity = new Intent(this, PerfilConductorActivity.class);
+            PerfilConductorActivity.putExtra("conductor_entidad", conductor);
+            startActivity(PerfilConductorActivity);
         }
         else if (id == R.id.ConductorActivity_crearviaje){
             Intent CrearViajeActivity = new Intent(this, CrearViajeActivity.class);
@@ -112,12 +109,6 @@ public class ConductorActivity extends AppCompatActivity implements NavigationVi
             startActivity(CrearViajeActivity);
         }
         else if (id == R.id.ConductorActivity_verviajes) {
-            //Prueba para reiniciar app//
-            /*Intent i = getBaseContext().getPackageManager()
-                    .getLaunchIntentForPackage( getBaseContext().getPackageName() );
-            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(i);
-            Toast.makeText(this, "Prueba", Toast.LENGTH_SHORT).show();*/
 
         }
         else if (id == R.id.ConductorActivity_verreservas) {

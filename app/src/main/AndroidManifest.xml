@@ -22,6 +22,12 @@
         <activity android:name=".Activities.ModificarPerfilPasajeroActivity"></activity>
         <activity android:name=".Activities.PerfilPasajeroActivity" />
         <activity android:name=".Activities.ReservasSolicitadasActivity"></activity>
+        <activity android:name=".Activities.PerfilVehiculoActivity"></activity>
+        <activity android:name=".Activities.AgregarVehiculoActivity" />
+        <activity android:name=".Activities.PerfilConductorActivity" />
+        <activity android:name=".Activities.ModDatosConductorActivity" />
+        <activity android:name=".Activities.ModVehiculoConductorActivity" />
+        <activity android:name=".Activities.ModPasswordConductorActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").

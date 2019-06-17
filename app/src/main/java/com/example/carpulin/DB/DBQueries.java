@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import com.example.carpulin.Entidades.Conductor;
 import com.example.carpulin.Entidades.Pasajero;
+import com.example.carpulin.Entidades.Vehiculo;
 import com.example.carpulin.Entidades.Viaje;
 import com.example.carpulin.R;
 import com.example.carpulin.ReservaModelo;
@@ -68,10 +69,10 @@ public class DBQueries {
     public static Conductor getConductor(String username, Context context){
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(context, "db", null, 1);
         SQLiteDatabase db = admin.getWritableDatabase();
-        String query = "SELECT username, nombre, password, correo, telefono, rut, sexo FROM conductor WHERE username = '" + username +"'";
+        String query = "SELECT username, nombre, password, correo, telefono, rut, sexo, preferences FROM conductor WHERE username = '" + username +"'";
         Cursor cursor = db.rawQuery(query, null);
         if (cursor.moveToFirst()){
-            Conductor conductor = new Conductor(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5), cursor.getString(6));
+            Conductor conductor = new Conductor(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5), cursor.getString(6), cursor.getString(7));
             return conductor;
         }
         return null;
@@ -98,6 +99,25 @@ public class DBQueries {
         else return false;
     }
 
+    public static boolean checkPassword(String username, String password, Context context){
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(context, "db", null, 1);
+        SQLiteDatabase db = admin.getWritableDatabase();
+        String query = "SELECT password FROM conductor WHERE username = '" + username +"'";
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor.moveToFirst()) {
+            if (cursor.getString(0).compareTo(password)==0) {
+                db.close();
+                return true;
+            }
+            else {
+                Toast.makeText(context, "Contraseña Incorrecta", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        }
+        db.close();
+        return false;
+    }
+
     public static boolean isReservaIdOcupado(String ID, Context context){
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(context, "db", null, 1);
         SQLiteDatabase db = admin.getWritableDatabase();
@@ -106,6 +126,7 @@ public class DBQueries {
         if (cursor.moveToFirst()) return true;
         else return false;
     }
+
 
     public static List<ViajeModelo> getViajes(String origen, String destino, String fecha, String plazas,  Context context) {
         List<ViajeModelo> viajes = new ArrayList<>();
@@ -353,19 +374,6 @@ public class DBQueries {
         db.execSQL(query);
     }
 
-    public static void ProbandoReserva(String username, Context context){
-        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(context, "db", null, 1);
-        SQLiteDatabase db = admin.getWritableDatabase();
-        String query = "SELECT * FROM reserva WHERE username = '" + username + "'";
-        Cursor cursor = db.rawQuery(query, null);
-        int i=0;
-        if (cursor.moveToFirst()){
-            i++;
-            while(cursor.moveToNext())i++;
-        }
-        if(i==0) Toast.makeText(context, "No hay reservas con ese usuario", Toast.LENGTH_SHORT).show();
-        else Toast.makeText(context, "Cantidad de reservas: " + Integer.toString(i), Toast.LENGTH_SHORT).show();
-    }
 
     public static boolean actualizarCorreoPasajero(String nuevocorreo, String username, Context context){
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(context, "db", null, 1);
@@ -393,4 +401,46 @@ public class DBQueries {
         if (cursor.moveToFirst()) return true;
         else return false;
     }
+
+    public static void ModConductor (String NuevoNombre, String NuevoRun, String NuevoTelefono, String NuevoMail, String username, String NuevaPreferences, Context context){
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(context, "db", null, 1);
+        SQLiteDatabase db = admin.getWritableDatabase();
+        String query = "UPDATE conductor SET nombre = '" + NuevoNombre + "', rut= '" + NuevoRun + "', telefono =  '" + NuevoTelefono + "', correo =  '" + NuevoMail + "', preferences = '" + NuevaPreferences + "' WHERE username = '" + username + "'";
+        db.execSQL(query);
+    }
+    public static Vehiculo getVehiculo(String username, Context context){
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(context, "db", null, 1);
+        SQLiteDatabase db = admin.getWritableDatabase();
+        String query = "SELECT username, marca, modelo, patente, asientos, año FROM vehiculo WHERE username= '" + username +"'";
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor.moveToFirst()){
+            Vehiculo vehiculo = new Vehiculo(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getInt(4), cursor.getInt(5));
+            return vehiculo;
+        }
+        return null;
+        }
+
+    public static void insertVehiculo(String username, String patente, String marca, String modelo, int año, int asientos, Context context){
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(context, "db", null, 1);
+        SQLiteDatabase db = admin.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+            values.put("username", username);
+            values.put("patente", patente);
+            values.put("marca", marca);
+            values.put("modelo", modelo);
+            values.put("año", año);
+            values.put("asientos", asientos);
+
+        db.insert("vehiculo", null, values);
+        Toast.makeText(context, "Registro Exitoso", Toast.LENGTH_SHORT).show();
+        db.close();
+    }
+     public static void ModVehiculo (String username, String NuevoMarca, String NuevoPatente, String NuevoModelo, String NuevoAsientos, String NuevoYear, Context context){
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(context, "db", null, 1);
+        SQLiteDatabase db = admin.getWritableDatabase();
+        String query = "UPDATE vehiculo SET marca = '" + NuevoMarca + "', patente= '" + NuevoPatente + "', modelo =  '" + NuevoModelo + "', asientos =  '" + NuevoAsientos + "', año = '" + NuevoYear + "' WHERE username = '" + username + "'";
+        db.execSQL(query);
+    }
+
 }
