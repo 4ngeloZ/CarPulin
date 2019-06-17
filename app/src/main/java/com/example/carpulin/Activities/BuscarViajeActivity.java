@@ -137,7 +137,7 @@ public class BuscarViajeActivity extends AppCompatActivity{
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-            if(!strDate.before(currentDate)) {
+            if(strDate != null && !strDate.before(currentDate)) {
                 if (!viajes.isEmpty()) {
                     Intent ViajesEncontradosActivity = new Intent(this, ViajesEncontradosActivity.class);
                     ViajesEncontradosActivity.putExtra("origen_busqueda", str_origen);
@@ -148,7 +148,20 @@ public class BuscarViajeActivity extends AppCompatActivity{
                 } else
                     til.setError(null);
                     Toast.makeText(this, "No hay viajes que satisfagan su búsqueda", Toast.LENGTH_SHORT).show();
-            } else
+            }
+            else if(strDate == null){
+                if (!viajes.isEmpty()) {
+                    Intent ViajesEncontradosActivity = new Intent(this, ViajesEncontradosActivity.class);
+                    ViajesEncontradosActivity.putExtra("origen_busqueda", str_origen);
+                    ViajesEncontradosActivity.putExtra("destino_busqueda", str_destino);
+                    ViajesEncontradosActivity.putExtra("fecha_busqueda", str_fecha);
+                    ViajesEncontradosActivity.putExtra("pasajero_entidad", pasajero);
+                    startActivity(ViajesEncontradosActivity);
+                } else
+                    til.setError(null);
+                Toast.makeText(this, "No hay viajes que satisfagan su búsqueda", Toast.LENGTH_SHORT).show();
+            }
+            else
                 til.setError("Ingrese una fecha válida");
                 //Toast.makeText(this, "Fecha ingresada no es válida", Toast.LENGTH_SHORT).show();
         }
