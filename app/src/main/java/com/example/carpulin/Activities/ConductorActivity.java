@@ -19,7 +19,9 @@ import android.view.Menu;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.carpulin.DB.DBQueries;
 import com.example.carpulin.Entidades.Conductor;
 import com.example.carpulin.R;
 
@@ -101,6 +103,7 @@ public class ConductorActivity extends AppCompatActivity implements NavigationVi
         int id = item.getItemId();
 
         if (id == R.id.ConductorActivity_perfil){
+            //DBQueries.getReservas(conductor.getUsername(), this);
             // Handle the camera action
         }
         else if (id == R.id.ConductorActivity_crearviaje){
@@ -109,7 +112,18 @@ public class ConductorActivity extends AppCompatActivity implements NavigationVi
             startActivity(CrearViajeActivity);
         }
         else if (id == R.id.ConductorActivity_verviajes) {
+            //Prueba para reiniciar app//
+            /*Intent i = getBaseContext().getPackageManager()
+                    .getLaunchIntentForPackage( getBaseContext().getPackageName() );
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(i);
+            Toast.makeText(this, "Prueba", Toast.LENGTH_SHORT).show();*/
 
+        }
+        else if (id == R.id.ConductorActivity_verreservas) {
+            Intent ReservasSolicitadasActivity = new Intent(this, ReservasSolicitadasActivity.class);
+            ReservasSolicitadasActivity.putExtra("conductor_entidad", conductor);
+            startActivity(ReservasSolicitadasActivity);
         }
         else if (id == R.id.ConductorActivity_salir){
             SharedPreferences sharedPreferences;
