@@ -75,7 +75,7 @@ public class CrearViajeActivity extends AppCompatActivity implements View.OnClic
     private EditText plazas;
     private Button mas;
     private Button menos;
-    private int cantidadparadas=0;
+    private int cantidadparadas;
     private Conductor conductor;
     public final Calendar c = Calendar.getInstance();
 
@@ -129,7 +129,7 @@ public class CrearViajeActivity extends AppCompatActivity implements View.OnClic
         lparada2 = (LinearLayout) findViewById(R.id.CrearViajeActivity_LayoutParada2);
         lparada3 = (LinearLayout) findViewById(R.id.CrearViajeActivity_LayoutParada3);
         lparada4 = (LinearLayout) findViewById(R.id.CrearViajeActivity_LayoutParada4);
-
+        cantidadparadas = 0;
         lparada1.setVisibility(View.INVISIBLE);
         lparada2.setVisibility(View.INVISIBLE);
         lparada3.setVisibility(View.INVISIBLE);
@@ -281,6 +281,12 @@ public class CrearViajeActivity extends AppCompatActivity implements View.OnClic
                 Log.i("Parada4", "An error occurred: " + status);
             }
         });
+        if(cantidadparadas==0){
+            parada1 = "";
+            parada2 = "";
+            parada3 = "";
+            parada4 = "";
+        }
     }
 
     public void ModificarParadas(View view){
@@ -289,14 +295,20 @@ public class CrearViajeActivity extends AppCompatActivity implements View.OnClic
                 lparada1.setVisibility(View.VISIBLE);
                 cantidadparadas++;
                 menos.setVisibility(View.VISIBLE);
+                parada2 = "";
+                parada3 = "";
+                parada4 = "";
             }
             else if(cantidadparadas==1){
                 lparada2.setVisibility(View.VISIBLE);
                 cantidadparadas++;
+                parada3 = "";
+                parada4 = "";
             }
             else if(cantidadparadas==2){
                 lparada3.setVisibility(View.VISIBLE);
                 cantidadparadas++;
+                parada4 = "";
             }
             else if(cantidadparadas==3){
                 lparada4.setVisibility(View.VISIBLE);
@@ -309,19 +321,23 @@ public class CrearViajeActivity extends AppCompatActivity implements View.OnClic
                 lparada1.setVisibility(View.INVISIBLE);
                 cantidadparadas--;
                 menos.setVisibility(View.INVISIBLE);
+                parada1 = "";
             }
             else if(cantidadparadas==2){
                 lparada2.setVisibility(View.INVISIBLE);
                 cantidadparadas--;
+                parada2 = "";
             }
             else if(cantidadparadas==3){
                 lparada3.setVisibility(View.INVISIBLE);
                 cantidadparadas--;
+                parada3 = "";
             }
             else if(cantidadparadas==4){
                 lparada4.setVisibility(View.INVISIBLE);
                 cantidadparadas--;
                 mas.setVisibility(View.VISIBLE);
+                parada4 = "";
             }
         }
     }
