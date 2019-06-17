@@ -111,7 +111,7 @@ public class PasajeroActivity extends AppCompatActivity implements NavigationVie
             startActivity(BuscarViajeActivity);
         }
         else if (id == R.id.PasajeroActivity_verviajes) {
-            DBQueries.ProbandoReserva(pasajero.getUsername(),this);
+
         }
         else if (id == R.id.PasajeroActivity_salir){
             SharedPreferences sharedPreferences;
