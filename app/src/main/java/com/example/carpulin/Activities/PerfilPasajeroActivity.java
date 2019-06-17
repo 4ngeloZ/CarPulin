@@ -42,7 +42,7 @@ public class PerfilPasajeroActivity extends AppCompatActivity {
         rut.setText("RUN: " + pasajero.getRut());
         sexo.setText("Sexo: " + pasajero.getSexo());
         correo.setText("Correo: " + pasajero.getCorreo());
-        telefono.setText("Telefono: " + pasajero.getTelefono());
+        telefono.setText("Teléfono: " + pasajero.getTelefono());
         if(pasajero.getPreferencias() != null) preferencias.setText("Preferencias: " + pasajero.getPreferencias());
 
     }

@@ -36,21 +36,24 @@ public class ModificarPerfilPasajeroActivity extends AppCompatActivity {
     }
 
     public void actualizarPasajero(View view){
-        if(pasajero.getCorreo() != correo.getText().toString()) {
-            DBQueries.actualizarCorreoPasajero(correo.getText().toString(), pasajero.getUsername(), this);
-            pasajero.setCorreo(correo.getText().toString());
+        if(!correo.getText().toString().isEmpty() && !telefono.getText().toString().isEmpty()) {
+            if (pasajero.getCorreo() != correo.getText().toString()) {
+                DBQueries.actualizarCorreoPasajero(correo.getText().toString(), pasajero.getUsername(), this);
+                pasajero.setCorreo(correo.getText().toString());
+            }
+            if (pasajero.getTelefono() != telefono.getText().toString()) {
+                DBQueries.actualizarTelefonoPasajero(telefono.getText().toString(), pasajero.getUsername(), this);
+                pasajero.setTelefono(telefono.getText().toString());
+            }
+            if (pasajero.getCorreo() != preferencias.getText().toString()) {
+                DBQueries.actualizarPreferenciasPasajero(preferencias.getText().toString(), pasajero.getUsername(), this);
+                pasajero.setPreferencias(preferencias.getText().toString());
+            }
+            Toast.makeText(this, "Modificación realizada con exito", Toast.LENGTH_SHORT).show();
+            Intent PasajeroActivity = new Intent(this, PasajeroActivity.class);
+            PasajeroActivity.putExtra("pasajero_entidad", pasajero);
+            startActivity(PasajeroActivity);
         }
-        if(pasajero.getTelefono() != telefono.getText().toString()) {
-            DBQueries.actualizarTelefonoPasajero(telefono.getText().toString(), pasajero.getUsername(), this);
-            pasajero.setTelefono(telefono.getText().toString());
-        }
-        if(pasajero.getCorreo() != preferencias.getText().toString()) {
-            DBQueries.actualizarPreferenciasPasajero(preferencias.getText().toString(), pasajero.getUsername(), this);
-            pasajero.setPreferencias(preferencias.getText().toString());
-        }
-        Toast.makeText(this, "Modificación realizada con exito", Toast.LENGTH_SHORT).show();
-        Intent PasajeroActivity = new Intent(this, PasajeroActivity.class);
-        PasajeroActivity.putExtra("pasajero_entidad", pasajero);
-        startActivity(PasajeroActivity);
+        else Toast.makeText(this, "Ingrese correo y teléfono", Toast.LENGTH_SHORT).show();
     }
 }
