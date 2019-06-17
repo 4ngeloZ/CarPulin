@@ -16,6 +16,7 @@ public class PerfilConductorActivity extends AppCompatActivity {
     private TextView telefono;
     private TextView mail;
     private TextView usuario;
+    private TextView p;
     private Conductor conductor;
 
     @Override
@@ -30,6 +31,7 @@ public class PerfilConductorActivity extends AppCompatActivity {
         telefono =(TextView)findViewById(R.id.textViewtelefono);
         mail =(TextView)findViewById(R.id.textViewMail);
         usuario = (TextView)findViewById(R.id.textViewUsuario);
+        p = (TextView)findViewById(R.id.textViewP);
 
       //  Toast.makeText(this, conductor.getCorreo(), Toast.LENGTH_SHORT).show();
 
@@ -39,6 +41,7 @@ public class PerfilConductorActivity extends AppCompatActivity {
         run.setText(conductor.getRut());
         telefono.setText(conductor.getTelefono());
         mail.setText(conductor.getCorreo());
+        p.setText(conductor.getPreferences());
 
 
     }
