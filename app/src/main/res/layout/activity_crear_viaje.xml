@@ -1,347 +1,363 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Activities.CrearViajeActivity">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
 
-    <LinearLayout
-        android:id="@+id/CrearViajeActivity_Layout1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".Activities.CrearViajeActivity">
 
-        <EditText
-            android:id="@+id/CrearViajeActivity_origen"
-            android:layout_width="150dp"
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Origen"
-            android:inputType="textPersonName" />
+            android:layout_marginTop="200dp"
+            android:text="Button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/CrearViajeActivity_LayoutParada4" />
 
-        <EditText
-            android:id="@+id/CrearViajeActivity_destino"
-            android:layout_width="150dp"
+        <LinearLayout
+            android:id="@+id/CrearViajeActivity_Layout1"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Destino"
-            android:inputType="textPersonName" />
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
-            android:id="@+id/CrearViajeActivity_plazas"
-            android:layout_width="60dp"
+            <EditText
+                android:id="@+id/CrearViajeActivity_origen"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Origen"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/CrearViajeActivity_destino"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Destino"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/CrearViajeActivity_plazas"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="Plazas"
+                android:inputType="number" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/CrearViajeActivity_Layout2"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="Plazas"
-            android:inputType="number" />
-    </LinearLayout>
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/CrearViajeActivity_Layout1">
 
-    <LinearLayout
-        android:id="@+id/CrearViajeActivity_Layout2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CrearViajeActivity_Layout1">
+            <EditText
+                android:id="@+id/CrearViajeActivity_fechaInicio"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:ems="10"
+                android:focusable="false"
+                android:hint="Fecha Inicio"
+                android:inputType="date" />
 
-        <EditText
-            android:id="@+id/CrearViajeActivity_fechaInicio"
-            android:layout_width="120dp"
+            <EditText
+                android:id="@+id/CrearViajeActivity_horaInicio"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:ems="10"
+                android:focusable="false"
+                android:hint="Hora Inicio"
+                android:inputType="time" />
+
+            <EditText
+                android:id="@+id/CrearViajeActivity_valorTotal"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Valor Total"
+                android:inputType="number" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/CrearViajeActivity_Layout3"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Fecha Inicio"
-            android:inputType="date"
-            android:focusable="false"
-            android:clickable="true" />
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/CrearViajeActivity_Layout2">
 
-        <EditText
-            android:id="@+id/CrearViajeActivity_horaInicio"
-            android:layout_width="120dp"
+            <EditText
+                android:id="@+id/CrearViajeActivity_fechaLlegada"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:ems="10"
+                android:focusable="false"
+                android:hint=" Fecha Llegada"
+                android:inputType="date" />
+
+            <EditText
+                android:id="@+id/CrearViajeActivity_horaLlegada"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:ems="10"
+                android:focusable="false"
+                android:hint="Hora Llegada"
+                android:inputType="time" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/CrearViajeActivity_menos"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Hora Inicio"
-            android:inputType="time"
-            android:focusable="false"
-            android:clickable="true" />
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:onClick="ModificarParadas"
+            android:text="Quitar Paradas"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/CrearViajeActivity_crear"
+            app:layout_constraintTop_toBottomOf="@+id/CrearViajeActivity_Layout3" />
 
-        <EditText
-            android:id="@+id/CrearViajeActivity_valorTotal"
-            android:layout_width="120dp"
+        <Button
+            android:id="@+id/CrearViajeActivity_mas"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Valor Total"
-            android:inputType="number" />
-    </LinearLayout>
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:onClick="ModificarParadas"
+            android:text="Añadir Paradas"
+            app:layout_constraintEnd_toStartOf="@+id/CrearViajeActivity_crear"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/CrearViajeActivity_Layout3" />
 
-    <LinearLayout
-        android:id="@+id/CrearViajeActivity_Layout3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CrearViajeActivity_Layout2">
-
-        <EditText
-            android:id="@+id/CrearViajeActivity_fechaLlegada"
-            android:layout_width="180dp"
+        <Button
+            android:id="@+id/CrearViajeActivity_crear"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint=" Fecha Llegada"
-            android:inputType="date"
-            android:focusable="false"
-            android:clickable="true" />
+            android:layout_marginTop="16dp"
+            android:onClick="Crear"
+            android:text="Crear"
+            app:layout_constraintEnd_toStartOf="@+id/CrearViajeActivity_menos"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/CrearViajeActivity_mas"
+            app:layout_constraintTop_toBottomOf="@+id/CrearViajeActivity_Layout3" />
 
-        <EditText
-            android:id="@+id/CrearViajeActivity_horaLlegada"
-            android:layout_width="180dp"
+        <LinearLayout
+            android:id="@+id/CrearViajeActivity_LayoutParada1"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Hora Llegada"
-            android:inputType="time"
-            android:focusable="false"
-            android:clickable="true" />
-    </LinearLayout>
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/CrearViajeActivity_crear">
 
-    <Button
-        android:id="@+id/CrearViajeActivity_menos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:onClick="ModificarParadas"
-        android:text="Quitar Paradas"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/CrearViajeActivity_crear"
-        app:layout_constraintTop_toBottomOf="@+id/CrearViajeActivity_Layout3" />
+            <EditText
+                android:id="@+id/CrearViajeActivity_parada1"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Parada"
+                android:inputType="textPersonName" />
 
-    <Button
-        android:id="@+id/CrearViajeActivity_mas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:onClick="ModificarParadas"
-        android:text="Añadir Paradas"
-        app:layout_constraintEnd_toStartOf="@+id/CrearViajeActivity_crear"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CrearViajeActivity_Layout3" />
+            <EditText
+                android:id="@+id/CrearViajeActivity_fecha1"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:ems="10"
+                android:focusable="false"
+                android:hint="Fecha"
+                android:inputType="date" />
 
-    <Button
-        android:id="@+id/CrearViajeActivity_crear"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:onClick="Crear"
-        android:text="Crear"
-        app:layout_constraintEnd_toStartOf="@+id/CrearViajeActivity_menos"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/CrearViajeActivity_mas"
-        app:layout_constraintTop_toBottomOf="@+id/CrearViajeActivity_Layout3" />
+            <EditText
+                android:id="@+id/CrearViajeActivity_hora1"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:ems="10"
+                android:focusable="false"
+                android:hint="Hora"
+                android:inputType="time" />
 
-    <LinearLayout
-        android:id="@+id/CrearViajeActivity_LayoutParada1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CrearViajeActivity_crear">
+            <EditText
+                android:id="@+id/CrearViajeActivity_valor1"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Valor"
+                android:inputType="number" />
+        </LinearLayout>
 
-        <EditText
-            android:id="@+id/CrearViajeActivity_parada1"
-            android:layout_width="100dp"
+        <LinearLayout
+            android:id="@+id/CrearViajeActivity_LayoutParad2"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Parada"
-            android:inputType="textPersonName" />
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/CrearViajeActivity_LayoutParada1">
 
-        <EditText
-            android:id="@+id/CrearViajeActivity_fecha1"
-            android:layout_width="100dp"
+            <EditText
+                android:id="@+id/CrearViajeActivity_parada2"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Parada"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/CrearViajeActivity_fecha2"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:ems="10"
+                android:focusable="false"
+                android:hint="Fecha"
+                android:inputType="date" />
+
+            <EditText
+                android:id="@+id/CrearViajeActivity_hora2"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:ems="10"
+                android:focusable="false"
+                android:hint="Hora"
+                android:inputType="time" />
+
+            <EditText
+                android:id="@+id/CrearViajeActivity_valor2"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Valor"
+                android:inputType="number" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/CrearViajeActivity_LayoutParada3"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Fecha"
-            android:inputType="date"
-            android:focusable="false"
-            android:clickable="true" />
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/CrearViajeActivity_LayoutParad2">
 
-        <EditText
-            android:id="@+id/CrearViajeActivity_hora1"
-            android:layout_width="100dp"
+            <EditText
+                android:id="@+id/CrearViajeActivity_parada3"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Parada"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/CrearViajeActivity_fecha3"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:ems="10"
+                android:focusable="false"
+                android:hint="Fecha"
+                android:inputType="date" />
+
+            <EditText
+                android:id="@+id/CrearViajeActivity_hora3"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:ems="10"
+                android:focusable="false"
+                android:hint="Hora"
+                android:inputType="time" />
+
+            <EditText
+                android:id="@+id/CrearViajeActivity_valor3"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:ems="10"
+                android:hint="Valor"
+                android:inputType="number" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/CrearViajeActivity_LayoutParada4"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Hora"
-            android:inputType="time"
-            android:focusable="false"
-            android:clickable="true" />
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/CrearViajeActivity_LayoutParada3">
 
-        <EditText
-            android:id="@+id/CrearViajeActivity_valor1"
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Valor"
-            android:inputType="number" />
-    </LinearLayout>
+            <EditText
+                android:id="@+id/CrearViajeActivity_parada4"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Parada"
+                android:inputType="textPersonName" />
 
-    <LinearLayout
-        android:id="@+id/CrearViajeActivity_LayoutParad2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CrearViajeActivity_LayoutParada1">
+            <EditText
+                android:id="@+id/CrearViajeActivity_fecha4"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:ems="10"
+                android:focusable="false"
+                android:hint="Fecha"
+                android:inputType="date" />
 
-        <EditText
-            android:id="@+id/CrearViajeActivity_parada2"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Parada"
-            android:inputType="textPersonName" />
+            <EditText
+                android:id="@+id/CrearViajeActivity_hora4"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:ems="10"
+                android:focusable="false"
+                android:hint="Hora"
+                android:inputType="time" />
 
-        <EditText
-            android:id="@+id/CrearViajeActivity_fecha2"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Fecha"
-            android:inputType="date"
-            android:focusable="false"
-            android:clickable="true" />
+            <EditText
+                android:id="@+id/CrearViajeActivity_valor4"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Valor"
+                android:inputType="number" />
+        </LinearLayout>
 
-        <EditText
-            android:id="@+id/CrearViajeActivity_hora2"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Hora"
-            android:inputType="time"
-            android:focusable="false"
-            android:clickable="true" />
-
-        <EditText
-            android:id="@+id/CrearViajeActivity_valor2"
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Valor"
-            android:inputType="number" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/CrearViajeActivity_LayoutParada3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CrearViajeActivity_LayoutParad2">
-
-        <EditText
-            android:id="@+id/CrearViajeActivity_parada3"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Parada"
-            android:inputType="textPersonName" />
-
-        <EditText
-            android:id="@+id/CrearViajeActivity_fecha3"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Fecha"
-            android:inputType="date"
-            android:focusable="false"
-            android:clickable="true" />
-
-        <EditText
-            android:id="@+id/CrearViajeActivity_hora3"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Hora"
-            android:inputType="time"
-            android:focusable="false"
-            android:clickable="true" />
-
-        <EditText
-            android:id="@+id/CrearViajeActivity_valor3"
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0"
-            android:ems="10"
-            android:hint="Valor"
-            android:inputType="number" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/CrearViajeActivity_LayoutParada4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CrearViajeActivity_LayoutParada3">
-
-        <EditText
-            android:id="@+id/CrearViajeActivity_parada4"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Parada"
-            android:inputType="textPersonName" />
-
-        <EditText
-            android:id="@+id/CrearViajeActivity_fecha4"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Fecha"
-            android:inputType="date"
-            android:focusable="false"
-            android:clickable="true" />
-
-        <EditText
-            android:id="@+id/CrearViajeActivity_hora4"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Hora"
-            android:inputType="time"
-            android:focusable="false"
-            android:clickable="true" />
-
-        <EditText
-            android:id="@+id/CrearViajeActivity_valor4"
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Valor"
-            android:inputType="number" />
-    </LinearLayout>
-
-</android.support.constraint.ConstraintLayout>
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>

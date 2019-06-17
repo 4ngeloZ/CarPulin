@@ -96,19 +96,19 @@ public class BuscarViajeActivity extends AppCompatActivity {
     }
 
     public void Buscar(View view){
-
         String str_origen = Or;
         String str_destino = Dest;
         String str_fecha = fecha.getText().toString();
+        String str_plazas = plazas.getText().toString();
+        List<ViajeModelo> viajes = DBQueries.getViajes(str_origen, str_destino, str_fecha, str_plazas, this);
 
-        List<ViajeModelo> viajes = DBQueries.getViajes(str_origen, str_destino, str_fecha, this);
-
-        if(!str_origen.isEmpty() && !str_destino.isEmpty()) {
+        if(!str_origen.isEmpty() && !str_destino.isEmpty() && !str_plazas.isEmpty()) {
             if (!viajes.isEmpty()) {
                 Intent ViajesEncontradosActivity = new Intent(this, ViajesEncontradosActivity.class);
                 ViajesEncontradosActivity.putExtra("origen_busqueda", str_origen);
                 ViajesEncontradosActivity.putExtra("destino_busqueda", str_destino);
                 ViajesEncontradosActivity.putExtra("fecha_busqueda", str_fecha);
+                ViajesEncontradosActivity.putExtra("numero_plazas", str_plazas);
                 ViajesEncontradosActivity.putExtra("pasajero_entidad", pasajero);
                 startActivity(ViajesEncontradosActivity);
             }

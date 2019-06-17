@@ -19,6 +19,7 @@ import android.view.Menu;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.carpulin.DB.DBQueries;
 import com.example.carpulin.Entidades.Conductor;
@@ -111,6 +112,12 @@ public class ConductorActivity extends AppCompatActivity implements NavigationVi
             startActivity(CrearViajeActivity);
         }
         else if (id == R.id.ConductorActivity_verviajes) {
+            //Prueba para reiniciar app//
+            /*Intent i = getBaseContext().getPackageManager()
+                    .getLaunchIntentForPackage( getBaseContext().getPackageName() );
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(i);
+            Toast.makeText(this, "Prueba", Toast.LENGTH_SHORT).show();*/
 
         }
         else if (id == R.id.ConductorActivity_verreservas) {

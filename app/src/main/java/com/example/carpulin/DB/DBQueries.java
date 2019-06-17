@@ -107,10 +107,11 @@ public class DBQueries {
         else return false;
     }
 
-    public static List<ViajeModelo> getViajes(String origen, String destino, String fecha, Context context) {
+    public static List<ViajeModelo> getViajes(String origen, String destino, String fecha, String plazas,  Context context) {
         List<ViajeModelo> viajes = new ArrayList<>();
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(context, "db", null, 1);
         SQLiteDatabase db = admin.getWritableDatabase();
+        int int_plazas = Integer.parseInt(plazas);
 
         List<String> queries = new ArrayList<>();
         queries.add("SELECT * FROM viaje WHERE origen = '" + origen + "' AND destino = '" + destino + "'"); //tipoviaje 0
@@ -192,7 +193,7 @@ public class DBQueries {
             else if (i==14)p=cursor.getInt(28);
 
             do {
-                viajes.add(new ViajeModelo(cursor.getString(0), //id
+                if(p>=int_plazas)viajes.add(new ViajeModelo(cursor.getString(0), //id
                         cursor.getString(29), //29=conductor
                         cursor.getString(1), //1=origen
                         cursor.getString(2), //2=destino

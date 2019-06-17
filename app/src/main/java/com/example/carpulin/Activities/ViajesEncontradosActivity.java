@@ -31,14 +31,14 @@ public class ViajesEncontradosActivity extends AppCompatActivity {
         recyclerViewViaje = (RecyclerView)findViewById(R.id.RecyclerViaje);
         recyclerViewViaje.setLayoutManager(new LinearLayoutManager(this));
 
-        adaptadorViaje = new RecyclerViewAdapterViajes(getViajes(bundle.getString("origen_busqueda"),bundle.getString("destino_busqueda"), bundle.getString("fecha_busqueda")));
+        adaptadorViaje = new RecyclerViewAdapterViajes(getViajes(bundle.getString("origen_busqueda"),bundle.getString("destino_busqueda"), bundle.getString("fecha_busqueda"), bundle.getString("numero_plazas")));
         recyclerViewViaje.setAdapter(adaptadorViaje);
 
         pasajero = (Pasajero)getIntent().getSerializableExtra("pasajero_entidad");
     }
 
-    public List<ViajeModelo> getViajes(String origen, String destino, String fecha){
-        List<ViajeModelo> viajes = DBQueries.getViajes(origen, destino, fecha, this);
+    public List<ViajeModelo> getViajes(String origen, String destino, String fecha, String plazas){
+        List<ViajeModelo> viajes = DBQueries.getViajes(origen, destino, fecha, plazas,this);
         return viajes;
     }
 
