@@ -10,7 +10,8 @@ public class Pasajero implements Serializable {
     private String telefono;
     private String rut;
     private String sexo;
-    public Pasajero(String username, String nombre, String password, String correo, String telefono, String rut, String sexo){
+    private String preferencias;
+    public Pasajero(String username, String nombre, String password, String correo, String telefono, String rut, String sexo, String preferencias){
         this.username=username;
         this.nombre=nombre;
         this.password=password;
@@ -18,6 +19,7 @@ public class Pasajero implements Serializable {
         this.telefono=telefono;
         this.rut=rut;
         this.sexo=sexo;
+        if(preferencias != null) this.preferencias=preferencias;
     }
 
     public String getUsername(){
@@ -48,6 +50,8 @@ public class Pasajero implements Serializable {
         return sexo;
     }
 
+    public String getPreferencias() { return preferencias; }
+
     public void setUsername(String username) {
         this.username = username;
     }
@@ -75,4 +79,6 @@ public class Pasajero implements Serializable {
     public void setSexo(String sexo) {
         this.sexo = sexo;
     }
+
+    public void setPreferencias(String preferencias) { this.preferencias = preferencias; }
 }
