@@ -28,7 +28,6 @@ import com.google.android.libraries.places.api.net.PlacesClient;
 import com.google.android.libraries.places.widget.AutocompleteSupportFragment;
 import com.google.android.libraries.places.widget.listener.PlaceSelectionListener;
 
-import org.checkerframework.checker.linear.qual.Linear;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
