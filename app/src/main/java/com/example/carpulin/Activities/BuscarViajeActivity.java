@@ -118,8 +118,8 @@ public class BuscarViajeActivity extends AppCompatActivity{
         String str_origen = Or;
         String str_destino = Dest;
         String str_fecha = fecha.getText().toString();
-
-        List<ViajeModelo> viajes = DBQueries.getViajes(str_origen, str_destino, str_fecha, "1", this);
+        String str_plazas = plazas.getText().toString();
+        List<ViajeModelo> viajes = DBQueries.getViajes(str_origen, str_destino, str_fecha, str_plazas, this);
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
@@ -130,7 +130,7 @@ public class BuscarViajeActivity extends AppCompatActivity{
             e.printStackTrace();
         }
 
-        if(!str_origen.isEmpty() && !str_destino.isEmpty()) {
+        if(!str_origen.isEmpty() && !str_destino.isEmpty() && !str_plazas.isEmpty()) {
             Date currentDate = null;
             try {
                 currentDate = sdf.parse(sdf.format(new Date()));
@@ -143,6 +143,7 @@ public class BuscarViajeActivity extends AppCompatActivity{
                     ViajesEncontradosActivity.putExtra("origen_busqueda", str_origen);
                     ViajesEncontradosActivity.putExtra("destino_busqueda", str_destino);
                     ViajesEncontradosActivity.putExtra("fecha_busqueda", str_fecha);
+                    ViajesEncontradosActivity.putExtra("numero_plazas", str_plazas);
                     ViajesEncontradosActivity.putExtra("pasajero_entidad", pasajero);
                     startActivity(ViajesEncontradosActivity);
                 } else
@@ -155,6 +156,7 @@ public class BuscarViajeActivity extends AppCompatActivity{
                     ViajesEncontradosActivity.putExtra("origen_busqueda", str_origen);
                     ViajesEncontradosActivity.putExtra("destino_busqueda", str_destino);
                     ViajesEncontradosActivity.putExtra("fecha_busqueda", str_fecha);
+                    ViajesEncontradosActivity.putExtra("numero_plazas", str_plazas);
                     ViajesEncontradosActivity.putExtra("pasajero_entidad", pasajero);
                     startActivity(ViajesEncontradosActivity);
                 } else
