@@ -298,17 +298,36 @@ public class CrearViajeActivity extends AppCompatActivity implements View.OnClic
                 parada2 = "";
                 parada3 = "";
                 parada4 = "";
+                fecha2.setText("");
+                fecha3.setText("");
+                fecha4.setText("");
+                hora2.setText("");
+                hora3.setText("");
+                hora4.setText("");
+                valor2.setText("");
+                valor3.setText("");
+                valor4.setText("");
             }
             else if(cantidadparadas==1){
                 lparada2.setVisibility(View.VISIBLE);
                 cantidadparadas++;
                 parada3 = "";
                 parada4 = "";
+                fecha3.setText("");
+                fecha4.setText("");
+                hora3.setText("");
+                hora4.setText("");
+                valor3.setText("");
+                valor4.setText("");
             }
             else if(cantidadparadas==2){
                 lparada3.setVisibility(View.VISIBLE);
                 cantidadparadas++;
                 parada4 = "";
+                fecha4.setText("");
+                hora4.setText("");
+                valor4.setText("");
+
             }
             else if(cantidadparadas==3){
                 lparada4.setVisibility(View.VISIBLE);
@@ -322,22 +341,38 @@ public class CrearViajeActivity extends AppCompatActivity implements View.OnClic
                 cantidadparadas--;
                 menos.setVisibility(View.INVISIBLE);
                 parada1 = "";
+                autocompleteParada1.setText("");
+                fecha1.setText("");
+                hora1.setText("");
+                valor1.setText("");
             }
             else if(cantidadparadas==2){
                 lparada2.setVisibility(View.INVISIBLE);
                 cantidadparadas--;
                 parada2 = "";
+                autocompleteParada2.setText("");
+                fecha2.setText("");
+                hora2.setText("");
+                valor2.setText("");
             }
             else if(cantidadparadas==3){
                 lparada3.setVisibility(View.INVISIBLE);
                 cantidadparadas--;
                 parada3 = "";
+                autocompleteParada3.setText("");
+                fecha3.setText("");
+                hora3.setText("");
+                valor3.setText("");
             }
             else if(cantidadparadas==4){
                 lparada4.setVisibility(View.INVISIBLE);
                 cantidadparadas--;
                 mas.setVisibility(View.VISIBLE);
                 parada4 = "";
+                autocompleteParada4.setText("");
+                fecha4.setText("");
+                hora4.setText("");
+                valor4.setText("");
             }
         }
     }
