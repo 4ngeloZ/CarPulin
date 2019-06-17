@@ -24,7 +24,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class CrearViajeActivity extends AppCompatActivity implements View.OnClickListener {
+public class CrearViajeActivity extends AppCompatActivity {
 
     private static final String CERO = "0";
     private static final String BARRA = "/";
@@ -77,29 +77,17 @@ public class CrearViajeActivity extends AppCompatActivity implements View.OnClic
         origen = (EditText)findViewById(R.id.CrearViajeActivity_origen);
         destino = (EditText)findViewById(R.id.CrearViajeActivity_destino);
         fechaInicio = (EditText)findViewById(R.id.CrearViajeActivity_fechaInicio);
-        fechaInicio.setOnClickListener(this);
         fecha1 = (EditText)findViewById(R.id.CrearViajeActivity_fecha1);
-        fecha1.setOnClickListener(this);
         fecha2 = (EditText)findViewById(R.id.CrearViajeActivity_fecha2);
-        fecha2.setOnClickListener(this);
         fecha3 = (EditText)findViewById(R.id.CrearViajeActivity_fecha3);
-        fecha3.setOnClickListener(this);
         fecha4 = (EditText)findViewById(R.id.CrearViajeActivity_fecha4);
-        fecha4.setOnClickListener(this);
         fechaLlegada = (EditText)findViewById(R.id.CrearViajeActivity_fechaLlegada);
-        fechaLlegada.setOnClickListener(this);
         horaInicio = (EditText)findViewById(R.id.CrearViajeActivity_horaInicio);
-        horaInicio.setOnClickListener(this);
         hora1 = (EditText)findViewById(R.id.CrearViajeActivity_hora1);
-        hora1.setOnClickListener(this);
         hora2 = (EditText)findViewById(R.id.CrearViajeActivity_hora2);
-        hora2.setOnClickListener(this);
         hora3 = (EditText)findViewById(R.id.CrearViajeActivity_hora3);
-        hora3.setOnClickListener(this);
         hora4 = (EditText)findViewById(R.id.CrearViajeActivity_hora4);
-        hora4.setOnClickListener(this);
         horaLlegada = (EditText)findViewById(R.id.CrearViajeActivity_horaLlegada);
-        horaLlegada.setOnClickListener(this);
         parada1 = (EditText)findViewById(R.id.CrearViajeActivity_parada1);
         parada2 = (EditText)findViewById(R.id.CrearViajeActivity_parada2);
         parada3 = (EditText)findViewById(R.id.CrearViajeActivity_parada3);
@@ -378,7 +366,6 @@ public class CrearViajeActivity extends AppCompatActivity implements View.OnClic
         else Toast.makeText(this, "Rellene todos los campos principales", Toast.LENGTH_SHORT).show();
     }
 
-    @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.CrearViajeActivity_fechaInicio:

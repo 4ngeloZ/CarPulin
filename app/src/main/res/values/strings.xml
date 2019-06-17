@@ -9,5 +9,6 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="title_activity_maps">Map</string>
+    <string name="title_activity_perfil_pasajero">PerfilPasajeroActivity</string>
 
 </resources>

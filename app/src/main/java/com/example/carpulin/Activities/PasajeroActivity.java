@@ -103,7 +103,9 @@ public class PasajeroActivity extends AppCompatActivity implements NavigationVie
         int id = item.getItemId();
 
         if (id == R.id.PasajeroActivity_perfil){
-            DBQueries.ProbandoReserva(pasajero.getUsername(),this);
+            Intent PerfilPasajeroActivity = new Intent(this, PerfilPasajeroActivity.class);
+            PerfilPasajeroActivity.putExtra("pasajero_entidad", pasajero);
+            startActivity(PerfilPasajeroActivity);
         }
         else if (id == R.id.PasajeroActivity_buscarviaje){
             Intent BuscarViajeActivity = new Intent(this, BuscarViajeActivity.class);
@@ -111,7 +113,7 @@ public class PasajeroActivity extends AppCompatActivity implements NavigationVie
             startActivity(BuscarViajeActivity);
         }
         else if (id == R.id.PasajeroActivity_verviajes) {
-
+            DBQueries.ProbandoReserva(pasajero.getUsername(),this);
         }
         else if (id == R.id.PasajeroActivity_salir){
             SharedPreferences sharedPreferences;

@@ -81,7 +81,7 @@ public class RegistroActivity extends AppCompatActivity {
                         values.put("password", str_password1);
                         values.put("correo", str_correo);
                         values.put("telefono", str_telefono);
-                        values.put("rut", str_rut1 + "-" + rut2);
+                        values.put("rut", str_rut1 + "-" + str_rut2);
                         if(hombre.isChecked())values.put("sexo", "Masculino");
                         else values.put("sexo", "Femenino");
 
@@ -95,11 +95,11 @@ public class RegistroActivity extends AppCompatActivity {
                     }
                     else{
                         values.put("username", str_username);
-                        values.put("nombre", str_nombre + " " + str_apellidoPaterno + "" + str_apellidoMaterno);
+                        values.put("nombre", str_nombre + " " + str_apellidoPaterno + " " + str_apellidoMaterno);
                         values.put("password", str_password1);
                         values.put("correo", str_correo);
                         values.put("telefono", str_telefono);
-                        values.put("rut", str_rut1 + "-" + rut2);
+                        values.put("rut", str_rut1 + "-" + str_rut2);
                         if(hombre.isChecked())values.put("sexo", "Masculino");
                         else values.put("sexo", "Femenino");
 
