@@ -45,8 +45,8 @@ public class BuscarViajeActivity extends AppCompatActivity {
 
         Places.initialize(getApplicationContext(), "AIzaSyA7MSYdDD3aQarHYYYamIaKnSiyZ4W2aoU");
         // Create a new Places client instance.
-        //PlacesClient placesClient = Places.createClient(this);
-        // Initialize the AutocompleteSupportFragment.
+        PlacesClient placesClient = Places.createClient(this);
+         //Initialize the AutocompleteSupportFragment.
         AutocompleteSupportFragment autocompleteOrigen = (AutocompleteSupportFragment)
                 getSupportFragmentManager().findFragmentById(R.id.frOrigen);
 

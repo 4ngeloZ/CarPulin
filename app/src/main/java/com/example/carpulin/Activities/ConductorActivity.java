@@ -16,7 +16,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -70,8 +69,6 @@ public class ConductorActivity extends AppCompatActivity implements NavigationVi
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
         }
     }
 
@@ -101,7 +98,9 @@ public class ConductorActivity extends AppCompatActivity implements NavigationVi
         int id = item.getItemId();
 
         if (id == R.id.ConductorActivity_perfil){
-            // Handle the camera action
+            Intent PerfilConductorActivity = new Intent(this, PerfilConductorActivity.class);
+            PerfilConductorActivity.putExtra("conductor_entidad", conductor);
+            startActivity(PerfilConductorActivity);
         }
         else if (id == R.id.ConductorActivity_crearviaje){
             Intent CrearViajeActivity = new Intent(this, CrearViajeActivity.class);
@@ -126,4 +125,5 @@ public class ConductorActivity extends AppCompatActivity implements NavigationVi
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 }

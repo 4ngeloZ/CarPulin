@@ -81,12 +81,15 @@ public class RegistroActivity extends AppCompatActivity {
                         values.put("password", str_password1);
                         values.put("correo", str_correo);
                         values.put("telefono", str_telefono);
-                        values.put("rut", str_rut1 + "-" + rut2);
+                        values.put("rut", str_rut1 + "-" + str_rut2);
                         if(hombre.isChecked())values.put("sexo", "Masculino");
                         else values.put("sexo", "Femenino");
 
                         if(!DBQueries.isConductorRegistrado(str_username, this)){
                             db.insert("conductor", null, values);
+                            ContentValues v = new ContentValues();
+                            v.put("username", str_username );
+                            db.insert("vehiculo", null, v);
                             Toast.makeText(this, "Registro Exitoso", Toast.LENGTH_SHORT).show();
                             this.finish();
                         }
@@ -99,7 +102,7 @@ public class RegistroActivity extends AppCompatActivity {
                         values.put("password", str_password1);
                         values.put("correo", str_correo);
                         values.put("telefono", str_telefono);
-                        values.put("rut", str_rut1 + "-" + rut2);
+                        values.put("rut", str_rut1 + "-" + str_rut2);
                         if(hombre.isChecked())values.put("sexo", "Masculino");
                         else values.put("sexo", "Femenino");
 
