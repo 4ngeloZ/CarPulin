@@ -33,9 +33,9 @@ public class AgregarVehiculoActivity extends AppCompatActivity {
 
 
         marca = (EditText) findViewById(R.id.editTextMarca);
-        modelo = (EditText) findViewById(R.id.editTextMarca);
+        modelo = (EditText) findViewById(R.id.editTextModelo);
         patente = (EditText) findViewById(R.id.editTextPatente);
-        asientos = (EditText) findViewById(R.id.editTextAsientos);
+        asientos = (EditText) findViewById(R.id.editTextAsiento);
         año = (EditText) findViewById(R.id.editTextAño);
         usuario = (TextView) findViewById(R.id.textViewUsername);
 
@@ -64,21 +64,7 @@ public class AgregarVehiculoActivity extends AppCompatActivity {
         }
 
 
-  /*   if( !str_patente.isEmpty() && !str_marca.isEmpty() && !str_modelo.isEmpty()
-                && !Integer.toString(str_año).isEmpty() && !Integer.toString(str_asientos).isEmpty()  ){
 
-            ContentValues values = new ContentValues();
-            values.put("patente", str_patente);
-            values.put("marca", str_marca);
-            values.put("modelo", str_modelo);
-            values.put("año", str_año);
-            values.put("asientos", str_asientos);
-
-
-                db.insert("vehiculo", null, values);
-                Toast.makeText(this, "Registro Exitoso", Toast.LENGTH_SHORT).show();
-                this.finish();
-            }*/
     }
 
 }

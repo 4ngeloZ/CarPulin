@@ -10,11 +10,13 @@
         android:id="@+id/RegistroActivity_Nombre"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="36dp"
+        android:backgroundTint="#3F51B5"
         android:ems="10"
         android:hint="Nombres"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,6 +25,7 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:backgroundTint="#3F51B5"
         android:hint="Apellido Paterno"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,6 +37,7 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:backgroundTint="#3F51B5"
         android:hint="Apellido Materno"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
@@ -45,6 +49,7 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:backgroundTint="#3F51B5"
         android:hint="Nombre de Usuario"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
@@ -56,6 +61,7 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:backgroundTint="#3F51B5"
         android:hint="Contraseña"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
@@ -69,6 +75,7 @@
         android:ems="10"
         android:hint="Confirme Contraseña"
         android:inputType="textPassword"
+        android:backgroundTint="#3F51B5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/RegistroActivity_Contraseña1" />
@@ -79,6 +86,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Correo Electrónico"
+        android:backgroundTint="#3F51B5"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -89,6 +97,7 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:backgroundTint="#3F51B5"
         android:hint="Teléfono"
         android:inputType="phone"
         app:layout_constraintEnd_toEndOf="parent"
@@ -107,6 +116,7 @@
         <EditText
             android:id="@+id/RegistroActivity_Rut1"
             android:layout_width="153dp"
+            android:backgroundTint="#3F51B5"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="RUT"
@@ -123,6 +133,7 @@
             android:layout_width="148dp"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:backgroundTint="#3F51B5"
             android:inputType="textPersonName" />
 
     </LinearLayout>
@@ -131,20 +142,29 @@
         android:id="@+id/RegistroActivity_Sexo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/RegistroActivity_BotonRegistro"
+        app:layout_constraintEnd_toStartOf="@+id/RegistroActivity_TipoUsuario"
+        app:layout_constraintHorizontal_bias="0.752"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/RegistroActivity_RUT">
+        app:layout_constraintTop_toBottomOf="@+id/RegistroActivity_RUT"
+        app:layout_constraintVertical_bias="0.0">
 
         <RadioButton
             android:id="@+id/RegistroActivity_SexoM"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:buttonTint="#3F51B5"
             android:text="Hombre" />
 
         <RadioButton
             android:id="@+id/RegistroActivity_SexoF"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:buttonTint="#3F51B5"
             android:text="Mujer" />
     </RadioGroup>
 
@@ -152,15 +172,18 @@
         android:id="@+id/RegistroActivity_TipoUsuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginRight="80dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/RegistroActivity_Sexo">
+        app:layout_constraintTop_toBottomOf="@+id/RegistroActivity_RUT">
 
         <RadioButton
             android:id="@+id/RegistroActivity_Conductor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:buttonTint="#3F51B5"
             android:text="Conductor" />
 
         <RadioButton
@@ -168,16 +191,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:buttonTint="#3F51B5"
             android:text="Pasajero" />
     </RadioGroup>
 
     <Button
         android:id="@+id/RegistroActivity_BotonRegistro"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_width="122dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="24dp"
+        android:background="#323F8B"
         android:onClick="Registrar"
         android:text="Registrarme"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"

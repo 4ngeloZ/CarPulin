@@ -18,7 +18,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.PerfilVehiculoActivity"></activity>
+        <activity android:name=".Activities.Avehiculo"></activity>
+        <activity android:name=".Activities.PerfilVehiculoActivity" />
         <activity android:name=".Activities.AgregarVehiculoActivity" />
         <activity android:name=".Activities.PerfilConductorActivity" />
         <activity android:name=".Activities.ModDatosConductorActivity" />

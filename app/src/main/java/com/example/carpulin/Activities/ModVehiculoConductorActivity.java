@@ -29,8 +29,8 @@ public class ModVehiculoConductorActivity extends AppCompatActivity {
         conductor=(Conductor) getIntent().getSerializableExtra("conductor_entidad");
         vehiculo = DBQueries.getVehiculo(conductor.getUsername(),this);
         marca = (EditText)findViewById(R.id.editTextMarca);
-        modelo = (EditText)findViewById(R.id.editTextMarca);
-        patente = (EditText)findViewById(R.id.editTextMarca);
+        modelo = (EditText)findViewById(R.id.editTextModelo);
+        patente = (EditText)findViewById(R.id.editTextPatente);
         asientos= (EditText)findViewById(R.id.editTextAsientos);
         año = (EditText)findViewById(R.id.editTextAño);
 
@@ -48,21 +48,29 @@ public class ModVehiculoConductorActivity extends AppCompatActivity {
         String str_marca = marca.getText().toString();
         String str_modelo = modelo.getText().toString();
         String str_patente = patente.getText().toString();
-        String str_asientos = asientos.getText().toString();
-        String str_año = año.getText().toString();
+        int int_asientos = Integer.parseInt(asientos.getText().toString());
+        int int_sño = Integer.parseInt(año.getText().toString());
 
 
 
 
             if(!str_marca.isEmpty() && !str_modelo.isEmpty()
-                    && !str_patente.isEmpty() && !str_asientos.isEmpty()
-                    && !str_año.isEmpty() ){
+                    && !str_patente.isEmpty() && !Integer.toString(int_sño).isEmpty()
+                    && !Integer.toString(int_asientos).isEmpty() ){
 
-           DBQueries.ModVehiculo(conductor.getUsername(), str_marca, str_patente,str_modelo, str_asientos,str_año, this);
+           DBQueries.ModVehiculo(conductor.getUsername(), str_marca, str_patente,str_modelo, int_asientos, int_sño, this);
 
-                Toast.makeText(this, "Modificacion exitosa", Toast.LENGTH_SHORT).show();
-            super.finish();
+           vehiculo.setMarca(str_marca);
+           vehiculo.setModelo(str_modelo);
+           vehiculo.setPatente(str_patente);
+           vehiculo.setAsientos(int_asientos);
+           vehiculo.setAño(int_sño);
+
+                Toast.makeText(this, "Modificacion exitosa", Toast.LENGTH_LONG).show();
+          //  super.finish();
         }
+
+
         else {
             Toast.makeText(this, "Debes llenar todos los campos", Toast.LENGTH_SHORT).show();
         }

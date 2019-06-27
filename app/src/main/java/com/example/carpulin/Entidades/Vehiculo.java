@@ -10,7 +10,7 @@ public class Vehiculo implements Serializable {
     private int año;
     private String Username;
 
-    public  Vehiculo (String Username, String marca, String modelo, String patente, int asientos, int año){
+    public  Vehiculo (String Username, String patente, String marca, String modelo,  int asientos, int año){
        this.Username = Username;
         this.marca = marca;
         this.modelo = modelo;
@@ -27,6 +27,15 @@ public class Vehiculo implements Serializable {
     public String getUsername() {
         return Username;
     }
+
+    public void setUsername(String username) {
+        this.Username = username;
+    }
+    public void setMarca(String marca){this.marca = marca;}
+    public void setModelo(String modelo){this.modelo = modelo;}
+    public void setPatente(String patente){this.patente = patente;}
+    public void setAsientos(int asientos){this.asientos = asientos;}
+    public void setAño(int año){this.año = año;}
 
 
 }

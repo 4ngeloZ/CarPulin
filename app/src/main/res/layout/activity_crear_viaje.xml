@@ -23,13 +23,15 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Origen"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:backgroundTint="#3F51B5"/>
 
         <EditText
             android:id="@+id/CrearViajeActivity_destino"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:backgroundTint="#3F51B5"
             android:hint="Destino"
             android:inputType="textPersonName" />
 
@@ -39,6 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
+            android:backgroundTint="#3F51B5"
             android:hint="Plazas"
             android:inputType="number" />
     </LinearLayout>
@@ -58,6 +61,7 @@
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:backgroundTint="#3F51B5"
             android:hint="Fecha Inicio"
             android:inputType="date"
             android:focusable="false"
@@ -68,6 +72,7 @@
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:backgroundTint="#3F51B5"
             android:hint="Hora Inicio"
             android:inputType="time"
             android:focusable="false"
@@ -78,6 +83,7 @@
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:backgroundTint="#3F51B5"
             android:hint="Valor Total"
             android:inputType="number" />
     </LinearLayout>
@@ -98,6 +104,7 @@
             android:layout_width="180dp"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:backgroundTint="#3F51B5"
             android:hint=" Fecha Llegada"
             android:inputType="date"
             android:focusable="false"
@@ -110,46 +117,63 @@
             android:ems="10"
             android:hint="Hora Llegada"
             android:inputType="time"
+            android:backgroundTint="#3F51B5"
             android:focusable="false"
             android:clickable="true" />
     </LinearLayout>
 
     <Button
         android:id="@+id/CrearViajeActivity_menos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
+        android:layout_width="46dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="#323F8B"
         android:onClick="ModificarParadas"
-        android:text="Quitar Paradas"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/CrearViajeActivity_crear"
-        app:layout_constraintTop_toBottomOf="@+id/CrearViajeActivity_Layout3" />
+        android:text="-"
+        android:textColor="#FFFFFF"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toTopOf="@+id/CrearViajeActivity_LayoutParada1"
+        app:layout_constraintStart_toEndOf="@+id/CrearViajeActivity_mas"
+        app:layout_constraintTop_toBottomOf="@+id/CrearViajeActivity_Layout3"
+        app:layout_constraintVertical_bias="0.608" />
 
     <Button
         android:id="@+id/CrearViajeActivity_mas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="48dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="8dp"
+        android:background="#323F8B"
         android:onClick="ModificarParadas"
-        android:text="Añadir Paradas"
-        app:layout_constraintEnd_toStartOf="@+id/CrearViajeActivity_crear"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:text="+"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/CrearViajeActivity_LayoutParada1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CrearViajeActivity_Layout3" />
+        app:layout_constraintTop_toBottomOf="@+id/CrearViajeActivity_Layout3"
+        app:layout_constraintVertical_bias="0.466" />
 
     <Button
         android:id="@+id/CrearViajeActivity_crear"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_width="102dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:background="#323F8B"
         android:onClick="Crear"
         android:text="Crear"
-        app:layout_constraintEnd_toStartOf="@+id/CrearViajeActivity_menos"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/CrearViajeActivity_mas"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.781"
+        app:layout_constraintStart_toEndOf="@+id/CrearViajeActivity_menos"
         app:layout_constraintTop_toBottomOf="@+id/CrearViajeActivity_Layout3" />
 
     <LinearLayout
@@ -167,6 +191,7 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:backgroundTint="#3F51B5"
             android:hint="Parada"
             android:inputType="textPersonName" />
 
@@ -176,6 +201,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Fecha"
+            android:backgroundTint="#3F51B5"
             android:inputType="date"
             android:focusable="false"
             android:clickable="true" />
@@ -186,6 +212,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Hora"
+            android:backgroundTint="#3F51B5"
             android:inputType="time"
             android:focusable="false"
             android:clickable="true" />
@@ -195,6 +222,7 @@
             android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:backgroundTint="#3F51B5"
             android:hint="Valor"
             android:inputType="number" />
     </LinearLayout>
@@ -215,6 +243,7 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:backgroundTint="#3F51B5"
             android:hint="Parada"
             android:inputType="textPersonName" />
 
@@ -224,6 +253,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Fecha"
+            android:backgroundTint="#3F51B5"
             android:inputType="date"
             android:focusable="false"
             android:clickable="true" />
@@ -234,6 +264,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Hora"
+            android:backgroundTint="#3F51B5"
             android:inputType="time"
             android:focusable="false"
             android:clickable="true" />
@@ -243,6 +274,7 @@
             android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:backgroundTint="#3F51B5"
             android:hint="Valor"
             android:inputType="number" />
     </LinearLayout>
@@ -263,6 +295,7 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:backgroundTint="#3F51B5"
             android:hint="Parada"
             android:inputType="textPersonName" />
 
@@ -272,6 +305,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Fecha"
+            android:backgroundTint="#3F51B5"
             android:inputType="date"
             android:focusable="false"
             android:clickable="true" />
@@ -282,6 +316,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Hora"
+            android:backgroundTint="#3F51B5"
             android:inputType="time"
             android:focusable="false"
             android:clickable="true" />
@@ -292,6 +327,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0"
             android:ems="10"
+            android:backgroundTint="#3F51B5"
             android:hint="Valor"
             android:inputType="number" />
     </LinearLayout>
@@ -312,6 +348,7 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:backgroundTint="#3F51B5"
             android:hint="Parada"
             android:inputType="textPersonName" />
 
@@ -320,6 +357,7 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:backgroundTint="#3F51B5"
             android:hint="Fecha"
             android:inputType="date"
             android:focusable="false"
@@ -331,6 +369,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Hora"
+            android:backgroundTint="#3F51B5"
             android:inputType="time"
             android:focusable="false"
             android:clickable="true" />
@@ -341,6 +380,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Valor"
+            android:backgroundTint="#3F51B5"
             android:inputType="number" />
     </LinearLayout>
 

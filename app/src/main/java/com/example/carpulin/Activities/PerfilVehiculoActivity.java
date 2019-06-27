@@ -22,27 +22,30 @@ public class PerfilVehiculoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil_vehiculo);
         conductor=(Conductor) getIntent().getSerializableExtra("conductor_entidad");
-        vehiculo = DBQueries.getVehiculo(conductor.getUsername(),this);
+       vehiculo = DBQueries.getVehiculo(conductor.getUsername(),this);
 
-        marca = (TextView)findViewById(R.id.textViewModelo);
-        modelo = (TextView)findViewById(R.id.textViewMarca);
+        marca = (TextView)findViewById(R.id.textViewMarca);
+        modelo = (TextView)findViewById(R.id.textViewModelo);
         patente= (TextView)findViewById(R.id.textViewPatente);
         asientos= (TextView)findViewById(R.id.textViewAsientos);
         year = (TextView)findViewById(R.id.textViewAño);
 
-        marca.setText("Toyota");
-        modelo.setText("Yaris");
-        patente.setText("HK LM 56");
-        asientos.setText("4");
-        year.setText("2017");
+
 
         marca.setText(vehiculo.getMarca());
         modelo.setText(vehiculo.getModelo());
         patente.setText(vehiculo.getPatente());
         asientos.setText(Integer.toString(vehiculo.getAsientos()));
         year.setText(Integer.toString(vehiculo.getAño()));
+/*
 
 
+        marca.setText("Toyota");
+        modelo.setText("Yaris");
+        patente.setText("HK LM 56");
+        asientos.setText("4");
+        year.setText("2017");
+*/
     }
 
     public void ModificarVehiculo (View view){
