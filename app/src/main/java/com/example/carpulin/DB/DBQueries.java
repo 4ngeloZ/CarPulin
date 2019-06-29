@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import com.example.carpulin.Entidades.Conductor;
 import com.example.carpulin.Entidades.Pasajero;
+import com.example.carpulin.Entidades.Reserva;
 import com.example.carpulin.Entidades.Vehiculo;
 import com.example.carpulin.Entidades.Viaje;
 import com.example.carpulin.R;
@@ -236,6 +237,45 @@ public class DBQueries {
         }
     }
         return viajes;
+    }
+
+    public static List<Viaje> getMisViajes(String username, Context context){
+        List<Viaje> viajes = new ArrayList<>();
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(context, "db", null, 1);
+        SQLiteDatabase db = admin.getWritableDatabase();
+        String query = "SELECT id FROM viaje WHERE conductor = '" + username +"'";
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor.moveToFirst()) {
+            do{
+                viajes.add(getfullViaje(cursor.getString(0), context));
+            }while(cursor.moveToNext());
+        }
+        return viajes;
+    }
+
+    public static List<Reserva> getMisReservas(String username, Context context){
+        List<Reserva> reservas = new ArrayList<>();
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(context, "db", null, 1);
+        SQLiteDatabase db = admin.getWritableDatabase();
+        String query = "SELECT * FROM reserva WHERE username = '" + username +"'";
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor.moveToFirst()) {
+            do{
+                reservas.add(new Reserva(cursor.getString(0),
+                        cursor.getString(1),
+                        cursor.getString(2),
+                        cursor.getInt(8),
+                        cursor.getInt(9),
+                        cursor.getInt(10),
+                        cursor.getInt(11),
+                        cursor.getInt(12),
+                        cursor.getInt(6),
+                        cursor.getShort(7),
+                        cursor.getString(3),
+                        cursor.getString(4)));
+            }while(cursor.moveToNext());
+        }
+        return reservas;
     }
 
     public static Viaje getfullViaje(String id, Context context){

@@ -149,7 +149,6 @@ public class BuscarViajeActivity extends AppCompatActivity{
                 }
                 else {
                     til.setError(null);
-                    Toast.makeText(this, "No hay viajes que satisfagan su búsqueda", Toast.LENGTH_SHORT).show();
                 }
             }
             else if(strDate == null){

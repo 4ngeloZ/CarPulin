@@ -11,8 +11,10 @@ public class Reserva {
     private int plazas5;
     private int valorTotal;
     private int procesada;
+    private String origen;
+    private String destino;
 
-    public Reserva(String id, String idviaje, String username, int plazas1, int plazas2, int plazas3, int plazas4, int plazas5, int valorTotal, int procesada){
+    public Reserva(String id, String idviaje, String username, int plazas1, int plazas2, int plazas3, int plazas4, int plazas5, int valorTotal, int procesada, String origen, String destino){
         this.id = id;
         this.idviaje = idviaje;
         this.username = username;
@@ -23,6 +25,8 @@ public class Reserva {
         this.plazas5 = plazas5;
         this.valorTotal = valorTotal;
         this.procesada = procesada;
+        this.origen = origen;
+        this.destino = destino;
     }
 
     public String getId() {
@@ -63,5 +67,13 @@ public class Reserva {
 
     public int getProcesada() {
         return procesada;
+    }
+
+    public String getOrigen() {
+        return origen;
+    }
+
+    public String getDestino() {
+        return destino;
     }
 }

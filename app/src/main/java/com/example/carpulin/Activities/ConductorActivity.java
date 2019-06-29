@@ -19,7 +19,9 @@ import android.view.Menu;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.carpulin.DB.DBQueries;
 import com.example.carpulin.Entidades.Conductor;
 import com.example.carpulin.R;
 
@@ -109,7 +111,9 @@ public class ConductorActivity extends AppCompatActivity implements NavigationVi
             startActivity(CrearViajeActivity);
         }
         else if (id == R.id.ConductorActivity_verviajes) {
-
+            Intent MisViajesActivity = new Intent(this, MisViajesActivity.class);
+            MisViajesActivity.putExtra("conductor_entidad", conductor);
+            startActivity(MisViajesActivity);
         }
         else if (id == R.id.ConductorActivity_verreservas) {
             Intent ReservasSolicitadasActivity = new Intent(this, ReservasSolicitadasActivity.class);

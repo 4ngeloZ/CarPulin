@@ -128,12 +128,6 @@ public class InformacionViajeActivity extends AppCompatActivity {
                 h.postDelayed(this, delay);
             }
         }, delay);
-
-        Toast.makeText(this, Integer.toString(viaje.getPlazas1()) + " " +
-                Integer.toString(viaje.getPlazas2()) + " " +
-                Integer.toString(viaje.getPlazas3()) + " " +
-                Integer.toString(viaje.getPlazas4()) + " " +
-                Integer.toString(viaje.getPlazas5()),Toast.LENGTH_SHORT).show();
     }
 
     private int getTipoViaje(){

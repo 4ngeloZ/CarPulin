@@ -110,8 +110,11 @@ public class PasajeroActivity extends AppCompatActivity implements NavigationVie
             BuscarViajeActivity.putExtra("pasajero_entidad", pasajero);
             startActivity(BuscarViajeActivity);
         }
-        else if (id == R.id.PasajeroActivity_verviajes) {
-
+        else if (id == R.id.PasajeroActivity_verreservas) {
+            Intent MisReservasActivity = new Intent(this, MisReservasActivity.class);
+            MisReservasActivity.putExtra("pasajero_entidad", pasajero);
+            startActivity(MisReservasActivity);
+            //Toast.makeText(this, Integer.toString(DBQueries.getMisReservas(pasajero.getUsername(),this).size()),Toast.LENGTH_SHORT).show();
         }
         else if (id == R.id.PasajeroActivity_salir){
             SharedPreferences sharedPreferences;
