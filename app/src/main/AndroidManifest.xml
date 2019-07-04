@@ -18,7 +18,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.MisReservasActivity"></activity>
+        <activity android:name=".Activities.InformacionViajeConductorActivity"></activity>
+        <activity android:name=".Activities.MisReservasActivity" />
         <activity android:name=".Activities.MisViajesActivity" />
         <activity android:name=".Activities.ModificarPerfilPasajeroActivity" />
         <activity android:name=".Activities.PerfilPasajeroActivity" />

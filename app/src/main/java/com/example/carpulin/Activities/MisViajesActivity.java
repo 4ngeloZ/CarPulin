@@ -1,9 +1,11 @@
 package com.example.carpulin.Activities;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.example.carpulin.DB.DBQueries;
 import com.example.carpulin.Entidades.Conductor;
@@ -35,5 +37,13 @@ public class MisViajesActivity extends AppCompatActivity {
     public List<Viaje> getMisViajes(String username){
         List<Viaje> viajes = DBQueries.getMisViajes(username, this);
         return viajes;
+    }
+
+    public void verInformacionViaje(View view){
+        String idViaje=adaptadorMisViajes.getId(view);
+        Intent ViajesEncontradosActivity = new Intent(this, InformacionViajeConductorActivity.class);
+        ViajesEncontradosActivity.putExtra("idViaje", idViaje);
+        ViajesEncontradosActivity.putExtra("conductor_entidad", conductor);
+        startActivity(ViajesEncontradosActivity);
     }
 }
