@@ -476,10 +476,10 @@ public class DBQueries {
         Toast.makeText(context, "Registro Exitoso", Toast.LENGTH_SHORT).show();
         db.close();
     }
-     public static void ModVehiculo (String username, String NuevoMarca, String NuevoPatente, String NuevoModelo, String NuevoAsientos, String NuevoYear, Context context){
+     public static void ModVehiculo (String username, String NuevoPatente, String NuevoMarca,  String NuevoModelo, int NuevoAsientos, int NuevoYear, Context context){
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(context, "db", null, 1);
         SQLiteDatabase db = admin.getWritableDatabase();
-        String query = "UPDATE vehiculo SET marca = '" + NuevoMarca + "', patente= '" + NuevoPatente + "', modelo =  '" + NuevoModelo + "', asientos =  '" + NuevoAsientos + "', año = '" + NuevoYear + "' WHERE username = '" + username + "'";
+        String query = "UPDATE vehiculo SET patente= '" + NuevoPatente + "', marca = '" + NuevoMarca + "',  modelo =  '" + NuevoModelo + "', asientos =  '" + NuevoAsientos + "', año = '" + NuevoYear + "' WHERE username = '" + username + "'";
         db.execSQL(query);
     }
 

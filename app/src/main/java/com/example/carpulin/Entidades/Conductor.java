@@ -11,6 +11,7 @@ public class Conductor implements Serializable {
     private String rut;
     private String sexo;
     private String preferences;
+
     public Conductor(String username, String nombre, String password, String correo, String telefono, String rut, String sexo, String preferences){
         this.username=username;
         this.nombre=nombre;

@@ -9,14 +9,20 @@
 
     <Button
         android:id="@+id/buttonModoficarDatos"
-        android:layout_width="230dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginLeft="36dp"
+        android:layout_width="158dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:background="#323F8B"
         android:onClick="Modificar"
         android:text="Modificar Datos Conductor"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toStartOf="@+id/buttonVerVehiculo"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonVerVehiculo" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewP" />
 
     <TextView
         android:id="@+id/textViewUsuario"
@@ -26,6 +32,7 @@
         android:layout_marginLeft="36dp"
         android:layout_marginTop="60dp"
         android:text="Usuario"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -37,6 +44,7 @@
         android:layout_marginLeft="36dp"
         android:layout_marginTop="8dp"
         android:text="Nombre"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewUsuario" />
 
@@ -48,6 +56,7 @@
         android:layout_marginLeft="36dp"
         android:layout_marginTop="24dp"
         android:text="Telefono"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewMail" />
 
@@ -59,6 +68,8 @@
         android:layout_marginLeft="36dp"
         android:layout_marginTop="8dp"
         android:text="E-mail"
+        android:backgroundTint="#3F51B5"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewRun" />
 
@@ -70,42 +81,41 @@
         android:layout_marginLeft="36dp"
         android:layout_marginTop="8dp"
         android:text="RUN"
+        android:backgroundTint="#3F51B5"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewNombre" />
 
     <Button
         android:id="@+id/buttonVerVehiculo"
-        android:layout_width="167dp"
-        android:layout_height="37dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginLeft="36dp"
+        android:layout_width="165dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:background="#323F8B"
         android:onClick="VerPerfilVehiculo"
         android:text="Ver Perfil Vehiculo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
-
-    <Button
-        android:id="@+id/buttonContraseña"
-        android:layout_width="188dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginLeft="36dp"
-        android:onClick="ModificarContraseña"
-        android:text="Cambiar Contraseña"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonModoficarDatos" />
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewP" />
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="159dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginLeft="36dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="151dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:background="#323F8B"
         android:onClick="AgregarVehiculo"
         android:text="Agregar Vehiculo"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewP" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonModoficarDatos" />
 
     <TextView
         android:id="@+id/textViewP"
@@ -115,6 +125,7 @@
         android:layout_marginLeft="36dp"
         android:layout_marginTop="8dp"
         android:text="TextView"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewtelefono" />
 
