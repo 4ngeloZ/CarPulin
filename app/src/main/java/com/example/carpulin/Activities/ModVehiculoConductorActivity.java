@@ -28,6 +28,7 @@ public class ModVehiculoConductorActivity extends AppCompatActivity {
         setContentView(R.layout.activity_mod_vehiculo_conductor);
         conductor=(Conductor) getIntent().getSerializableExtra("conductor_entidad");
         vehiculo = DBQueries.getVehiculo(conductor.getUsername(),this);
+
         marca = (EditText)findViewById(R.id.editTextMarca);
         modelo = (EditText)findViewById(R.id.editTextModelo);
         patente = (EditText)findViewById(R.id.editTextPatente);
