@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
 
     private static final String CREATE_TABLE_CONDUCTOR = "CREATE TABLE conductor(username text PRIMARY KEY, " +
-            "nombre text, password text, correo text, telefono int, rut text, sexo text)";
+            "nombre text, password text, correo text, telefono int, rut text, sexo text, preferences text)";
     private static final String CREATE_TABLE_PASAJERO = "CREATE TABLE pasajero(username text PRIMARY KEY, " +
             "nombre text, password text, correo text, telefono int, rut text, sexo text, preferencias text)";
     private static final String CREATE_TABLE_VIAJE = "CREATE TABLE viaje(id text PRIMARY KEY, " +
@@ -17,7 +17,11 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
             "valor1 int, valor2 int, valor3 int, valor4 int, plazas1 int, plazas2 int, plazas3 int, plazas4 int, plazas5 int, " +
             "conductor text)";
     private static final String CREATE_TABLE_RESERVA = "CREATE TABLE reserva(id text PRIMARY KEY, " +
-            "idviaje text, username text, plazas1 int, plazas2 int, plazas3 int, plazas4 int, plazas5 int, valor int, procesada int)"; //procesada: 0=no procesada, 1=aceptada, 2=rechazada
+            "idviaje text, username text, origen text, destino text, plazas int, valor int, procesada int, " +
+            "plazas1 int, plazas2 int, plazas3 int, plazas4 int, plazas5 int)"; //procesada: 0=no procesada, 1=aceptada, 2=rechazada
+
+    private static final String CREATE_TABLE_VEHICULO = "CREATE TABLE vehiculo (username text PRIMARY KEY, " +
+            "patente text, marca text, modelo text, año int, asientos int)";
 
     public AdminSQLiteOpenHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
@@ -29,6 +33,7 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_PASAJERO);
         db.execSQL(CREATE_TABLE_VIAJE);
         db.execSQL(CREATE_TABLE_RESERVA);
+        db.execSQL(CREATE_TABLE_VEHICULO);
     }
 
     @Override

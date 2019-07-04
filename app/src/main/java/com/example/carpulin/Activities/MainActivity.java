@@ -53,33 +53,33 @@ public class MainActivity extends AppCompatActivity{
     }
 
     private void Login(boolean comingback){
-            GuardarDatos();
-            String str_username = username.getText().toString();
-            String str_password = password.getText().toString();
+        GuardarDatos();
+        String str_username = username.getText().toString();
+        String str_password = password.getText().toString();
 
-            if (!str_username.isEmpty() && !str_password.isEmpty()) {
-                if (conductor.isChecked()) {
-                    if(DBQueries.LoginConductor(str_username,str_password,this, comingback)){
-                        Intent ConductorActivity = new Intent(this, ConductorActivity.class);
-                        Conductor conductor = DBQueries.getConductor(str_username, this);
-                        ConductorActivity.putExtra("conductor_entidad", conductor);
-                        startActivity(ConductorActivity);
-                        this.finish();
-                    }
-
-                } else if (pasajero.isChecked()) {
-                    if (DBQueries.LoginPasajero(str_username, str_password, this, comingback)) {
-                        Intent PasajeroActivity = new Intent(this, PasajeroActivity.class);
-                        Pasajero pasajero = DBQueries.getPasajero(str_username, this);
-                        PasajeroActivity.putExtra("pasajero_entidad", pasajero);
-                        startActivity(PasajeroActivity);
-                        this.finish();
-                    }
+        if (!str_username.isEmpty() && !str_password.isEmpty()) {
+            if (conductor.isChecked()) {
+                if(DBQueries.LoginConductor(str_username,str_password,this, comingback)){
+                    Intent ConductorActivity = new Intent(this, ConductorActivity.class);
+                    Conductor conductor = DBQueries.getConductor(str_username, this);
+                    ConductorActivity.putExtra("conductor_entidad", conductor);
+                    startActivity(ConductorActivity);
+                    this.finish();
                 }
 
-                else Toast.makeText(this, "Seleccione una casilla que falte", Toast.LENGTH_SHORT).show();
-            } else Toast.makeText(this, "Ingrese Usuario y/o Contraseña", Toast.LENGTH_SHORT).show();
-        }
+            } else if (pasajero.isChecked()) {
+                if (DBQueries.LoginPasajero(str_username, str_password, this, comingback)) {
+                    Intent PasajeroActivity = new Intent(this, PasajeroActivity.class);
+                    Pasajero pasajero = DBQueries.getPasajero(str_username, this);
+                    PasajeroActivity.putExtra("pasajero_entidad", pasajero);
+                    startActivity(PasajeroActivity);
+                    this.finish();
+                }
+            }
+
+            else Toast.makeText(this, "Seleccione una casilla que falte", Toast.LENGTH_SHORT).show();
+        } else Toast.makeText(this, "Ingrese Usuario y/o Contraseña", Toast.LENGTH_SHORT).show();
+    }
 
     public void Registrar(View view){
         Intent RegistroActivity = new Intent(this, com.example.carpulin.Activities.RegistroActivity.class);

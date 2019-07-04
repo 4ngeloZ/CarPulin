@@ -10,7 +10,9 @@ public class Conductor implements Serializable {
     private String telefono;
     private String rut;
     private String sexo;
-    public Conductor(String username, String nombre, String password, String correo, String telefono, String rut, String sexo){
+    private String preferences;
+
+    public Conductor(String username, String nombre, String password, String correo, String telefono, String rut, String sexo, String preferences){
         this.username=username;
         this.nombre=nombre;
         this.password=password;
@@ -18,6 +20,7 @@ public class Conductor implements Serializable {
         this.telefono=telefono;
         this.rut=rut;
         this.sexo=sexo;
+        this.preferences = preferences;
     }
 
     public String getUsername(){
@@ -48,6 +51,10 @@ public class Conductor implements Serializable {
         return sexo;
     }
 
+    public String getPreferences() {
+        return preferences;
+    }
+
     public void setUsername(String username) {
         this.username = username;
     }
@@ -74,5 +81,8 @@ public class Conductor implements Serializable {
 
     public void setSexo(String sexo) {
         this.sexo = sexo;
+    }
+    public void setPreferences(String preferences) {
+        this.preferences = preferences;
     }
 }

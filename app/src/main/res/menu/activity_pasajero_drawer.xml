@@ -13,9 +13,9 @@
             android:icon="@drawable/buscarviaje_icono"
             android:title="Buscar Viaje" />
         <item
-            android:id="@+id/PasajeroActivity_verviajes"
+            android:id="@+id/PasajeroActivity_verreservas"
             android:icon="@drawable/ver_icono"
-            android:title="Viajes Reservados" />
+            android:title="Mis Reservas" />
         <item
             android:id="@+id/PasajeroActivity_salir"
             android:icon="@drawable/salir_icono"

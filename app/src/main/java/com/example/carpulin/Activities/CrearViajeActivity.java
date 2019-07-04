@@ -6,11 +6,14 @@ import android.app.TimePickerDialog;
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -18,20 +21,28 @@ import com.example.carpulin.DB.AdminSQLiteOpenHelper;
 import com.example.carpulin.DB.DBQueries;
 import com.example.carpulin.Entidades.Conductor;
 import com.example.carpulin.R;
+import com.google.android.gms.common.api.Status;
+import com.google.android.libraries.places.api.Places;
+import com.google.android.libraries.places.api.model.Place;
+import com.google.android.libraries.places.api.net.PlacesClient;
+import com.google.android.libraries.places.widget.AutocompleteSupportFragment;
+import com.google.android.libraries.places.widget.listener.PlaceSelectionListener;
+
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 
-public class CrearViajeActivity extends AppCompatActivity {
+public class CrearViajeActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final String CERO = "0";
     private static final String BARRA = "/";
     private static final String DOS_PUNTOS = ":";
 
-    private EditText origen;
-    private EditText destino;
+    private String origen;
+    private String destino;
     private EditText fechaInicio;
     private EditText fecha1;
     private EditText fecha2;
@@ -44,10 +55,18 @@ public class CrearViajeActivity extends AppCompatActivity {
     private EditText hora3;
     private EditText hora4;
     private EditText horaLlegada;
-    private EditText parada1;
-    private EditText parada2;
-    private EditText parada3;
-    private EditText parada4;
+    private AutocompleteSupportFragment autocompleteParada1;
+    private AutocompleteSupportFragment autocompleteParada2;
+    private AutocompleteSupportFragment autocompleteParada3;
+    private AutocompleteSupportFragment autocompleteParada4;
+    private LinearLayout lparada1;
+    private LinearLayout lparada2;
+    private LinearLayout lparada3;
+    private LinearLayout lparada4;
+    private String parada1;
+    private String parada2;
+    private String parada3;
+    private String parada4;
     private EditText valorTotal;
     private EditText valor1;
     private EditText valor2;
@@ -56,7 +75,7 @@ public class CrearViajeActivity extends AppCompatActivity {
     private EditText plazas;
     private Button mas;
     private Button menos;
-    private int cantidadparadas=0;
+    private int cantidadparadas;
     private Conductor conductor;
     public final Calendar c = Calendar.getInstance();
 
@@ -74,24 +93,30 @@ public class CrearViajeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crear_viaje);
 
-        origen = (EditText)findViewById(R.id.CrearViajeActivity_origen);
-        destino = (EditText)findViewById(R.id.CrearViajeActivity_destino);
         fechaInicio = (EditText)findViewById(R.id.CrearViajeActivity_fechaInicio);
+        fechaInicio.setOnClickListener(this);
         fecha1 = (EditText)findViewById(R.id.CrearViajeActivity_fecha1);
+        fecha1.setOnClickListener(this);
         fecha2 = (EditText)findViewById(R.id.CrearViajeActivity_fecha2);
+        fecha2.setOnClickListener(this);
         fecha3 = (EditText)findViewById(R.id.CrearViajeActivity_fecha3);
+        fecha3.setOnClickListener(this);
         fecha4 = (EditText)findViewById(R.id.CrearViajeActivity_fecha4);
+        fecha4.setOnClickListener(this);
         fechaLlegada = (EditText)findViewById(R.id.CrearViajeActivity_fechaLlegada);
+        fechaLlegada.setOnClickListener(this);
         horaInicio = (EditText)findViewById(R.id.CrearViajeActivity_horaInicio);
+        horaInicio.setOnClickListener(this);
         hora1 = (EditText)findViewById(R.id.CrearViajeActivity_hora1);
+        hora1.setOnClickListener(this);
         hora2 = (EditText)findViewById(R.id.CrearViajeActivity_hora2);
+        hora2.setOnClickListener(this);
         hora3 = (EditText)findViewById(R.id.CrearViajeActivity_hora3);
+        hora3.setOnClickListener(this);
         hora4 = (EditText)findViewById(R.id.CrearViajeActivity_hora4);
+        hora4.setOnClickListener(this);
         horaLlegada = (EditText)findViewById(R.id.CrearViajeActivity_horaLlegada);
-        parada1 = (EditText)findViewById(R.id.CrearViajeActivity_parada1);
-        parada2 = (EditText)findViewById(R.id.CrearViajeActivity_parada2);
-        parada3 = (EditText)findViewById(R.id.CrearViajeActivity_parada3);
-        parada4 = (EditText)findViewById(R.id.CrearViajeActivity_parada4);
+        horaLlegada.setOnClickListener(this);
         valorTotal = (EditText)findViewById(R.id.CrearViajeActivity_valorTotal);
         valor1 = (EditText)findViewById(R.id.CrearViajeActivity_valor1);
         valor2 = (EditText)findViewById(R.id.CrearViajeActivity_valor2);
@@ -100,98 +125,261 @@ public class CrearViajeActivity extends AppCompatActivity {
         plazas = (EditText)findViewById(R.id.CrearViajeActivity_plazas);
         mas = (Button)findViewById(R.id.CrearViajeActivity_mas);
         menos = (Button)findViewById(R.id.CrearViajeActivity_menos);
-
-        fecha1.setVisibility(View.INVISIBLE);
-        fecha2.setVisibility(View.INVISIBLE);
-        fecha3.setVisibility(View.INVISIBLE);
-        fecha4.setVisibility(View.INVISIBLE);
-        hora1.setVisibility(View.INVISIBLE);
-        hora2.setVisibility(View.INVISIBLE);
-        hora3.setVisibility(View.INVISIBLE);
-        hora4.setVisibility(View.INVISIBLE);
-        parada1.setVisibility(View.INVISIBLE);
-        parada2.setVisibility(View.INVISIBLE);
-        parada3.setVisibility(View.INVISIBLE);
-        parada4.setVisibility(View.INVISIBLE);
-        valor1.setVisibility(View.INVISIBLE);
-        valor2.setVisibility(View.INVISIBLE);
-        valor3.setVisibility(View.INVISIBLE);
-        valor4.setVisibility(View.INVISIBLE);
+        lparada1 = (LinearLayout) findViewById(R.id.CrearViajeActivity_LayoutParada1);
+        lparada2 = (LinearLayout) findViewById(R.id.CrearViajeActivity_LayoutParada2);
+        lparada3 = (LinearLayout) findViewById(R.id.CrearViajeActivity_LayoutParada3);
+        lparada4 = (LinearLayout) findViewById(R.id.CrearViajeActivity_LayoutParada4);
+        cantidadparadas = 0;
+        lparada1.setVisibility(View.INVISIBLE);
+        lparada2.setVisibility(View.INVISIBLE);
+        lparada3.setVisibility(View.INVISIBLE);
+        lparada4.setVisibility(View.INVISIBLE);
         menos.setVisibility(View.INVISIBLE);
 
         conductor = (Conductor)getIntent().getSerializableExtra("conductor_entidad");
+
+        Places.initialize(getApplicationContext(), "AIzaSyA7MSYdDD3aQarHYYYamIaKnSiyZ4W2aoU");
+        // Create a new Places client instance.
+        PlacesClient placesClient = Places.createClient(this);
+        // Initialize the AutocompleteSupportFragment.
+        AutocompleteSupportFragment autocompleteOrigen = (AutocompleteSupportFragment)
+                getSupportFragmentManager().findFragmentById(R.id.frOrigen);
+
+        // Specify the types of place data to return.
+        autocompleteOrigen.setPlaceFields(Arrays.asList(Place.Field.ID, Place.Field.NAME));
+        autocompleteOrigen.setHint("Origen");
+        autocompleteOrigen.setCountry("CL");
+
+        // Set up a PlaceSelectionListener to handle the response.
+        autocompleteOrigen.setOnPlaceSelectedListener(new PlaceSelectionListener() {
+            @Override
+            public void onPlaceSelected(Place place) {
+                // TODO: Get info about the selected place.
+                Log.i("Origen", "Place: " + place.getName() + ", " + place.getId());
+                origen = place.getName();
+            }
+
+            @Override
+            public void onError(Status status) {
+                // TODO: Handle the error.
+                Log.i("Origen", "An error occurred: " + status);
+            }
+        });
+        // Initialize the AutocompleteSupportFragment.
+        AutocompleteSupportFragment autocompleteDestino = (AutocompleteSupportFragment)
+                getSupportFragmentManager().findFragmentById(R.id.frDest);
+
+        // Specify the types of place data to return.
+        autocompleteDestino.setPlaceFields(Arrays.asList(Place.Field.ID, Place.Field.NAME));
+        autocompleteDestino.setHint("Destino");
+        autocompleteDestino.setCountry("CL");
+        // Set up a PlaceSelectionListener to handle the response.
+        autocompleteDestino.setOnPlaceSelectedListener(new PlaceSelectionListener() {
+            @Override
+            public void onPlaceSelected(Place place) {
+                // TODO: Get info about the selected place.
+                Log.i("Destino", "Place: " + place.getName() + ", " + place.getId());
+                destino = place.getName();
+            }
+
+            @Override
+            public void onError(Status status) {
+                // TODO: Handle the error.
+                Log.i("Destino", "An error occurred: " + status);
+            }
+        });
+
+        autocompleteParada1 = (AutocompleteSupportFragment)
+                getSupportFragmentManager().findFragmentById(R.id.CrearViajeActivity_parada1);
+
+        // Specify the types of place data to return.
+        autocompleteParada1.setPlaceFields(Arrays.asList(Place.Field.ID, Place.Field.NAME));
+        autocompleteParada1.setHint("Parada 1");
+        autocompleteParada1.setCountry("CL");
+
+        // Set up a PlaceSelectionListener to handle the response.
+        autocompleteParada1.setOnPlaceSelectedListener(new PlaceSelectionListener() {
+            @Override
+            public void onPlaceSelected(Place place) {
+                // TODO: Get info about the selected place.
+                Log.i("Parada1", "Place: " + place.getName() + ", " + place.getId());
+                parada1 = place.getName();
+            }
+
+            @Override
+            public void onError(Status status) {
+                // TODO: Handle the error.
+                Log.i("Parada1", "An error occurred: " + status);
+            }
+        });
+        autocompleteParada2 = (AutocompleteSupportFragment)
+                getSupportFragmentManager().findFragmentById(R.id.CrearViajeActivity_parada2);
+
+        // Specify the types of place data to return.
+        autocompleteParada2.setPlaceFields(Arrays.asList(Place.Field.ID, Place.Field.NAME));
+        autocompleteParada2.setHint("Parada 2");
+        autocompleteParada2.setCountry("CL");
+
+        // Set up a PlaceSelectionListener to handle the response.
+        autocompleteParada2.setOnPlaceSelectedListener(new PlaceSelectionListener() {
+            @Override
+            public void onPlaceSelected(Place place) {
+                // TODO: Get info about the selected place.
+                Log.i("Parada2", "Place: " + place.getName() + ", " + place.getId());
+                parada2 = place.getName();
+            }
+
+            @Override
+            public void onError(Status status) {
+                // TODO: Handle the error.
+                Log.i("Parada2", "An error occurred: " + status);
+            }
+        });
+        autocompleteParada3 = (AutocompleteSupportFragment)
+                getSupportFragmentManager().findFragmentById(R.id.CrearViajeActivity_parada3);
+
+        // Specify the types of place data to return.
+        autocompleteParada3.setPlaceFields(Arrays.asList(Place.Field.ID, Place.Field.NAME));
+        autocompleteParada3.setHint("Parada 3");
+        autocompleteParada3.setCountry("CL");
+
+        // Set up a PlaceSelectionListener to handle the response.
+        autocompleteParada3.setOnPlaceSelectedListener(new PlaceSelectionListener() {
+            @Override
+            public void onPlaceSelected(Place place) {
+                // TODO: Get info about the selected place.
+                Log.i("Parada3", "Place: " + place.getName() + ", " + place.getId());
+                parada3 = place.getName();
+            }
+
+            @Override
+            public void onError(Status status) {
+                // TODO: Handle the error.
+                Log.i("Parada3", "An error occurred: " + status);
+            }
+        });
+        autocompleteParada4 = (AutocompleteSupportFragment)
+                getSupportFragmentManager().findFragmentById(R.id.CrearViajeActivity_parada4);
+
+        // Specify the types of place data to return.
+        autocompleteParada4.setPlaceFields(Arrays.asList(Place.Field.ID, Place.Field.NAME));
+        autocompleteParada4.setHint("Parada4");
+        autocompleteParada4.setCountry("CL");
+
+        // Set up a PlaceSelectionListener to handle the response.
+        autocompleteParada4.setOnPlaceSelectedListener(new PlaceSelectionListener() {
+            @Override
+            public void onPlaceSelected(Place place) {
+                // TODO: Get info about the selected place.
+                Log.i("Parada4", "Place: " + place.getName() + ", " + place.getId());
+                parada4 = place.getName();
+            }
+
+            @Override
+            public void onError(Status status) {
+                // TODO: Handle the error.
+                Log.i("Parada4", "An error occurred: " + status);
+            }
+        });
+        if(cantidadparadas==0){
+            parada1 = "";
+            parada2 = "";
+            parada3 = "";
+            parada4 = "";
+        }
     }
 
     public void ModificarParadas(View view){
         if(view==mas){
             if(cantidadparadas==0){
-                parada1.setVisibility(View.VISIBLE);
-                fecha1.setVisibility(View.VISIBLE);
-                hora1.setVisibility(View.VISIBLE);
-                valor1.setVisibility(View.VISIBLE);
+                lparada1.setVisibility(View.VISIBLE);
                 cantidadparadas++;
                 menos.setVisibility(View.VISIBLE);
+                parada2 = "";
+                parada3 = "";
+                parada4 = "";
+                fecha2.setText("");
+                fecha3.setText("");
+                fecha4.setText("");
+                hora2.setText("");
+                hora3.setText("");
+                hora4.setText("");
+                valor2.setText("");
+                valor3.setText("");
+                valor4.setText("");
             }
             else if(cantidadparadas==1){
-                parada2.setVisibility(View.VISIBLE);
-                fecha2.setVisibility(View.VISIBLE);
-                hora2.setVisibility(View.VISIBLE);
-                valor2.setVisibility(View.VISIBLE);
+                lparada2.setVisibility(View.VISIBLE);
                 cantidadparadas++;
+                parada3 = "";
+                parada4 = "";
+                fecha3.setText("");
+                fecha4.setText("");
+                hora3.setText("");
+                hora4.setText("");
+                valor3.setText("");
+                valor4.setText("");
             }
             else if(cantidadparadas==2){
-                parada3.setVisibility(View.VISIBLE);
-                fecha3.setVisibility(View.VISIBLE);
-                hora3.setVisibility(View.VISIBLE);
-                valor3.setVisibility(View.VISIBLE);
+                lparada3.setVisibility(View.VISIBLE);
                 cantidadparadas++;
+                parada4 = "";
+                fecha4.setText("");
+                hora4.setText("");
+                valor4.setText("");
+
             }
             else if(cantidadparadas==3){
-                parada4.setVisibility(View.VISIBLE);
-                fecha4.setVisibility(View.VISIBLE);
-                hora4.setVisibility(View.VISIBLE);
-                valor4.setVisibility(View.VISIBLE);
+                lparada4.setVisibility(View.VISIBLE);
                 cantidadparadas++;
                 mas.setVisibility(View.INVISIBLE);
             }
         }
         else if(view==menos){
             if(cantidadparadas==1){
-                parada1.setVisibility(View.INVISIBLE);
-                fecha1.setVisibility(View.INVISIBLE);
-                hora1.setVisibility(View.INVISIBLE);
-                valor1.setVisibility(View.INVISIBLE);
+                lparada1.setVisibility(View.INVISIBLE);
                 cantidadparadas--;
                 menos.setVisibility(View.INVISIBLE);
+                parada1 = "";
+                autocompleteParada1.setText("");
+                fecha1.setText("");
+                hora1.setText("");
+                valor1.setText("");
             }
             else if(cantidadparadas==2){
-                parada2.setVisibility(View.INVISIBLE);
-                fecha2.setVisibility(View.INVISIBLE);
-                hora2.setVisibility(View.INVISIBLE);
-                valor2.setVisibility(View.INVISIBLE);
+                lparada2.setVisibility(View.INVISIBLE);
                 cantidadparadas--;
+                parada2 = "";
+                autocompleteParada2.setText("");
+                fecha2.setText("");
+                hora2.setText("");
+                valor2.setText("");
             }
             else if(cantidadparadas==3){
-                parada3.setVisibility(View.INVISIBLE);
-                fecha3.setVisibility(View.INVISIBLE);
-                hora3.setVisibility(View.INVISIBLE);
-                valor3.setVisibility(View.INVISIBLE);
+                lparada3.setVisibility(View.INVISIBLE);
                 cantidadparadas--;
+                parada3 = "";
+                autocompleteParada3.setText("");
+                fecha3.setText("");
+                hora3.setText("");
+                valor3.setText("");
             }
             else if(cantidadparadas==4){
-                parada4.setVisibility(View.INVISIBLE);
-                fecha4.setVisibility(View.INVISIBLE);
-                hora4.setVisibility(View.INVISIBLE);
-                valor4.setVisibility(View.INVISIBLE);
+                lparada4.setVisibility(View.INVISIBLE);
                 cantidadparadas--;
                 mas.setVisibility(View.VISIBLE);
+                parada4 = "";
+                autocompleteParada4.setText("");
+                fecha4.setText("");
+                hora4.setText("");
+                valor4.setText("");
             }
         }
     }
 
     public void Crear(View view){
-        String str_origen = origen.getText().toString();
-        String str_destino = destino.getText().toString();
+        String str_origen = origen;
+        String str_destino = destino;
         String str_fechaInicio = fechaInicio.getText().toString();
         String str_fecha1 = fecha1.getText().toString();
         String str_fecha2 = fecha2.getText().toString();
@@ -204,10 +392,10 @@ public class CrearViajeActivity extends AppCompatActivity {
         String str_hora3 = hora3.getText().toString();
         String str_hora4 = hora4.getText().toString();
         String str_horaLlegada = horaLlegada.getText().toString();
-        String str_parada1 = parada1.getText().toString();
-        String str_parada2 = parada2.getText().toString();
-        String str_parada3 = parada3.getText().toString();
-        String str_parada4 = parada4.getText().toString();
+        String str_parada1 = parada1;
+        String str_parada2 = parada2;
+        String str_parada3 = parada3;
+        String str_parada4 = parada4;
         String str_valorTotal = valorTotal.getText().toString();
         String str_valor1 = valor1.getText().toString();
         String str_valor2 = valor2.getText().toString();
@@ -366,6 +554,7 @@ public class CrearViajeActivity extends AppCompatActivity {
         else Toast.makeText(this, "Rellene todos los campos principales", Toast.LENGTH_SHORT).show();
     }
 
+    @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.CrearViajeActivity_fechaInicio:

@@ -1,5 +1,6 @@
 package com.example.carpulin.DB;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -7,8 +8,11 @@ import android.widget.Toast;
 
 import com.example.carpulin.Entidades.Conductor;
 import com.example.carpulin.Entidades.Pasajero;
+import com.example.carpulin.Entidades.Reserva;
+import com.example.carpulin.Entidades.Vehiculo;
 import com.example.carpulin.Entidades.Viaje;
 import com.example.carpulin.R;
+import com.example.carpulin.ReservaModelo;
 import com.example.carpulin.ViajeModelo;
 
 import java.util.ArrayList;
@@ -66,10 +70,10 @@ public class DBQueries {
     public static Conductor getConductor(String username, Context context){
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(context, "db", null, 1);
         SQLiteDatabase db = admin.getWritableDatabase();
-        String query = "SELECT username, nombre, password, correo, telefono, rut, sexo FROM conductor WHERE username = '" + username +"'";
+        String query = "SELECT username, nombre, password, correo, telefono, rut, sexo, preferences FROM conductor WHERE username = '" + username +"'";
         Cursor cursor = db.rawQuery(query, null);
         if (cursor.moveToFirst()){
-            Conductor conductor = new Conductor(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5), cursor.getString(6));
+            Conductor conductor = new Conductor(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5), cursor.getString(6), cursor.getString(7));
             return conductor;
         }
         return null;
@@ -96,6 +100,25 @@ public class DBQueries {
         else return false;
     }
 
+    public static boolean checkPassword(String username, String password, Context context){
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(context, "db", null, 1);
+        SQLiteDatabase db = admin.getWritableDatabase();
+        String query = "SELECT password FROM conductor WHERE username = '" + username +"'";
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor.moveToFirst()) {
+            if (cursor.getString(0).compareTo(password)==0) {
+                db.close();
+                return true;
+            }
+            else {
+                Toast.makeText(context, "Contraseña Incorrecta", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        }
+        db.close();
+        return false;
+    }
+
     public static boolean isReservaIdOcupado(String ID, Context context){
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(context, "db", null, 1);
         SQLiteDatabase db = admin.getWritableDatabase();
@@ -105,10 +128,12 @@ public class DBQueries {
         else return false;
     }
 
-    public static List<ViajeModelo> getViajes(String origen, String destino, String fecha, Context context) {
+
+    public static List<ViajeModelo> getViajes(String origen, String destino, String fecha, String plazas,  Context context) {
         List<ViajeModelo> viajes = new ArrayList<>();
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(context, "db", null, 1);
         SQLiteDatabase db = admin.getWritableDatabase();
+        int int_plazas = Integer.parseInt(plazas);
 
         List<String> queries = new ArrayList<>();
         queries.add("SELECT * FROM viaje WHERE origen = '" + origen + "' AND destino = '" + destino + "'"); //tipoviaje 0
@@ -129,15 +154,74 @@ public class DBQueries {
 
         for(int i=0; i<queries.size();i++){
         Cursor cursor = db.rawQuery(queries.get(i), null);
+
         if (cursor.moveToFirst()) {
+
+            int p=0;
+            if (i==0){
+                p=cursor.getInt(24);
+                if (p>cursor.getInt(25))p=cursor.getInt(25);
+                if (p>cursor.getInt(26))p=cursor.getInt(26);
+                if (p>cursor.getInt(27))p=cursor.getInt(27);
+                if (p>cursor.getInt(28))p=cursor.getInt(28);
+            }
+            else if (i==1){
+                p=cursor.getInt(24);
+                if (p>cursor.getInt(25))p=cursor.getInt(25);
+                if (p>cursor.getInt(26))p=cursor.getInt(26);
+                if (p>cursor.getInt(27))p=cursor.getInt(27);
+            }
+            else if (i==2){
+                p=cursor.getInt(24);
+                if (p>cursor.getInt(25))p=cursor.getInt(25);
+                if (p>cursor.getInt(26))p=cursor.getInt(26);
+            }
+            else if (i==3){
+                p=cursor.getInt(24);
+                if (p>cursor.getInt(25))p=cursor.getInt(25);
+            }
+            else if (i==4)p=cursor.getInt(24);
+            else if (i==5){
+                p=cursor.getInt(25);
+                if (p>cursor.getInt(26))p=cursor.getInt(26);
+                if (p>cursor.getInt(27))p=cursor.getInt(27);
+                if (p>cursor.getInt(28))p=cursor.getInt(28);
+            }
+            else if (i==6){
+                p=cursor.getInt(25);
+                if (p>cursor.getInt(26))p=cursor.getInt(26);
+                if (p>cursor.getInt(27))p=cursor.getInt(27);
+            }
+            else if (i==7){
+                p=cursor.getInt(25);
+                if (p>cursor.getInt(26))p=cursor.getInt(26);
+            }
+            else if (i==8)p=cursor.getInt(25);
+            else if (i==9){
+                p=cursor.getInt(26);
+                if (p>cursor.getInt(27))p=cursor.getInt(27);
+                if (p>cursor.getInt(28))p=cursor.getInt(28);
+            }
+            else if (i==10){
+                p=cursor.getInt(26);
+                if (p>cursor.getInt(27))p=cursor.getInt(27);
+            }
+            else if (i==11)p=cursor.getInt(26);
+            else if (i==12){
+                p=cursor.getInt(27);
+                if (p>cursor.getInt(28))p=cursor.getInt(28);
+            }
+            else if (i==13)p=cursor.getInt(27);
+            else if (i==14)p=cursor.getInt(28);
+
             do {
-                viajes.add(new ViajeModelo(cursor.getString(0), //id
+                if(p>=int_plazas)viajes.add(new ViajeModelo(cursor.getString(0), //id
                         cursor.getString(29), //29=conductor
                         cursor.getString(1), //1=origen
                         cursor.getString(2), //2=destino
                         cursor.getString(3), //3=fechainicio
                         cursor.getString(4), //4=horainicio
-                        cursor.getInt(24), //5=plazas
+                        p, //plazas
                         R.drawable.user,
                         cursor.getString(8), // parada1
                         cursor.getString(9), // parada2
@@ -153,6 +237,45 @@ public class DBQueries {
         }
     }
         return viajes;
+    }
+
+    public static List<Viaje> getMisViajes(String username, Context context){
+        List<Viaje> viajes = new ArrayList<>();
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(context, "db", null, 1);
+        SQLiteDatabase db = admin.getWritableDatabase();
+        String query = "SELECT id FROM viaje WHERE conductor = '" + username +"'";
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor.moveToFirst()) {
+            do{
+                viajes.add(getfullViaje(cursor.getString(0), context));
+            }while(cursor.moveToNext());
+        }
+        return viajes;
+    }
+
+    public static List<Reserva> getMisReservas(String username, Context context){
+        List<Reserva> reservas = new ArrayList<>();
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(context, "db", null, 1);
+        SQLiteDatabase db = admin.getWritableDatabase();
+        String query = "SELECT * FROM reserva WHERE username = '" + username +"'";
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor.moveToFirst()) {
+            do{
+                reservas.add(new Reserva(cursor.getString(0),
+                        cursor.getString(1),
+                        cursor.getString(2),
+                        cursor.getInt(8),
+                        cursor.getInt(9),
+                        cursor.getInt(10),
+                        cursor.getInt(11),
+                        cursor.getInt(12),
+                        cursor.getInt(6),
+                        cursor.getShort(7),
+                        cursor.getString(3),
+                        cursor.getString(4)));
+            }while(cursor.moveToNext());
+        }
+        return reservas;
     }
 
     public static Viaje getfullViaje(String id, Context context){
@@ -197,19 +320,100 @@ public class DBQueries {
         return null;
     }
 
-    public static void ProbandoReserva(String username, Context context){
+    public static List<ReservaModelo> getReservas(String username, Context context){
+        List<ReservaModelo> reservas = new ArrayList<>();
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(context, "db", null, 1);
         SQLiteDatabase db = admin.getWritableDatabase();
-        String query = "SELECT * FROM reserva WHERE username = '" + username + "'";
+        String query = "SELECT reserva.id, viaje.id, reserva.username, viaje.origen, viaje.destino, reserva.origen, " +
+                "reserva.destino, reserva.plazas, viaje.fechainicio, viaje.horainicio, reserva.valor, reserva.procesada " +
+                "FROM reserva " +
+                "INNER JOIN viaje ON reserva.idviaje = viaje.id " +
+                "INNER JOIN conductor ON viaje.conductor = conductor.username " +
+                "WHERE conductor.username = '" + username + "' AND reserva.procesada = 0";
         Cursor cursor = db.rawQuery(query, null);
-        int i=0;
-        if (cursor.moveToFirst()){
-            i++;
-            while(cursor.moveToNext())i++;
+
+        if (cursor.moveToFirst()) {
+            do {
+                reservas.add(new ReservaModelo(cursor.getString(0), //id
+                        cursor.getString(1),
+                        cursor.getString(2),
+                        cursor.getString(3),
+                        cursor.getString(4),
+                        cursor.getString(5),
+                        cursor.getString(6),
+                        cursor.getString(8),
+                        cursor.getString(9),
+                        cursor.getInt(7),
+                        R.drawable.user,
+                        cursor.getInt(10)));
+            } while (cursor.moveToNext());
         }
-        if(i==0) Toast.makeText(context, "No hay reservas con ese usuario", Toast.LENGTH_SHORT).show();
-        else Toast.makeText(context, "Cantidad de reservas: " + Integer.toString(i), Toast.LENGTH_SHORT).show();
+        return reservas;
     }
+
+    public static void ReservaAceptada(String idReserva, String idViaje, Context context){
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(context, "db", null, 1);
+        SQLiteDatabase db = admin.getWritableDatabase();
+        String query = "UPDATE reserva SET procesada = 1 WHERE id = '" + idReserva + "'";
+        db.execSQL(query);
+
+        query = "SELECT plazas1, plazas2, plazas3, plazas4, plazas5 " +
+                "FROM viaje " +
+                "WHERE id = '" + idViaje + "'";
+        Cursor cursor = db.rawQuery(query, null);
+
+        int p1=0;
+        int p2=0;
+        int p3=0;
+        int p4=0;
+        int p5=0;
+
+        if (cursor.moveToFirst()){
+            p1=cursor.getInt(0);
+            p2=cursor.getInt(1);
+            p3=cursor.getInt(2);
+            p4=cursor.getInt(3);
+            p5=cursor.getInt(4);
+        }
+
+        query = "SELECT plazas1, plazas2, plazas3, plazas4, plazas5 " +
+                "FROM reserva " +
+                "WHERE id = '" + idReserva + "'";
+
+        Cursor cursor2 = db.rawQuery(query, null);
+
+        if (cursor2.moveToFirst()){
+            p1-=cursor2.getInt(0);
+            p2-=cursor2.getInt(1);
+            p3-=cursor2.getInt(2);
+            p4-=cursor2.getInt(3);
+            p5-=cursor2.getInt(4);
+        }
+
+        ContentValues cv = new ContentValues();
+        cv.put("plazas1", p1);
+        cv.put("plazas2", p2);
+        cv.put("plazas3", p3);
+        cv.put("plazas4", p4);
+        cv.put("plazas5", p5);
+
+        db.update("viaje", cv, "id = '" + idViaje +"'", null);
+
+        /*Toast.makeText(context, Integer.toString(p1) + " " +
+                Integer.toString(p2) + " " +
+                Integer.toString(p3) + " " +
+                Integer.toString(p4) + " " +
+                Integer.toString(p5) + " ",Toast.LENGTH_SHORT).show();*/
+
+    }
+
+    public static void ReservaRechazada(String id, Context context){
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(context, "db", null, 1);
+        SQLiteDatabase db = admin.getWritableDatabase();
+        String query = "UPDATE reserva SET procesada = 2 WHERE id = '" + id + "'";
+        db.execSQL(query);
+    }
+
 
     public static boolean actualizarCorreoPasajero(String nuevocorreo, String username, Context context){
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(context, "db", null, 1);
@@ -237,4 +441,46 @@ public class DBQueries {
         if (cursor.moveToFirst()) return true;
         else return false;
     }
+
+    public static void ModConductor (String NuevoNombre, String NuevoRun, String NuevoTelefono, String NuevoMail, String username, String NuevaPreferences, Context context){
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(context, "db", null, 1);
+        SQLiteDatabase db = admin.getWritableDatabase();
+        String query = "UPDATE conductor SET nombre = '" + NuevoNombre + "', rut= '" + NuevoRun + "', telefono =  '" + NuevoTelefono + "', correo =  '" + NuevoMail + "', preferences = '" + NuevaPreferences + "' WHERE username = '" + username + "'";
+        db.execSQL(query);
+    }
+    public static Vehiculo getVehiculo(String username, Context context){
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(context, "db", null, 1);
+        SQLiteDatabase db = admin.getWritableDatabase();
+        String query = "SELECT username, marca, modelo, patente, asientos, año FROM vehiculo WHERE username= '" + username +"'";
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor.moveToFirst()){
+            Vehiculo vehiculo = new Vehiculo(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getInt(4), cursor.getInt(5));
+            return vehiculo;
+        }
+        return null;
+        }
+
+    public static void insertVehiculo(String username, String patente, String marca, String modelo, int año, int asientos, Context context){
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(context, "db", null, 1);
+        SQLiteDatabase db = admin.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+            values.put("username", username);
+            values.put("patente", patente);
+            values.put("marca", marca);
+            values.put("modelo", modelo);
+            values.put("año", año);
+            values.put("asientos", asientos);
+
+        db.insert("vehiculo", null, values);
+        Toast.makeText(context, "Registro Exitoso", Toast.LENGTH_SHORT).show();
+        db.close();
+    }
+     public static void ModVehiculo (String username, String NuevoPatente, String NuevoMarca,  String NuevoModelo, int NuevoAsientos, int NuevoYear, Context context){
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(context, "db", null, 1);
+        SQLiteDatabase db = admin.getWritableDatabase();
+        String query = "UPDATE vehiculo SET patente= '" + NuevoPatente + "', marca = '" + NuevoMarca + "',  modelo =  '" + NuevoModelo + "', asientos =  '" + NuevoAsientos + "', año = '" + NuevoYear + "' WHERE username = '" + username + "'";
+        db.execSQL(query);
+    }
+
 }

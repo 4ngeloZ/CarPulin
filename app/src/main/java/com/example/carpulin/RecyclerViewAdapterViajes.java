@@ -1,13 +1,11 @@
 package com.example.carpulin;
 
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -29,16 +27,16 @@ public class RecyclerViewAdapterViajes extends RecyclerView.Adapter<RecyclerView
         public ViewHolder(View view){
             super(view);
             conductor = (TextView)view.findViewById(R.id.Viaje_conductor);
-            recorrido = (TextView)view.findViewById(R.id.Viaje_recorrido);
-            origen = (TextView)view.findViewById(R.id.Viaje_origen);
-            destino = (TextView)view.findViewById(R.id.Viaje_destino);
-            horario = (TextView)view.findViewById(R.id.Viaje_horario);
-            plazas = (TextView)view.findViewById(R.id.Viaje_plazas);
-            foto = (ImageView)view.findViewById(R.id.Viaje_foto);
-            parada1 = (TextView)view.findViewById(R.id.Viaje_parada1);
-            parada2 = (TextView)view.findViewById(R.id.Viaje_parada2);
-            parada3 = (TextView)view.findViewById(R.id.Viaje_parada3);
-            parada4 = (TextView)view.findViewById(R.id.Viaje_parada4);
+            recorrido = (TextView)view.findViewById(R.id.Reserva_recorrido_reservado);
+            origen = (TextView)view.findViewById(R.id.Reserva_origen);
+            destino = (TextView)view.findViewById(R.id.Reserva_destino);
+            horario = (TextView)view.findViewById(R.id.Reserva_horario);
+            plazas = (TextView)view.findViewById(R.id.Reserva_plazas);
+            foto = (ImageView)view.findViewById(R.id.Reserva_foto);
+            parada1 = (TextView)view.findViewById(R.id.Reserva_parada1);
+            parada2 = (TextView)view.findViewById(R.id.Reserva_parada2);
+            parada3 = (TextView)view.findViewById(R.id.Reserva_parada3);
+            parada4 = (TextView)view.findViewById(R.id.Reserva_parada4);
         }
     }
 

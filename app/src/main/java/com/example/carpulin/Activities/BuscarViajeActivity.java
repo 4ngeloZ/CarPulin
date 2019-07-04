@@ -118,8 +118,7 @@ public class BuscarViajeActivity extends AppCompatActivity{
         String str_origen = Or;
         String str_destino = Dest;
         String str_fecha = fecha.getText().toString();
-
-        List<ViajeModelo> viajes = DBQueries.getViajes(str_origen, str_destino, str_fecha, this);
+        String str_plazas = plazas.getText().toString();
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
@@ -130,29 +129,49 @@ public class BuscarViajeActivity extends AppCompatActivity{
             e.printStackTrace();
         }
 
-        if(!str_origen.isEmpty() && !str_destino.isEmpty()) {
+        if(!str_origen.isEmpty() && !str_destino.isEmpty() && !str_plazas.isEmpty()) {
             Date currentDate = null;
             try {
                 currentDate = sdf.parse(sdf.format(new Date()));
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-            if(!strDate.before(currentDate)) {
+            if(strDate != null && !strDate.before(currentDate)) {
+                List<ViajeModelo> viajes = DBQueries.getViajes(str_origen, str_destino, str_fecha, str_plazas, this);
                 if (!viajes.isEmpty()) {
                     Intent ViajesEncontradosActivity = new Intent(this, ViajesEncontradosActivity.class);
                     ViajesEncontradosActivity.putExtra("origen_busqueda", str_origen);
                     ViajesEncontradosActivity.putExtra("destino_busqueda", str_destino);
                     ViajesEncontradosActivity.putExtra("fecha_busqueda", str_fecha);
+                    ViajesEncontradosActivity.putExtra("numero_plazas", str_plazas);
                     ViajesEncontradosActivity.putExtra("pasajero_entidad", pasajero);
                     startActivity(ViajesEncontradosActivity);
-                } else
+                }
+                else {
+                    til.setError(null);
+                }
+            }
+            else if(strDate == null){
+                List<ViajeModelo> viajes = DBQueries.getViajes(str_origen, str_destino, str_fecha, str_plazas, this);
+                if (!viajes.isEmpty()) {
+                    Intent ViajesEncontradosActivity = new Intent(this, ViajesEncontradosActivity.class);
+                    ViajesEncontradosActivity.putExtra("origen_busqueda", str_origen);
+                    ViajesEncontradosActivity.putExtra("destino_busqueda", str_destino);
+                    ViajesEncontradosActivity.putExtra("fecha_busqueda", str_fecha);
+                    ViajesEncontradosActivity.putExtra("numero_plazas", str_plazas);
+                    ViajesEncontradosActivity.putExtra("pasajero_entidad", pasajero);
+                    startActivity(ViajesEncontradosActivity);
+                }
+                else {
                     til.setError(null);
                     Toast.makeText(this, "No hay viajes que satisfagan su búsqueda", Toast.LENGTH_SHORT).show();
-            } else
+                }
+            }
+            else
                 til.setError("Ingrese una fecha válida");
                 //Toast.makeText(this, "Fecha ingresada no es válida", Toast.LENGTH_SHORT).show();
         }
-        else Toast.makeText(this, "Ingrese origen y/o destino", Toast.LENGTH_SHORT).show();
+        else Toast.makeText(this, "Ingrese origen, destino y número de plazas", Toast.LENGTH_SHORT).show();
     }
 
     public void onClick(View v) {

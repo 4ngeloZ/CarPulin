@@ -400,18 +400,47 @@ public class InformacionViajeActivity extends AppCompatActivity {
                 randID = Integer.toString((int) (Math.random() * 999999999));
             }
 
+            String str_origen="";
+            String str_destino="";
+            int reserva = 0;
+
+            if(reserva1>0){
+                str_origen=origen1.getText().toString(); reserva=reserva1;
+            }
+            else if(reserva2>0){
+                str_origen=origen2.getText().toString(); reserva=reserva2;
+            }
+            else if(reserva3>0){
+                str_origen=origen3.getText().toString(); reserva=reserva3;
+            }
+            else if(reserva4>0){
+                str_origen=origen4.getText().toString(); reserva=reserva4;
+            }
+            else if(reserva5>0){
+                str_origen=origen5.getText().toString(); reserva=reserva5;
+            }
+
+            if(reserva5>0)str_destino=destino5.getText().toString();
+            else if(reserva4>0)str_destino=destino4.getText().toString();
+            else if(reserva3>0)str_destino=destino3.getText().toString();
+            else if(reserva2>0)str_destino=destino2.getText().toString();
+            else if(reserva1>0)str_destino=destino1.getText().toString();
+
             values.put("id", randID);
             values.put("idviaje", viaje.getId());
             values.put("username", pasajero.getUsername());
             if (tipoViaje == 0) {
+                values.put("plazas", reserva);
                 values.put("plazas1", reserva1);
                 values.put("valor", reserva1 * viaje.getValorTotal());
             } else if (tipoViaje == 1) {
+                values.put("plazas", reserva);
                 values.put("plazas1", reserva1);
                 values.put("plazas2", reserva2);
                 values.put("valor", reserva1 * viaje.getValor1() +
                         reserva2 * (viaje.getValorTotal() - viaje.getValor1()));
             } else if (tipoViaje == 2) {
+                values.put("plazas", reserva);
                 values.put("plazas1", reserva1);
                 values.put("plazas2", reserva2);
                 values.put("plazas3", reserva3);
@@ -419,6 +448,7 @@ public class InformacionViajeActivity extends AppCompatActivity {
                         reserva2 * viaje.getValor2() +
                         reserva3 * (viaje.getValorTotal() - viaje.getValor1() - viaje.getValor2()));
             } else if (tipoViaje == 3) {
+                values.put("plazas", reserva);
                 values.put("plazas1", reserva1);
                 values.put("plazas2", reserva2);
                 values.put("plazas3", reserva3);
@@ -428,6 +458,7 @@ public class InformacionViajeActivity extends AppCompatActivity {
                         reserva3 * viaje.getValor3() +
                         reserva3 * (viaje.getValorTotal() - viaje.getValor1() - viaje.getValor2() - viaje.getValor3()));
             } else if (tipoViaje == 4) {
+                values.put("plazas", reserva);
                 values.put("plazas1", reserva1);
                 values.put("plazas2", reserva2);
                 values.put("plazas3", reserva3);
@@ -439,7 +470,9 @@ public class InformacionViajeActivity extends AppCompatActivity {
                         reserva4 * viaje.getValor4() +
                         reserva3 * (viaje.getValorTotal() - viaje.getValor1() - viaje.getValor2() - viaje.getValor3() - viaje.getValor4()));
             }
-            //values.put("procesada", 0);
+            values.put("origen", str_origen);
+            values.put("destino", str_destino);
+            values.put("procesada", 0);
             db.insert("reserva", null, values);
             db.close();
             Toast.makeText(this, "Reserva solicitada con éxito", Toast.LENGTH_SHORT).show();

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/PerfilConductor"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.PerfilConductorActivity">
+
+    <Button
+        android:id="@+id/buttonModoficarDatos"
+        android:layout_width="158dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:background="#323F8B"
+        android:onClick="Modificar"
+        android:text="Modificar Datos Conductor"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toStartOf="@+id/buttonVerVehiculo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewP" />
+
+    <TextView
+        android:id="@+id/textViewUsuario"
+        android:layout_width="141dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="60dp"
+        android:text="Usuario"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewNombre"
+        android:layout_width="258dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="8dp"
+        android:text="Nombre"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewUsuario" />
+
+    <TextView
+        android:id="@+id/textViewtelefono"
+        android:layout_width="258dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="24dp"
+        android:text="Telefono"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewMail" />
+
+    <TextView
+        android:id="@+id/textViewMail"
+        android:layout_width="258dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="8dp"
+        android:text="E-mail"
+        android:backgroundTint="#3F51B5"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewRun" />
+
+    <TextView
+        android:id="@+id/textViewRun"
+        android:layout_width="258dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="8dp"
+        android:text="RUN"
+        android:backgroundTint="#3F51B5"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewNombre" />
+
+    <Button
+        android:id="@+id/buttonVerVehiculo"
+        android:layout_width="165dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:background="#323F8B"
+        android:onClick="VerPerfilVehiculo"
+        android:text="Ver Perfil Vehiculo"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewP" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="151dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:background="#323F8B"
+        android:onClick="AgregarVehiculo"
+        android:text="Agregar Vehiculo"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonModoficarDatos" />
+
+    <TextView
+        android:id="@+id/textViewP"
+        android:layout_width="258dp"
+        android:layout_height="69dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewtelefono" />
+
+</android.support.constraint.ConstraintLayout>

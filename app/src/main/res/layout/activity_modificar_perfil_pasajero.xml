@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.ModificarPerfilPasajeroActivity">
+
+    <EditText
+        android:id="@+id/ModificarPerfilPasajeroActivity_correo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="96dp"
+        android:layout_marginLeft="96dp"
+        android:layout_marginTop="140dp"
+        android:hint="Correo"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/ModificarPerfilPasajeroActivity_telefono"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="31dp"
+        android:ems="10"
+        android:hint="Teléfono"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/ModificarPerfilPasajeroActivity_correo"
+        app:layout_constraintTop_toBottomOf="@+id/ModificarPerfilPasajeroActivity_correo" />
+
+    <EditText
+        android:id="@+id/ModificarPerfilPasajeroActivity_preferencias"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="34dp"
+        android:hint="Preferencias"
+        android:ems="10"
+        android:inputType="textPersonName|textMultiLine"
+        android:text="No ha ingresado preferencias"
+        app:layout_constraintStart_toStartOf="@+id/ModificarPerfilPasajeroActivity_telefono"
+        app:layout_constraintTop_toBottomOf="@+id/ModificarPerfilPasajeroActivity_telefono" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="98dp"
+        android:layout_marginEnd="23dp"
+        android:layout_marginRight="23dp"
+        android:onClick="actualizarPasajero"
+        android:text="Guardar cambios"
+        app:layout_constraintEnd_toEndOf="@+id/ModificarPerfilPasajeroActivity_preferencias"
+        app:layout_constraintTop_toBottomOf="@+id/ModificarPerfilPasajeroActivity_preferencias" />
+
+</android.support.constraint.ConstraintLayout>
