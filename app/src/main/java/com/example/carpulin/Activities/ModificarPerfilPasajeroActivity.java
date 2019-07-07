@@ -49,11 +49,11 @@ public class ModificarPerfilPasajeroActivity extends AppCompatActivity {
                 DBQueries.actualizarPreferenciasPasajero(preferencias.getText().toString(), pasajero.getUsername(), this);
                 pasajero.setPreferencias(preferencias.getText().toString());
             }
-            Toast.makeText(this, "Modificación realizada con exito", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Modificación realizada con exito", Toast.LENGTH_LONG).show();
             Intent PasajeroActivity = new Intent(this, PasajeroActivity.class);
             PasajeroActivity.putExtra("pasajero_entidad", pasajero);
             startActivity(PasajeroActivity);
         }
-        else Toast.makeText(this, "Ingrese correo y teléfono", Toast.LENGTH_SHORT).show();
+        else Toast.makeText(this, "Ingrese correo y teléfono", Toast.LENGTH_LONG).show();
     }
 }

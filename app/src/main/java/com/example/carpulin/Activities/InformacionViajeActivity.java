@@ -475,10 +475,10 @@ public class InformacionViajeActivity extends AppCompatActivity {
             values.put("procesada", 0);
             db.insert("reserva", null, values);
             db.close();
-            Toast.makeText(this, "Reserva solicitada con éxito", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Reserva solicitada con éxito", Toast.LENGTH_LONG).show();
             this.finish();
         }
-        else Toast.makeText(this, "Seleccione plazas para reservar", Toast.LENGTH_SHORT).show();
+        else Toast.makeText(this, "Seleccione plazas para reservar", Toast.LENGTH_LONG).show();
     }
 
     private void ActualizacionValorReserva(){

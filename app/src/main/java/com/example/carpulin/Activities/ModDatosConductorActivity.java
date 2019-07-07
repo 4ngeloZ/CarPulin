@@ -35,7 +35,7 @@ public class ModDatosConductorActivity extends AppCompatActivity {
         mail =(EditText)findViewById(R.id.editTextMail);
         PresAd =(EditText)findViewById(R.id.editTextPresAd);
         usuario = (TextView)findViewById(R.id.textViewUsuario);
-       contraseña = conductor.getPassword();
+        contraseña = conductor.getPassword();
 
        nombre.setText(conductor.getNombre());
        run.setText(conductor.getRut());
@@ -67,13 +67,13 @@ public class ModDatosConductorActivity extends AppCompatActivity {
                 conductor.setCorreo(str_mail);
                 conductor.setPreferences(str_preferences);
 
-                Toast.makeText(this, "Modificacion exitosa", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Modificacion exitosa", Toast.LENGTH_LONG).show();
                 Intent ConductorActivity = new Intent(this, ConductorActivity.class);
                 ConductorActivity.putExtra("conductor_entidad",conductor);
                 startActivity(ConductorActivity);
             }
                 else {
-                Toast.makeText(this, "Debes llenar todos los campos", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Debes llenar todos los campos", Toast.LENGTH_LONG).show();
             }
         }
 

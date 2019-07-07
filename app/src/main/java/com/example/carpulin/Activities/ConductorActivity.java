@@ -30,6 +30,7 @@ public class ConductorActivity extends AppCompatActivity implements NavigationVi
     private Conductor conductor;
     private TextView HeaderConductor_username;
     private TextView HeaderConductor_nombre;
+    private TextView usuario;
     private ImageView HeaderConductor_foto;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +63,11 @@ public class ConductorActivity extends AppCompatActivity implements NavigationVi
         HeaderConductor_username.setText(conductor.getUsername());
         HeaderConductor_nombre.setText(conductor.getNombre());
         HeaderConductor_foto.setImageResource(R.drawable.user);
+        usuario = (TextView)findViewById(R.id.textViewUSUARIO);
+
+
+
+        usuario.setText(conductor.getUsername());
 
 
 
