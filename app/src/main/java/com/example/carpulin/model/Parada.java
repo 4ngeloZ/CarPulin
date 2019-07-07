@@ -1,0 +1,78 @@
+package com.example.carpulin.model;
+
+import com.google.gson.annotations.SerializedName;
+
+import java.io.Serializable;
+import java.util.Date;
+
+public class Parada implements Serializable{
+    @SerializedName("idViaje")
+    private int idViaje;
+
+    @SerializedName("orden")
+    private int orden;
+
+    @SerializedName("ciudad")
+    private String ciudad;
+
+    @SerializedName("hora")
+    private Date hora;
+
+    @SerializedName("direccion")
+    private String direccion;
+
+    @SerializedName("precio")
+    private int precio;
+
+    public int getPrecio(){
+        return precio;
+    }
+
+    public void setPrecio(int precio){
+        this.precio = precio;
+    }
+
+    public int getIdViaje() {
+        return idViaje;
+    }
+
+    public void setIdViaje(int idViaje) {
+        this.idViaje = idViaje;
+    }
+
+    public int getOrden() {
+        return orden;
+    }
+
+    public void setOrden(int orden) {
+        this.orden = orden;
+    }
+
+    public String getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
+    }
+
+    public Date getHora() {
+        return hora;
+    }
+
+    public void setHora(Date hora) {
+        this.hora = hora;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public String toString(){
+        return "" + idViaje + " " + ciudad + " " + orden;
+    }
+}

@@ -15,7 +15,7 @@ import retrofit2.http.PUT;
 import com.example.carpulin.model.*;
 
 public interface CarpulinServiceDefinition {
-    /*@GET("conductores/{conductor}/viajes")
+    @GET("conductores/{conductor}/viajes")
     Call<List<Viaje>> getViajesDeConductor(@Path("conductor") String conductor);
 
     @GET("viajes/{viajeid}/paradas")
@@ -50,12 +50,12 @@ public interface CarpulinServiceDefinition {
 
     @DELETE("viajes/{viajeid}")
     Call<ResponseBody> deleteViaje(@Path("viajeid") int viajeid);
-    */
+
     @POST("login")
     Call<LoginResponse> login(@Body UserData data);
 
-    /*@GET("viajes/{viajeid}/precio")
+    @GET("viajes/{viajeid}/precio")
     Call<Precio> getPrecio(@Path("viajeid") int viajeid, @Query("origen")String origen, @Query("destino") String destino);
-    */
+
 }
 
