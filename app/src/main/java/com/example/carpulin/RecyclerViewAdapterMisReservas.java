@@ -1,6 +1,7 @@
 package com.example.carpulin;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,10 +27,11 @@ public class RecyclerViewAdapterMisReservas extends RecyclerView.Adapter<Recycle
         private TextView parada2;
         private TextView parada3;
         private TextView parada4;
+        private TextView estado;
 
         public ViewHolder(View view){
             super(view);
-            //conductor = (TextView)view.findViewById(R.id.Reserva_conductor);
+            conductor = (TextView)view.findViewById(R.id.Reserva_conductor);
             recorrido = (TextView)view.findViewById(R.id.Reserva_recorrido_reservado);
             origen = (TextView)view.findViewById(R.id.Reserva_origen);
             destino = (TextView)view.findViewById(R.id.Reserva_destino);
@@ -40,6 +42,7 @@ public class RecyclerViewAdapterMisReservas extends RecyclerView.Adapter<Recycle
             parada2 = (TextView)view.findViewById(R.id.Reserva_parada2);
             parada3 = (TextView)view.findViewById(R.id.Reserva_parada3);
             parada4 = (TextView)view.findViewById(R.id.Reserva_parada4);
+            estado = (TextView)view.findViewById(R.id.Reserva_estado);
         }
     }
 
@@ -89,11 +92,23 @@ public class RecyclerViewAdapterMisReservas extends RecyclerView.Adapter<Recycle
         holder.plazas.setText("Plazas Totales: " + p + " | Valor viaje: " + Integer.toString(listaReservas.get(position).getValorTotal()));
         holder.foto.setImageResource(R.drawable.user);
         holder.origen.setText(viaje.getOrigen() + "->");
-        if(viaje.getParada1().isEmpty())holder.parada1.setText(viaje.getParada1() + "->");
-        if(viaje.getParada2().isEmpty())holder.parada2.setText(viaje.getParada2() + "->");
-        if(viaje.getParada3().isEmpty())holder.parada3.setText(viaje.getParada3() + "->");
-        if(viaje.getParada4().isEmpty())holder.parada4.setText(viaje.getParada4() + "->");
+        if(!viaje.getParada1().isEmpty())holder.parada1.append(viaje.getParada1() + "->");
+        if(!viaje.getParada2().isEmpty())holder.parada2.append(viaje.getParada2() + "->");
+        if(!viaje.getParada3().isEmpty())holder.parada3.append(viaje.getParada3() + "->");
+        if(!viaje.getParada4().isEmpty())holder.parada4.append(viaje.getParada4() + "->");
         holder.destino.setText(viaje.getDestino());
+        holder.estado.setText("Estado: ");
+        if(listaReservas.get(position).getProcesada()==0){
+            holder.estado.append("En proceso");
+        }
+        else if(listaReservas.get(position).getProcesada()==1){
+            holder.estado.setTextColor(Color.GREEN);
+            holder.estado.append("Aceptada");
+        }
+        else if(listaReservas.get(position).getProcesada()==2){
+            holder.estado.setTextColor(Color.RED);
+            holder.estado.append("Rechazada");
+        }
         holder.foto.setTag(position);
     }
 

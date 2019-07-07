@@ -14,13 +14,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:onClick="verInformacionViaje"
         app:srcCompat="@drawable/user" />
 
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:id="@+id/Reserva_conductor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Conductor" />
+        </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
@@ -106,6 +116,17 @@
                     android:text="Destino" />
             </LinearLayout>
 
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:id="@+id/Reserva_estado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Estado: " />
         </TableRow>
     </TableLayout>
 
