@@ -546,12 +546,12 @@ public class CrearViajeActivity extends AppCompatActivity implements View.OnClic
                 values.put("conductor", conductor.getUsername());
                 db.insert("viaje", null, values);
                 db.close();
-                Toast.makeText(this, "Viaje registrado con éxito", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Viaje registrado con éxito", Toast.LENGTH_LONG).show();
                 this.finish();
             }
-            else Toast.makeText(this, "Fechas incompatibles para el viaje", Toast.LENGTH_SHORT).show();
+            else Toast.makeText(this, "Fechas incompatibles para el viaje", Toast.LENGTH_LONG).show();
         }
-        else Toast.makeText(this, "Rellene todos los campos principales", Toast.LENGTH_SHORT).show();
+        else Toast.makeText(this, "Rellene todos los campos principales", Toast.LENGTH_LONG).show();
     }
 
     @Override

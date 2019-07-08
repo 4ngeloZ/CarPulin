@@ -90,10 +90,10 @@ public class RegistroActivity extends AppCompatActivity {
                             ContentValues v = new ContentValues();
                             v.put("username", str_username );
                             db.insert("vehiculo", null, v);
-                            Toast.makeText(this, "Registro Exitoso", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(this, "Registro Exitoso", Toast.LENGTH_LONG).show();
                             this.finish();
                         }
-                        else Toast.makeText(this, "Nombre de usuario no disponible", Toast.LENGTH_SHORT).show();
+                        else Toast.makeText(this, "Nombre de usuario no disponible", Toast.LENGTH_LONG).show();
                         db.close();
                     }
                     else{
@@ -108,18 +108,18 @@ public class RegistroActivity extends AppCompatActivity {
 
                         if(!DBQueries.isPasajeroRegistrado(str_username, this)){
                             db.insert("pasajero", null, values);
-                            Toast.makeText(this, "Registro Exitoso", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(this, "Registro Exitoso", Toast.LENGTH_LONG).show();
                             this.finish();
                         }
-                        else Toast.makeText(this, "Nombre de usuario no disponible", Toast.LENGTH_SHORT).show();
+                        else Toast.makeText(this, "Nombre de usuario no disponible", Toast.LENGTH_LONG).show();
                         db.close();
                     }
                 }
-                else Toast.makeText(this,"Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
+                else Toast.makeText(this,"Las contraseñas no coinciden", Toast.LENGTH_LONG).show();
             }
-            else Toast.makeText(this, "Seleccione las casillas", Toast.LENGTH_SHORT).show();
+            else Toast.makeText(this, "Seleccione las casillas", Toast.LENGTH_LONG).show();
         }
-        else Toast.makeText(this, "Hay campos sin rellenar", Toast.LENGTH_SHORT).show();
+        else Toast.makeText(this, "Hay campos sin rellenar", Toast.LENGTH_LONG).show();
 
     }
 }

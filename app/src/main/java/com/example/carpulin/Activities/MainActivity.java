@@ -77,8 +77,8 @@ public class MainActivity extends AppCompatActivity{
                 }
             }
 
-            else Toast.makeText(this, "Seleccione una casilla que falte", Toast.LENGTH_SHORT).show();
-        } else Toast.makeText(this, "Ingrese Usuario y/o Contraseña", Toast.LENGTH_SHORT).show();
+            else Toast.makeText(this, "Seleccione una casilla que falte", Toast.LENGTH_LONG).show();
+        } else Toast.makeText(this, "Ingrese Usuario y/o Contraseña", Toast.LENGTH_LONG).show();
     }
 
     public void Registrar(View view){

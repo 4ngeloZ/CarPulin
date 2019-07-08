@@ -164,14 +164,14 @@ public class BuscarViajeActivity extends AppCompatActivity{
                 }
                 else {
                     til.setError(null);
-                    Toast.makeText(this, "No hay viajes que satisfagan su búsqueda", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "No hay viajes que satisfagan su búsqueda", Toast.LENGTH_LONG).show();
                 }
             }
             else
                 til.setError("Ingrese una fecha válida");
                 //Toast.makeText(this, "Fecha ingresada no es válida", Toast.LENGTH_SHORT).show();
         }
-        else Toast.makeText(this, "Ingrese origen, destino y número de plazas", Toast.LENGTH_SHORT).show();
+        else Toast.makeText(this, "Ingrese origen, destino y número de plazas", Toast.LENGTH_LONG).show();
     }
 
     public void onClick(View v) {

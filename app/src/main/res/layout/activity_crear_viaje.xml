@@ -1,396 +1,406 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView2"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-<android.support.constraint.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Activities.CrearViajeActivity">
+    android:layout_height="match_parent">
 
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".Activities.CrearViajeActivity">
 
-    <LinearLayout
-        android:id="@+id/CrearViajeActivity_Layout1"
-        android:layout_width="357dp"
-        android:layout_height="162dp"
-        android:layout_marginTop="16dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <fragment
-            android:id="@+id/frOrigen"
-            android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
-        <fragment
-            android:id="@+id/frDest"
-            android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
-        <EditText
-            android:id="@+id/CrearViajeActivity_plazas"
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0"
-            android:ems="10"
-            android:backgroundTint="#3F51B5"
-            android:hint="Plazas"
-            android:inputType="number" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/CrearViajeActivity_Layout2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CrearViajeActivity_Layout1">
-
-        <EditText
-            android:id="@+id/CrearViajeActivity_fechaInicio"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:backgroundTint="#3F51B5"
-            android:hint="Fecha Inicio"
-            android:inputType="date"
-            android:focusable="false"
-            android:clickable="true" />
-
-        <EditText
-            android:id="@+id/CrearViajeActivity_horaInicio"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:backgroundTint="#3F51B5"
-            android:hint="Hora Inicio"
-            android:inputType="time"
-            android:focusable="false"
-            android:clickable="true" />
-
-        <EditText
-            android:id="@+id/CrearViajeActivity_valorTotal"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:backgroundTint="#3F51B5"
-            android:hint="Valor Total"
-            android:inputType="number" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/CrearViajeActivity_Layout3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CrearViajeActivity_Layout2">
-
-        <EditText
-            android:id="@+id/CrearViajeActivity_fechaLlegada"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:backgroundTint="#3F51B5"
-            android:hint=" Fecha Llegada"
-            android:inputType="date"
-            android:focusable="false"
-            android:clickable="true" />
-
-        <EditText
-            android:id="@+id/CrearViajeActivity_horaLlegada"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:backgroundTint="#3F51B5"
-            android:hint="Hora Llegada"
-            android:inputType="time"
-            android:focusable="false"
-            android:clickable="true" />
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/CrearViajeActivity_menos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:onClick="ModificarParadas"
-        android:text="-"
-        android:textColor="#FFFFFF"
-        android:background="#323F8B"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/CrearViajeActivity_crear"
-        app:layout_constraintTop_toBottomOf="@+id/CrearViajeActivity_Layout3"
-        android:layout_marginRight="8dp" />
-
-    <Button
-        android:id="@+id/CrearViajeActivity_mas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:onClick="ModificarParadas"
-        android:text="+"
-        android:textColor="#FFFFFF"
-        android:background="#323F8B"
-        app:layout_constraintEnd_toStartOf="@+id/CrearViajeActivity_crear"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CrearViajeActivity_Layout3"
-        android:layout_marginLeft="8dp" />
-
-    <Button
-        android:id="@+id/CrearViajeActivity_crear"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:onClick="Crear"
-        android:textColor="#FFFFFF"
-        android:background="#323F8B"
-        android:text="Crear"
-        app:layout_constraintEnd_toStartOf="@+id/CrearViajeActivity_menos"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/CrearViajeActivity_mas"
-        app:layout_constraintTop_toBottomOf="@+id/CrearViajeActivity_Layout3" />
-
-    <LinearLayout
-        android:id="@+id/CrearViajeActivity_LayoutParada1"
-        android:layout_width="360dp"
-        android:layout_height="89dp"
-        android:layout_marginTop="16dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CrearViajeActivity_crear">
-
-        <fragment
-            android:id="@+id/CrearViajeActivity_parada1"
-            android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:ems="10" />
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:id="@+id/CrearViajeActivity_Layout1"
+            android:layout_width="357dp"
+            android:layout_height="162dp"
+            android:layout_marginTop="32dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <EditText
-                android:id="@+id/CrearViajeActivity_fecha1"
-                android:layout_width="100dp"
+            <fragment
+                android:id="@+id/frOrigen"
+                android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:clickable="true"
-                android:ems="10"
-                android:backgroundTint="#3F51B5"
-                android:focusable="false"
-                android:hint="Fecha"
-                android:inputType="date" />
+                android:layout_weight="1" />
 
-            <EditText
-                android:id="@+id/CrearViajeActivity_hora1"
-                android:layout_width="100dp"
+            <fragment
+                android:id="@+id/frDest"
+                android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:clickable="true"
-                android:ems="10"
-                android:backgroundTint="#3F51B5"
-                android:focusable="false"
-                android:hint="Hora"
-                android:inputType="time" />
+                android:layout_weight="1" />
 
             <EditText
-                android:id="@+id/CrearViajeActivity_valor1"
+                android:id="@+id/CrearViajeActivity_plazas"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
-                android:ems="10"
+                android:layout_weight="0"
                 android:backgroundTint="#3F51B5"
-                android:hint="Valor"
+                android:ems="10"
+                android:hint="Plazas"
                 android:inputType="number" />
         </LinearLayout>
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/CrearViajeActivity_LayoutParada2"
-        android:layout_width="360dp"
-        android:layout_height="89dp"
-        android:layout_marginTop="16dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CrearViajeActivity_LayoutParada1">
-
-        <fragment
-            android:id="@+id/CrearViajeActivity_parada2"
-            android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"/>
         <LinearLayout
-            android:layout_width="match_parent"
+            android:id="@+id/CrearViajeActivity_Layout2"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/CrearViajeActivity_Layout1">
 
+            <EditText
+                android:id="@+id/CrearViajeActivity_fechaInicio"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#3F51B5"
+                android:clickable="true"
+                android:ems="10"
+                android:focusable="false"
+                android:hint="Fecha Inicio"
+                android:inputType="date" />
 
-        <EditText
-            android:id="@+id/CrearViajeActivity_fecha2"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Fecha"
-            android:backgroundTint="#3F51B5"
-            android:inputType="date"
-            android:focusable="false"
-            android:clickable="true" />
+            <EditText
+                android:id="@+id/CrearViajeActivity_horaInicio"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#3F51B5"
+                android:clickable="true"
+                android:ems="10"
+                android:focusable="false"
+                android:hint="Hora Inicio"
+                android:inputType="time" />
 
-        <EditText
-            android:id="@+id/CrearViajeActivity_hora2"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:backgroundTint="#3F51B5"
-            android:hint="Hora"
-            android:inputType="time"
-            android:focusable="false"
-            android:clickable="true" />
-
-        <EditText
-            android:id="@+id/CrearViajeActivity_valor2"
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:backgroundTint="#3F51B5"
-            android:hint="Valor"
-            android:inputType="number" />
+            <EditText
+                android:id="@+id/CrearViajeActivity_valorTotal"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#3F51B5"
+                android:ems="10"
+                android:hint="Valor Total"
+                android:inputType="number" />
         </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/CrearViajeActivity_LayoutParada3"
-        android:layout_width="360dp"
-        android:layout_height="89dp"
-        android:layout_marginTop="16dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CrearViajeActivity_LayoutParada2">
-
-        <fragment
-            android:id="@+id/CrearViajeActivity_parada3"
-            android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-        <EditText
-            android:id="@+id/CrearViajeActivity_fecha3"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:backgroundTint="#3F51B5"
-            android:hint="Fecha"
-            android:inputType="date"
-            android:focusable="false"
-            android:clickable="true" />
-
-        <EditText
-            android:id="@+id/CrearViajeActivity_hora3"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:backgroundTint="#3F51B5"
-            android:hint="Hora"
-            android:inputType="time"
-            android:focusable="false"
-            android:clickable="true" />
-
-        <EditText
-            android:id="@+id/CrearViajeActivity_valor3"
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0"
-            android:ems="10"
-            android:backgroundTint="#3F51B5"
-            android:hint="Valor"
-            android:inputType="number" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/CrearViajeActivity_LayoutParada4"
-        android:layout_width="360dp"
-        android:layout_height="89dp"
-        android:layout_marginTop="16dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CrearViajeActivity_LayoutParada3">
-
-        <fragment
-            android:id="@+id/CrearViajeActivity_parada4"
-            android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"/>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:id="@+id/CrearViajeActivity_Layout3"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-        <EditText
-            android:id="@+id/CrearViajeActivity_fecha4"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:backgroundTint="#3F51B5"
-            android:hint="Fecha"
-            android:inputType="date"
-            android:focusable="false"
-            android:clickable="true" />
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/CrearViajeActivity_Layout2">
 
-        <EditText
-            android:id="@+id/CrearViajeActivity_hora4"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:backgroundTint="#3F51B5"
-            android:hint="Hora"
-            android:inputType="time"
-            android:focusable="false"
-            android:clickable="true" />
+            <EditText
+                android:id="@+id/CrearViajeActivity_fechaLlegada"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#3F51B5"
+                android:clickable="true"
+                android:ems="10"
+                android:focusable="false"
+                android:hint=" Fecha Llegada"
+                android:inputType="date" />
 
-        <EditText
-            android:id="@+id/CrearViajeActivity_valor4"
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:backgroundTint="#3F51B5"
-            android:hint="Valor"
-            android:inputType="number" />
+            <EditText
+                android:id="@+id/CrearViajeActivity_horaLlegada"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#3F51B5"
+                android:clickable="true"
+                android:ems="10"
+                android:focusable="false"
+                android:hint="Hora Llegada"
+                android:inputType="time" />
         </LinearLayout>
-    </LinearLayout>
 
-</android.support.constraint.ConstraintLayout>
+        <Button
+            android:id="@+id/CrearViajeActivity_menos"
+            android:layout_width="73dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="56dp"
+            android:layout_marginRight="56dp"
+            android:layout_marginBottom="8dp"
+            android:background="#323F8B"
+            android:onClick="ModificarParadas"
+            android:text="-"
+            android:textColor="#FFFFFF"
+            android:textSize="36sp"
+            app:layout_constraintBottom_toTopOf="@+id/CrearViajeActivity_LayoutParada1"
+            app:layout_constraintEnd_toStartOf="@+id/CrearViajeActivity_crear"
+            app:layout_constraintTop_toBottomOf="@+id/CrearViajeActivity_Layout3" />
+
+        <Button
+            android:id="@+id/CrearViajeActivity_mas"
+            android:layout_width="73dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="#323F8B"
+            android:onClick="ModificarParadas"
+            android:text="+"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toTopOf="@+id/CrearViajeActivity_LayoutParada1"
+            app:layout_constraintEnd_toStartOf="@+id/CrearViajeActivity_menos"
+            app:layout_constraintHorizontal_bias="0.088"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/CrearViajeActivity_Layout3" />
+
+        <Button
+            android:id="@+id/CrearViajeActivity_crear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginRight="24dp"
+            android:background="#323F8B"
+            android:onClick="Crear"
+            android:text="Crear"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/CrearViajeActivity_Layout3" />
+
+        <LinearLayout
+            android:id="@+id/CrearViajeActivity_LayoutParada1"
+            android:layout_width="360dp"
+            android:layout_height="89dp"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/CrearViajeActivity_crear">
+
+            <fragment
+                android:id="@+id/CrearViajeActivity_parada1"
+                android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:ems="10" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/CrearViajeActivity_fecha1"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#3F51B5"
+                    android:clickable="true"
+                    android:ems="10"
+                    android:focusable="false"
+                    android:hint="Fecha"
+                    android:inputType="date" />
+
+                <EditText
+                    android:id="@+id/CrearViajeActivity_hora1"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#3F51B5"
+                    android:clickable="true"
+                    android:ems="10"
+                    android:focusable="false"
+                    android:hint="Hora"
+                    android:inputType="time" />
+
+                <EditText
+                    android:id="@+id/CrearViajeActivity_valor1"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#3F51B5"
+                    android:ems="10"
+                    android:hint="Valor"
+                    android:inputType="number" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/CrearViajeActivity_LayoutParada2"
+            android:layout_width="360dp"
+            android:layout_height="89dp"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/CrearViajeActivity_LayoutParada1">
+
+            <fragment
+                android:id="@+id/CrearViajeActivity_parada2"
+                android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <EditText
+                    android:id="@+id/CrearViajeActivity_fecha2"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#3F51B5"
+                    android:clickable="true"
+                    android:ems="10"
+                    android:focusable="false"
+                    android:hint="Fecha"
+                    android:inputType="date" />
+
+                <EditText
+                    android:id="@+id/CrearViajeActivity_hora2"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#3F51B5"
+                    android:clickable="true"
+                    android:ems="10"
+                    android:focusable="false"
+                    android:hint="Hora"
+                    android:inputType="time" />
+
+                <EditText
+                    android:id="@+id/CrearViajeActivity_valor2"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#3F51B5"
+                    android:ems="10"
+                    android:hint="Valor"
+                    android:inputType="number" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/CrearViajeActivity_LayoutParada3"
+            android:layout_width="360dp"
+            android:layout_height="89dp"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/CrearViajeActivity_LayoutParada2">
+
+            <fragment
+                android:id="@+id/CrearViajeActivity_parada3"
+                android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/CrearViajeActivity_fecha3"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#3F51B5"
+                    android:clickable="true"
+                    android:ems="10"
+                    android:focusable="false"
+                    android:hint="Fecha"
+                    android:inputType="date" />
+
+                <EditText
+                    android:id="@+id/CrearViajeActivity_hora3"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#3F51B5"
+                    android:clickable="true"
+                    android:ems="10"
+                    android:focusable="false"
+                    android:hint="Hora"
+                    android:inputType="time" />
+
+                <EditText
+                    android:id="@+id/CrearViajeActivity_valor3"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:backgroundTint="#3F51B5"
+                    android:ems="10"
+                    android:hint="Valor"
+                    android:inputType="number" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/CrearViajeActivity_LayoutParada4"
+            android:layout_width="360dp"
+            android:layout_height="89dp"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/CrearViajeActivity_LayoutParada3">
+
+            <fragment
+                android:id="@+id/CrearViajeActivity_parada4"
+                android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/CrearViajeActivity_fecha4"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#3F51B5"
+                    android:clickable="true"
+                    android:ems="10"
+                    android:focusable="false"
+                    android:hint="Fecha"
+                    android:inputType="date" />
+
+                <EditText
+                    android:id="@+id/CrearViajeActivity_hora4"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#3F51B5"
+                    android:clickable="true"
+                    android:ems="10"
+                    android:focusable="false"
+                    android:hint="Hora"
+                    android:inputType="time" />
+
+                <EditText
+                    android:id="@+id/CrearViajeActivity_valor4"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#3F51B5"
+                    android:ems="10"
+                    android:hint="Valor"
+                    android:inputType="number" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </android.support.constraint.ConstraintLayout>
 </ScrollView>

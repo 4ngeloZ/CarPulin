@@ -42,7 +42,7 @@ public class ModPasswordConductorActivity extends AppCompatActivity {
                     conductor.setPassword(str_CActual);
                     ContentValues registro = new ContentValues();
                     registro.put("contraseña", str_CNueva);
-                    Toast.makeText(this, "Cambio de contraseña exitoso", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Cambio de contraseña exitoso", Toast.LENGTH_LONG).show();
 
             }
         }

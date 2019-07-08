@@ -18,6 +18,7 @@ import com.example.carpulin.R;
 public class  AgregarVehiculoActivity extends AppCompatActivity {
     private EditText marca, modelo, patente, asientos, año;
     private Button modificar;
+    private TextView usuario;
     private Conductor conductor;
     private Vehiculo vehiculo;
 
@@ -35,6 +36,7 @@ public class  AgregarVehiculoActivity extends AppCompatActivity {
         patente = (EditText)findViewById(R.id.editTextPatente);
         asientos= (EditText)findViewById(R.id.editTextAsiento);
         año = (EditText)findViewById(R.id.editTextAño);
+        usuario = (TextView)findViewById(R.id.textViewUsername);
         modificar =(Button) findViewById(R.id.button4);
 
         marca.setText(vehiculo.getMarca());
@@ -42,6 +44,7 @@ public class  AgregarVehiculoActivity extends AppCompatActivity {
         patente.setText(vehiculo.getPatente());
         asientos.setText(Integer.toString(vehiculo.getAsientos()));
         año.setText(Integer.toString(vehiculo.getAño()));
+        usuario.setText(conductor.getUsername());
 
     }
 
@@ -69,13 +72,13 @@ public class  AgregarVehiculoActivity extends AppCompatActivity {
            vehiculo.setAsientos(int_asientos);
            vehiculo.setAño(int_sño);
 
-                Toast.makeText(this, "Modificacion exitosa", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Vehiculo Agregado", Toast.LENGTH_LONG).show();
           //  super.finish();
         }
 
 
         else {
-            Toast.makeText(this, "Debes llenar todos los campos", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Debes llenar todos los campos", Toast.LENGTH_LONG).show();
         }
     }
 

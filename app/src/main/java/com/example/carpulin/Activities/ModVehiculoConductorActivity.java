@@ -73,7 +73,7 @@ public class ModVehiculoConductorActivity extends AppCompatActivity {
 
 
         else {
-            Toast.makeText(this, "Debes llenar todos los campos", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Debes llenar todos los campos", Toast.LENGTH_LONG).show();
         }
     }
 
