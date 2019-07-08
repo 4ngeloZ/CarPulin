@@ -31,6 +31,7 @@ public class ConductorActivity extends AppCompatActivity implements NavigationVi
     private TextView HeaderConductor_username;
     private TextView HeaderConductor_nombre;
     private ImageView HeaderConductor_foto;
+    private TextView usuario;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,10 +64,20 @@ public class ConductorActivity extends AppCompatActivity implements NavigationVi
         HeaderConductor_nombre.setText(conductor.getNombre());
         HeaderConductor_foto.setImageResource(R.drawable.user);
 
+        usuario = (TextView)findViewById(R.id.textViewUSUARIO);
+
+
+
+        usuario.setText("Bienvenido conductor: " + conductor.getUsername());
+
 
 
     }
-
+    public void Crearviaje (View view){
+        Intent CrearViajeActivity= new Intent(this, CrearViajeActivity.class);
+        CrearViajeActivity.putExtra("conductor_entidad", conductor);
+        startActivity(CrearViajeActivity);
+    }
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

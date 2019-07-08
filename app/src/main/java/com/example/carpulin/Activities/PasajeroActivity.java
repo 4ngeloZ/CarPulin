@@ -30,6 +30,7 @@ import com.example.carpulin.R;
 public class PasajeroActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private Pasajero pasajero;
+    private TextView username;
     private TextView HeaderPasajero_username;
     private TextView HeaderPasajero_nombre;
     private ImageView HeaderPasajero_foto;
@@ -65,8 +66,15 @@ public class PasajeroActivity extends AppCompatActivity implements NavigationVie
         HeaderPasajero_username.setText(pasajero.getUsername());
         HeaderPasajero_nombre.setText(pasajero.getNombre());
         HeaderPasajero_foto.setImageResource(R.drawable.user);
+        username = (TextView)findViewById(R.id.textView3);
+        username.setText("Bienvenido pasajero: "+ pasajero.getUsername());
     }
+    public void BuscarViaje(View view){
+        Intent BuscarViajeActivity = new Intent(this, BuscarViajeActivity.class);
+        BuscarViajeActivity.putExtra("pasajero_entidad", pasajero);
+        startActivity(BuscarViajeActivity);
 
+    }
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

@@ -32,11 +32,12 @@ public class PerfilVehiculoActivity extends AppCompatActivity {
 
 
 
-        marca.setText(vehiculo.getMarca());
-        modelo.setText(vehiculo.getModelo());
-        patente.setText(vehiculo.getPatente());
-        asientos.setText(Integer.toString(vehiculo.getAsientos()));
-        year.setText(Integer.toString(vehiculo.getAño()));
+
+        marca.setText("Marca: "+vehiculo.getMarca());
+        modelo.setText("Modelo: "+vehiculo.getModelo());
+        patente.setText("Patente: "+vehiculo.getPatente());
+        asientos.setText("Asientos: "+Integer.toString(vehiculo.getAsientos()));
+        year.setText("Año: "+Integer.toString(vehiculo.getAño()));
 /*
 
 

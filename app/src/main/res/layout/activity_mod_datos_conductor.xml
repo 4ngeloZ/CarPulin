@@ -14,10 +14,11 @@
         android:layout_marginStart="56dp"
         android:layout_marginLeft="56dp"
         android:layout_marginTop="8dp"
+        android:backgroundTint="#3F51B5"
         android:ems="10"
         android:inputType="textPersonName"
-        android:backgroundTint="#3F51B5"
         android:text="Agregar prestaciones adicionales"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/telefono" />
 
@@ -27,11 +28,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
         android:layout_marginLeft="56dp"
-        android:layout_marginTop="44dp"
-        android:ems="10"
+        android:layout_marginTop="32dp"
         android:backgroundTint="#3F51B5"
+        android:ems="10"
         android:inputType="textPersonName"
         android:text="Nombre"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewUsuario" />
 
@@ -40,12 +42,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
-        android:backgroundTint="#3F51B5"
         android:layout_marginLeft="56dp"
         android:layout_marginTop="8dp"
+        android:backgroundTint="#3F51B5"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="RUN"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextNombre" />
 
@@ -55,11 +58,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
         android:layout_marginLeft="56dp"
-        android:backgroundTint="#3F51B5"
         android:layout_marginTop="8dp"
+        android:backgroundTint="#3F51B5"
         android:ems="10"
         android:inputType="textEmailAddress"
         android:text="E-mail"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextRUN" />
 
@@ -70,26 +74,28 @@
         android:layout_marginStart="56dp"
         android:layout_marginLeft="56dp"
         android:layout_marginTop="8dp"
+        android:backgroundTint="#3F51B5"
         android:ems="10"
         android:inputType="phone"
-        android:backgroundTint="#3F51B5"
         android:text="Telefono"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextMail" />
 
     <Button
         android:id="@+id/button"
-        android:layout_width="144dp"
-        android:layout_height="62dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="44dp"
+        android:layout_width="140dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="112dp"
+        android:layout_marginLeft="112dp"
+        android:layout_marginTop="36dp"
         android:background="#323F8B"
-        android:textColor="#FFFFFF"
         android:onClick="Actualizar"
         android:shadowColor="#2196F3"
         android:text="Guardar"
+        android:textColor="#FFFFFF"
         android:textColorHighlight="#2196F3"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextPresAd" />
 
@@ -97,10 +103,11 @@
         android:id="@+id/textViewUsuario"
         android:layout_width="117dp"
         android:layout_height="46dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginLeft="60dp"
-        android:layout_marginTop="104dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="80dp"
         android:text="Usuario"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

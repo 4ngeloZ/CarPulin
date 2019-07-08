@@ -36,12 +36,12 @@ public class PerfilConductorActivity extends AppCompatActivity {
       //  Toast.makeText(this, conductor.getCorreo(), Toast.LENGTH_SHORT).show();
 
 
-        usuario.setText(conductor.getUsername());
-        nombre.setText(conductor.getNombre());
-        run.setText(conductor.getRut());
-        telefono.setText(conductor.getTelefono());
-        mail.setText(conductor.getCorreo());
-        p.setText(conductor.getPreferences());
+        usuario.setText("Usuario: "+ conductor.getUsername());
+        nombre.setText("Nombre: "+ conductor.getNombre());
+        run.setText("Run: " + conductor.getRut());
+        telefono.setText("Telefono: "+conductor.getTelefono());
+        mail.setText("Mail: "+conductor.getCorreo());
+        p.setText("Preferencias: "+conductor.getPreferences());
 
 
     }
