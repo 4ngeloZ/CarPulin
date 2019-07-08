@@ -504,8 +504,9 @@ public class CrearViajeActivity extends AppCompatActivity implements View.OnClic
             if(strDate4!=null && strDateL!=null){
                 if(strDate4.after(strDateL)) fecha_compatible=false;
             }
-
-            if(new Date().after(strDatei) || strDatei.after(strDateL)) {
+            Date tomorrow = new Date();
+            tomorrow.setTime(strDatei.getTime()+86400000);
+            if(new Date().after(strDatei) || strDatei.after(strDateL) || strDateL.after(tomorrow)) {
                 fecha_compatible = false;
             }
             if(fecha_compatible){
