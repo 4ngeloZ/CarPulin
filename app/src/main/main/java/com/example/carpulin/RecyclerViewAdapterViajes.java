@@ -58,7 +58,7 @@ public class RecyclerViewAdapterViajes extends RecyclerView.Adapter<RecyclerView
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.conductor.setText("Conductor: " + listaViajes.get(position).getConductor());
+        holder.conductor.setText("ConductorResponse: " + listaViajes.get(position).getConductor());
         holder.recorrido.setText("Origen: " + listaViajes.get(position).getOrigen() + " | Destino: " + listaViajes.get(position).getDestino());
         holder.horario.setText("Fecha: " + listaViajes.get(position).getFecha() + " | Hora: " + listaViajes.get(position).getHora());
         holder.plazas.setText("Plazas: " + listaViajes.get(position).getPlazas() + " | Valor por plazas: " + calcularPrecio(position, listaViajes.get(position).getTipoviaje()));

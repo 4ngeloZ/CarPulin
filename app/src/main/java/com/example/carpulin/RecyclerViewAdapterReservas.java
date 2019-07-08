@@ -51,7 +51,7 @@ public class RecyclerViewAdapterReservas extends RecyclerView.Adapter<RecyclerVi
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.pasajero.setText("Pasajero: " + listaReservas.get(position).getPasajero());
+        holder.pasajero.setText("PasajeroResponse: " + listaReservas.get(position).getPasajero());
         holder.viaje.setText("Viaje -> Origen: " + listaReservas.get(position).getOrigenViaje() + " | Destino: " + listaReservas.get(position).getDestinoViaje());
         holder.reserva.setText("Reserva -> Origen: " + listaReservas.get(position).getOrigenReserva() + " | Destino: " + listaReservas.get(position).getDestinoReserva());
         holder.horario.setText("Fecha: " + listaReservas.get(position).getFecha() + " | Hora: " + listaReservas.get(position).getHora());

@@ -29,7 +29,7 @@ public class DBQueries {
                 db.close();
                 return true;
             } else if (!comingback)Toast.makeText(context, "Contraseña Incorrecta", Toast.LENGTH_SHORT).show();
-        } else if (!comingback)Toast.makeText(context, "No se encuentra registrado como Conductor", Toast.LENGTH_SHORT).show();
+        } else if (!comingback)Toast.makeText(context, "No se encuentra registrado como ConductorResponse", Toast.LENGTH_SHORT).show();
         db.close();
         return false;
     }
@@ -44,7 +44,7 @@ public class DBQueries {
                 db.close();
                 return true;
             } else if (!comingback)Toast.makeText(context, "Contraseña Incorrecta", Toast.LENGTH_SHORT).show();
-        } else if(!comingback)Toast.makeText(context, "No se encuentra registrado como Pasajero", Toast.LENGTH_SHORT).show();
+        } else if(!comingback)Toast.makeText(context, "No se encuentra registrado como PasajeroResponse", Toast.LENGTH_SHORT).show();
         db.close();
         return false;
     }

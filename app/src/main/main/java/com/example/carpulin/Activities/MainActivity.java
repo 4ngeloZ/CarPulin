@@ -88,8 +88,8 @@ public class MainActivity extends AppCompatActivity{
 
     private void RecuperarDatos(){
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        conductor.setChecked(sharedPreferences.getBoolean("Conductor", false));
-        pasajero.setChecked(sharedPreferences.getBoolean("Pasajero", false));
+        conductor.setChecked(sharedPreferences.getBoolean("ConductorResponse", false));
+        pasajero.setChecked(sharedPreferences.getBoolean("PasajeroResponse", false));
         username.setText(sharedPreferences.getString("Username", ""));
         password.setText(sharedPreferences.getString("Password", ""));
         autoLogin=sharedPreferences.getBoolean("AutoLogin", false);
@@ -99,8 +99,8 @@ public class MainActivity extends AppCompatActivity{
     private void GuardarDatos(){
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putBoolean("Conductor", conductor.isChecked());
-        editor.putBoolean("Pasajero", pasajero.isChecked());
+        editor.putBoolean("ConductorResponse", conductor.isChecked());
+        editor.putBoolean("PasajeroResponse", pasajero.isChecked());
         editor.putString("Username", username.getText().toString());
         editor.putString("Password", password.getText().toString());
         editor.putBoolean("AutoLogin", true);

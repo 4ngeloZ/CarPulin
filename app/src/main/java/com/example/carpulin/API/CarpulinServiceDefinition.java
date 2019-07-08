@@ -2,7 +2,6 @@ package com.example.carpulin.API;
 
 import java.util.List;
 
-import okhttp3.Response;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -17,6 +16,12 @@ import com.example.carpulin.model.*;
 public interface CarpulinServiceDefinition {
     @GET("conductores/{conductor}/viajes")
     Call<List<Viaje>> getViajesDeConductor(@Path("conductor") String conductor);
+
+    @GET("conductores/{conductor}")
+    Call<ConductorResponse> getConductor(@Path("conductor") String conductor);
+
+    @GET("pasajeros/{pasajero}")
+    Call<PasajeroResponse> getPasajero(@Path("pasajero") String pasajero);
 
     @GET("viajes/{viajeid}/paradas")
     Call<List<Parada>> getParadasDeViaje(@Path("viajeid")int idViaje);
