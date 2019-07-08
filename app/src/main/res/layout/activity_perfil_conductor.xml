@@ -13,22 +13,23 @@
         android:layout_height="53dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="8dp"
+
         android:layout_marginRight="8dp"
         android:background="#323F8B"
         android:onClick="Modificar"
         android:text="Modificar Datos Conductor"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toStartOf="@+id/buttonVerVehiculo"
-        app:layout_constraintHorizontal_bias="0.583"
+        app:layout_constraintHorizontal_bias="0.714"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewP" />
 
     <TextView
         android:id="@+id/textViewUsuario"
-        android:layout_width="259dp"
-        android:layout_height="35dp"
+        android:layout_width="312dp"
+        android:layout_height="54dp"
         android:layout_marginStart="36dp"
         android:layout_marginLeft="36dp"
         android:layout_marginTop="60dp"
@@ -39,11 +40,11 @@
 
     <TextView
         android:id="@+id/textViewNombre"
-        android:layout_width="259dp"
-        android:layout_height="57dp"
+        android:layout_width="292dp"
+        android:layout_height="64dp"
         android:layout_marginStart="36dp"
         android:layout_marginLeft="36dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="12dp"
         android:text="Nombre"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,7 +56,6 @@
         android:layout_height="44dp"
         android:layout_marginStart="36dp"
         android:layout_marginLeft="36dp"
-        android:layout_marginTop="16dp"
         android:text="Telefono"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -63,8 +63,8 @@
 
     <TextView
         android:id="@+id/textViewMail"
-        android:layout_width="251dp"
-        android:layout_height="55dp"
+        android:layout_width="318dp"
+        android:layout_height="54dp"
         android:layout_marginStart="36dp"
         android:layout_marginLeft="36dp"
         android:layout_marginTop="8dp"
@@ -76,13 +76,13 @@
 
     <TextView
         android:id="@+id/textViewRun"
-        android:layout_width="258dp"
-        android:layout_height="44dp"
+        android:layout_width="316dp"
+        android:layout_height="34dp"
         android:layout_marginStart="36dp"
         android:layout_marginLeft="36dp"
         android:layout_marginTop="8dp"
-        android:text="RUN"
         android:backgroundTint="#3F51B5"
+        android:text="RUN"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewNombre" />
@@ -91,7 +91,7 @@
         android:id="@+id/buttonVerVehiculo"
         android:layout_width="165dp"
         android:layout_height="53dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:background="#323F8B"
@@ -107,7 +107,7 @@
         android:layout_height="51dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:background="#323F8B"
@@ -120,12 +120,12 @@
 
     <TextView
         android:id="@+id/textViewP"
-        android:layout_width="258dp"
-        android:layout_height="69dp"
+        android:layout_width="314dp"
+        android:layout_height="101dp"
         android:layout_marginStart="36dp"
         android:layout_marginLeft="36dp"
         android:layout_marginTop="8dp"
-        android:text="TextView"
+        android:hint="Preferencias"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewtelefono" />
