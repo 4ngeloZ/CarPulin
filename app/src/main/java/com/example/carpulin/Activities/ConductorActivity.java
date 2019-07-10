@@ -59,17 +59,7 @@ public class ConductorActivity extends AppCompatActivity implements NavigationVi
         HeaderConductor_foto.setImageResource(R.drawable.user);
         usuario = (TextView)findViewById(R.id.textViewUSUARIO);
 
-
-
-        usuario.setText(conductor.getUsername());
-
-        usuario = (TextView)findViewById(R.id.textViewUSUARIO);
-
-
-
         usuario.setText("Bienvenido conductor: " + conductor.getUsername());
-
-
 
     }
     public void Crearviaje (View view){
