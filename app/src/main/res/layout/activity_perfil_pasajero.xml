@@ -17,8 +17,8 @@
 
     <TextView
         android:id="@+id/PerfilPasajeroActivity_username"
-        android:layout_width="251dp"
-        android:layout_height="33dp"
+        android:layout_width="292dp"
+        android:layout_height="31dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="64dp"
@@ -34,8 +34,8 @@
 
     <TextView
         android:id="@+id/PerfilPasajeroActivity_nombre"
-        android:layout_width="241dp"
-        android:layout_height="30dp"
+        android:layout_width="296dp"
+        android:layout_height="32dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="20dp"
@@ -51,8 +51,8 @@
 
     <TextView
         android:id="@+id/PerfilPasajeroActivity_rut"
-        android:layout_width="245dp"
-        android:layout_height="33dp"
+        android:layout_width="300dp"
+        android:layout_height="32dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="20dp"
@@ -68,8 +68,8 @@
 
     <TextView
         android:id="@+id/PerfilPasajeroActivity_sexo"
-        android:layout_width="250dp"
-        android:layout_height="30dp"
+        android:layout_width="299dp"
+        android:layout_height="35dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="16dp"
@@ -86,8 +86,8 @@
 
     <TextView
         android:id="@+id/PerfilPasajeroActivity_correo"
-        android:layout_width="242dp"
-        android:layout_height="34dp"
+        android:layout_width="298dp"
+        android:layout_height="39dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="12dp"
@@ -97,14 +97,14 @@
         android:text="TextView"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.202"
+        app:layout_constraintHorizontal_bias="0.226"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/PerfilPasajeroActivity_sexo" />
 
     <TextView
         android:id="@+id/PerfilPasajeroActivity_telefono"
-        android:layout_width="242dp"
-        android:layout_height="31dp"
+        android:layout_width="300dp"
+        android:layout_height="28dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="16dp"
@@ -120,8 +120,8 @@
 
     <TextView
         android:id="@+id/PerfilPasajeroActivity_preferencias"
-        android:layout_width="250dp"
-        android:layout_height="100dp"
+        android:layout_width="296dp"
+        android:layout_height="88dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="28dp"

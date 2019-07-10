@@ -87,12 +87,16 @@
                 android:id="@+id/Reserva_aceptar"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
+                android:background="#323F8B"
                 android:onClick="AceptarReserva"
-                android:text="Aceptar" />
+                android:text="Aceptar"
+                android:textColor="#FFFFFF" />
 
             <Button
                 android:id="@+id/Reserva_rechazar"
                 android:layout_width="100dp"
+                android:background="#323F8B"
+                android:textColor="#FFFFFF"
                 android:layout_height="wrap_content"
                 android:onClick="RechazarReserva"
                 android:text="Rechazar" />
