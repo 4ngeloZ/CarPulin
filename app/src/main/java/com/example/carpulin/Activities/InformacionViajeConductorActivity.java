@@ -27,6 +27,8 @@ public class InformacionViajeConductorActivity extends AppCompatActivity {
     private int numparadas;
     private Conductor conductor;
     private Viaje viaje;
+    private TextView noreservas;
+    private TextView suben;
     private TextView parada1;
     private TextView parada2;
     private TextView parada3;
@@ -63,6 +65,10 @@ public class InformacionViajeConductorActivity extends AppCompatActivity {
         conductor = (Conductor)getIntent().getSerializableExtra("conductor_entidad");
         viaje = DBQueries.getfullViaje(idViaje, this);
         numparadas = getTipoViaje(viaje);
+
+        noreservas = (TextView)findViewById(R.id.InformacionViajeCActivitynoreservas);
+        suben = (TextView)findViewById(R.id.textView7);
+        noreservas.setVisibility(View.INVISIBLE);
 
         fila1 = (TableRow) findViewById(R.id.InformacionViajeCActivity_Parada1);
         fila2 = (TableRow)findViewById(R.id.InformacionViajeCActivity_Parada2);
@@ -171,6 +177,11 @@ public class InformacionViajeConductorActivity extends AppCompatActivity {
             parada6.setText(viaje.getDestino());
             fecha6.setText(viaje.getFechaLlegada());
             hora6.setText(viaje.getHoraLlegada());
+        }
+
+        if(DBQueries.getMisReservasViaje(conductor.getUsername(),idViaje,this).isEmpty()) {
+            suben.setVisibility(View.INVISIBLE);
+            noreservas.setVisibility(View.VISIBLE);
         }
 
         recyclerViewPasajerosSubir = (RecyclerView)findViewById(R.id.RecyclerReservasViajeSubir);
