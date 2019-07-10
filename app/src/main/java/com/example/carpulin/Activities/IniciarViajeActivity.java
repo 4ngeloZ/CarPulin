@@ -74,6 +74,10 @@ public class IniciarViajeActivity extends AppCompatActivity {
         if(terminar) boton.setText("Terminar");
     }
 
+    @Override
+    public void onBackPressed(){
+    }
+
     public void continuar(View view){
         if(terminar){
             DBQueries.terminarViaje(viaje.getId(),this);

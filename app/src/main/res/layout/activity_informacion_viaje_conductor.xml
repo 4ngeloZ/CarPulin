@@ -216,17 +216,29 @@
         app:layout_constraintTop_toBottomOf="@+id/RecyclerReservasViajeSubir" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/InformacionViajeCActivitynoreservas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="60dp"
         android:text="No existen reservas aceptadas para el viaje"
         app:layout_constraintEnd_toEndOf="@+id/RecyclerReservasViajeSubir"
         app:layout_constraintHorizontal_bias="0.471"
         app:layout_constraintStart_toStartOf="@+id/RecyclerReservasViajeSubir"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout1" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Paradas:"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
 
