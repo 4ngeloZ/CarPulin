@@ -1,17 +1,27 @@
 package com.example.carpulin.Activities;
 
 import android.content.ContentValues;
+import android.content.Context;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import com.example.carpulin.API.CarpulinService;
 import com.example.carpulin.DB.AdminSQLiteOpenHelper;
 import com.example.carpulin.DB.DBQueries;
 import com.example.carpulin.R;
+import com.example.carpulin.model.LoginResponse;
+import com.example.carpulin.model.RegisterData;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class RegistroActivity extends AppCompatActivity {
 
@@ -52,7 +62,7 @@ public class RegistroActivity extends AppCompatActivity {
 
     }
 
-    public void Registrar(View view){
+    public void Registrar(View view) throws InterruptedException {
         String str_nombre = nombre.getText().toString();
         String str_apellidoPaterno = apellidoPaterno.getText().toString();
         String str_apellidoMaterno = apellidoMaterno.getText().toString();
@@ -64,9 +74,6 @@ public class RegistroActivity extends AppCompatActivity {
         String str_rut1 = rut1.getText().toString();
         String str_rut2 = rut2.getText().toString();
 
-        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "db", null, 1);
-        SQLiteDatabase db = admin.getWritableDatabase();
-
         if(!str_nombre.isEmpty() && !str_apellidoPaterno.isEmpty()
                 && !str_apellidoMaterno.isEmpty() && !str_username.isEmpty()
                 && !str_password1.isEmpty() && !str_password2.isEmpty()
@@ -74,46 +81,20 @@ public class RegistroActivity extends AppCompatActivity {
                 && !str_rut1.isEmpty() && !str_rut2.isEmpty()){
             if((hombre.isChecked() || mujer.isChecked()) && (conductor.isChecked() || pasajero.isChecked())){
                 if(str_password1.compareTo(str_password2)==0){
-                    ContentValues values = new ContentValues();
-                    if(conductor.isChecked()) {
-                        values.put("username", str_username);
-                        values.put("nombre", str_nombre + " " + str_apellidoPaterno + " " + str_apellidoMaterno);
-                        values.put("password", str_password1);
-                        values.put("correo", str_correo);
-                        values.put("telefono", str_telefono);
-                        values.put("rut", str_rut1 + "-" + str_rut2);
-                        if(hombre.isChecked())values.put("sexo", "Masculino");
-                        else values.put("sexo", "Femenino");
-
-                        if(!DBQueries.isConductorRegistrado(str_username, this)){
-                            db.insert("conductor", null, values);
-                            ContentValues v = new ContentValues();
-                            v.put("username", str_username );
-                            db.insert("vehiculo", null, v);
-                            Toast.makeText(this, "Registro Exitoso", Toast.LENGTH_LONG).show();
-                            this.finish();
-                        }
-                        else Toast.makeText(this, "Nombre de usuario no disponible", Toast.LENGTH_LONG).show();
-                        db.close();
-                    }
-                    else{
-                        values.put("username", str_username);
-                        values.put("nombre", str_nombre + " " + str_apellidoPaterno + " " + str_apellidoMaterno);
-                        values.put("password", str_password1);
-                        values.put("correo", str_correo);
-                        values.put("telefono", str_telefono);
-                        values.put("rut", str_rut1 + "-" + str_rut2);
-                        if(hombre.isChecked())values.put("sexo", "Masculino");
-                        else values.put("sexo", "Femenino");
-
-                        if(!DBQueries.isPasajeroRegistrado(str_username, this)){
-                            db.insert("pasajero", null, values);
-                            Toast.makeText(this, "Registro Exitoso", Toast.LENGTH_LONG).show();
-                            this.finish();
-                        }
-                        else Toast.makeText(this, "Nombre de usuario no disponible", Toast.LENGTH_LONG).show();
-                        db.close();
-                    }
+                    RegisterData values = new RegisterData();
+                    values.setUsername(str_username);
+                    values.setNombre(str_nombre);
+                    values.setApellido(str_apellidoPaterno + " " + str_apellidoMaterno);
+                    values.setPassword(str_password1);
+                    values.setMail(str_correo);
+                    values.setTelefono(str_telefono);
+                    values.setRut(str_rut1 + "-" + str_rut2);
+                    if(hombre.isChecked())values.setSexo("Hombre");
+                    else values.setSexo("Mujer");
+                    if (conductor.isChecked()) values.setConductor(true);
+                    else values.setConductor(false);
+                    sendRegistro(values);
+                    this.finish();
                 }
                 else Toast.makeText(this,"Las contraseñas no coinciden", Toast.LENGTH_LONG).show();
             }
@@ -121,5 +102,41 @@ public class RegistroActivity extends AppCompatActivity {
         }
         else Toast.makeText(this, "Hay campos sin rellenar", Toast.LENGTH_LONG).show();
 
+    }
+
+    private void sendRegistro(final RegisterData data){
+        Call<LoginResponse> call = CarpulinService.getService(this).registrar(data);
+        final Context ctx = this;
+        call.enqueue(new Callback<LoginResponse>() {
+            @Override
+            public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+
+                if(response.code() == 200 && response.body().getValido()){
+                    CharSequence text = "Registro exitoso";
+                    int duration = Toast.LENGTH_SHORT;
+                    Toast toast = Toast.makeText(ctx, text, duration);
+                    toast.show();
+                    Log.d("REGISTRO", "REGISTRO EXISTOSO" + response.body().getValido());
+
+                }
+                else{
+                    CharSequence text = "Fallo el registro, usuario ya registrado";
+                    int duration = Toast.LENGTH_SHORT;
+                    Toast toast = Toast.makeText(ctx, text, duration);
+                    toast.show();
+                    Log.d("REGISTRO", "FALLO REGISTRO " + response.body().getValido());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<LoginResponse> call, Throwable t) {
+                Context context = getApplicationContext();
+                CharSequence text = "Hubo un error en el registro, probablemente no tenga internet";
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+                Log.d("REGISTRO", "REGISTRO CRASHED");
+            }
+        });
     }
 }

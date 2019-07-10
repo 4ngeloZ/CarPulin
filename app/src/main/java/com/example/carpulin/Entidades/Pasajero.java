@@ -11,6 +11,7 @@ public class Pasajero implements Serializable {
     private String rut;
     private String sexo;
     private String preferencias;
+
     public Pasajero(String username, String nombre, String password, String correo, String telefono, String rut, String sexo, String preferencias){
         this.username=username;
         this.nombre=nombre;

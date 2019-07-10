@@ -25,6 +25,9 @@ public class ConductorResponse implements Serializable {
     @SerializedName("descripcion")
     private String descripcion;
 
+    @SerializedName("sexo")
+    private String sexo;
+
     @SerializedName("fechaLicencia")
     private String fechaLicencia;
 
@@ -57,5 +60,9 @@ public class ConductorResponse implements Serializable {
     }
     public String getClaseLicencia(){
         return claseLicencia;
+    }
+
+    public String getSexo() {
+        return sexo;
     }
 }

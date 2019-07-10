@@ -59,6 +59,9 @@ public interface CarpulinServiceDefinition {
     @POST("login")
     Call<LoginResponse> login(@Body UserData data);
 
+    @POST("registro")
+    Call<LoginResponse> registrar(@Body RegisterData data);
+
     @GET("viajes/{viajeid}/precio")
     Call<Precio> getPrecio(@Path("viajeid") int viajeid, @Query("origen")String origen, @Query("destino") String destino);
 

@@ -26,6 +26,10 @@ public class PasajeroResponse implements Serializable{
     @SerializedName("descripcion")
     private String descripcion;
 
+    @SerializedName("sexo")
+    private String sexo;
+
+
     public String getNombre(){
         return nombre;
     }
@@ -46,5 +50,8 @@ public class PasajeroResponse implements Serializable{
     }
     public String getDescripcion(){
         return descripcion;
+    }
+    public String getSexo() {
+        return sexo;
     }
 }

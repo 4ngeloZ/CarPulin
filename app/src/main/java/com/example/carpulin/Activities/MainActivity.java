@@ -159,15 +159,17 @@ public class MainActivity extends AppCompatActivity{
         call.enqueue(new Callback<ConductorResponse>() {
             @Override
             public void onResponse(Call<ConductorResponse> call, Response<ConductorResponse> response) {
-                conduc = new Conductor(response.body().getUsername(),
-                        response.body().getNombre() + " " + response.body().getApellido(),
-                        "password",
-                        response.body().getMail(),
-                        response.body().getTelefono(),
-                        response.body().getRut(),
-                        "HM",
-                        response.body().getDescripcion());
-                Log.i("Conductor", "getCond exitoso");
+                if(response.code() == 200 && response.body() != null) {
+                    conduc = new Conductor(response.body().getUsername(),
+                            response.body().getNombre() + " " + response.body().getApellido(),
+                            "password",
+                            response.body().getMail(),
+                            response.body().getTelefono(),
+                            response.body().getRut(),
+                            response.body().getSexo(),
+                            response.body().getDescripcion());
+                    Log.i("Conductor", "getCond exitoso");
+                }
             }
 
             @Override
@@ -196,7 +198,7 @@ public class MainActivity extends AppCompatActivity{
                             response.body().getMail(),
                             response.body().getTelefono(),
                             response.body().getRut(),
-                            "HM",
+                            response.body().getSexo(),
                             response.body().getDescripcion());
                     Log.i("Pasajero", "getPass exitoso");
                 }else if(response.code() != 200){
