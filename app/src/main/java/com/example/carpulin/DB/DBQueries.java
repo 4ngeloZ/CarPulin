@@ -136,21 +136,21 @@ public class DBQueries {
         int int_plazas = Integer.parseInt(plazas);
 
         List<String> queries = new ArrayList<>();
-        queries.add("SELECT * FROM viaje WHERE origen = '" + origen + "' AND destino = '" + destino + "' AND fecha = '" + fecha + "'"); //tipoviaje 0
-        queries.add("SELECT * FROM viaje WHERE origen = '" + origen + "' AND parada4 = '" + destino + "' AND fecha = '" + fecha + "'"); //tipoviaje 1
-        queries.add("SELECT * FROM viaje WHERE origen = '" + origen + "' AND parada3 = '" + destino + "' AND fecha = '" + fecha + "'"); //2
-        queries.add("SELECT * FROM viaje WHERE origen = '" + origen + "' AND parada2 = '" + destino + "' AND fecha = '" + fecha + "'"); //3
-        queries.add("SELECT * FROM viaje WHERE origen = '" + origen + "' AND parada1 = '" + destino + "' AND fecha = '" + fecha + "'"); //4
-        queries.add("SELECT * FROM viaje WHERE parada1 = '" + origen + "' AND destino = '" + destino + "' AND fecha = '" + fecha + "'"); //5
-        queries.add("SELECT * FROM viaje WHERE parada1 = '" + origen + "' AND parada4 = '" + destino + "' AND fecha = '" + fecha + "'"); //6
-        queries.add("SELECT * FROM viaje WHERE parada1 = '" + origen + "' AND parada3 = '" + destino + "' AND fecha = '" + fecha + "'"); //7
-        queries.add("SELECT * FROM viaje WHERE parada1 = '" + origen + "' AND parada2 = '" + destino + "' AND fecha = '" + fecha + "'"); //8
-        queries.add("SELECT * FROM viaje WHERE parada2 = '" + origen + "' AND destino = '" + destino + "' AND fecha = '" + fecha + "'"); //9
-        queries.add("SELECT * FROM viaje WHERE parada2 = '" + origen + "' AND parada4 = '" + destino + "' AND fecha = '" + fecha + "'"); //10
-        queries.add("SELECT * FROM viaje WHERE parada2 = '" + origen + "' AND parada3 = '" + destino + "' AND fecha = '" + fecha + "'"); //11
-        queries.add("SELECT * FROM viaje WHERE parada3 = '" + origen + "' AND destino = '" + destino + "' AND fecha = '" + fecha + "'"); //12
-        queries.add("SELECT * FROM viaje WHERE parada3 = '" + origen + "' AND parada4 = '" + destino + "' AND fecha = '" + fecha + "'"); //13
-        queries.add("SELECT * FROM viaje WHERE parada4 = '" + origen + "' AND destino = '" + destino + "' AND fecha = '" + fecha + "'"); //14
+        queries.add("SELECT * FROM viaje WHERE origen = '" + origen + "' AND destino = '" + destino + "' AND fechainicio = '" + fecha + "'"); //tipoviaje 0
+        queries.add("SELECT * FROM viaje WHERE origen = '" + origen + "' AND parada4 = '" + destino + "' AND fechainicio = '" + fecha + "'"); //tipoviaje 1
+        queries.add("SELECT * FROM viaje WHERE origen = '" + origen + "' AND parada3 = '" + destino + "' AND fechainicio = '" + fecha + "'"); //2
+        queries.add("SELECT * FROM viaje WHERE origen = '" + origen + "' AND parada2 = '" + destino + "' AND fechainicio = '" + fecha + "'"); //3
+        queries.add("SELECT * FROM viaje WHERE origen = '" + origen + "' AND parada1 = '" + destino + "' AND fechainicio = '" + fecha + "'"); //4
+        queries.add("SELECT * FROM viaje WHERE parada1 = '" + origen + "' AND destino = '" + destino + "' AND fecha1 = '" + fecha + "'"); //5
+        queries.add("SELECT * FROM viaje WHERE parada1 = '" + origen + "' AND parada4 = '" + destino + "' AND fecha1 = '" + fecha + "'"); //6
+        queries.add("SELECT * FROM viaje WHERE parada1 = '" + origen + "' AND parada3 = '" + destino + "' AND fecha1 = '" + fecha + "'"); //7
+        queries.add("SELECT * FROM viaje WHERE parada1 = '" + origen + "' AND parada2 = '" + destino + "' AND fecha1 = '" + fecha + "'"); //8
+        queries.add("SELECT * FROM viaje WHERE parada2 = '" + origen + "' AND destino = '" + destino + "' AND fecha2 = '" + fecha + "'"); //9
+        queries.add("SELECT * FROM viaje WHERE parada2 = '" + origen + "' AND parada4 = '" + destino + "' AND fecha2 = '" + fecha + "'"); //10
+        queries.add("SELECT * FROM viaje WHERE parada2 = '" + origen + "' AND parada3 = '" + destino + "' AND fecha2 = '" + fecha + "'"); //11
+        queries.add("SELECT * FROM viaje WHERE parada3 = '" + origen + "' AND destino = '" + destino + "' AND fecha3 = '" + fecha + "'"); //12
+        queries.add("SELECT * FROM viaje WHERE parada3 = '" + origen + "' AND parada4 = '" + destino + "' AND fecha3 = '" + fecha + "'"); //13
+        queries.add("SELECT * FROM viaje WHERE parada4 = '" + origen + "' AND destino = '" + destino + "' AND fecha4 = '" + fecha + "'"); //14
 
         for(int i=0; i<queries.size();i++){
         Cursor cursor = db.rawQuery(queries.get(i), null);
