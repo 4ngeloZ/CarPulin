@@ -124,7 +124,7 @@ public class RegistroActivity extends AppCompatActivity {
                     int duration = Toast.LENGTH_SHORT;
                     Toast toast = Toast.makeText(ctx, text, duration);
                     toast.show();
-                    Log.d("REGISTRO", "FALLO REGISTRO " + response.body().getValido());
+                    Log.d("REGISTRO", "FALLO REGISTRO ");
                 }
             }
 
