@@ -29,7 +29,7 @@ public class DBQueries {
                 db.close();
                 return true;
             } else if (!comingback)Toast.makeText(context, "Contraseña Incorrecta", Toast.LENGTH_SHORT).show();
-        } else if (!comingback)Toast.makeText(context, "No se encuentra registrado como ConductorResponse", Toast.LENGTH_SHORT).show();
+        } else if (!comingback)Toast.makeText(context, "No se encuentra registrado como Conductor", Toast.LENGTH_SHORT).show();
         db.close();
         return false;
     }
@@ -44,7 +44,7 @@ public class DBQueries {
                 db.close();
                 return true;
             } else if (!comingback)Toast.makeText(context, "Contraseña Incorrecta", Toast.LENGTH_SHORT).show();
-        } else if(!comingback)Toast.makeText(context, "No se encuentra registrado como PasajeroResponse", Toast.LENGTH_SHORT).show();
+        } else if(!comingback)Toast.makeText(context, "No se encuentra registrado como Pasajero", Toast.LENGTH_SHORT).show();
         db.close();
         return false;
     }
@@ -136,21 +136,21 @@ public class DBQueries {
         int int_plazas = Integer.parseInt(plazas);
 
         List<String> queries = new ArrayList<>();
-        queries.add("SELECT * FROM viaje WHERE origen = '" + origen + "' AND destino = '" + destino + "'"); //tipoviaje 0
-        queries.add("SELECT * FROM viaje WHERE origen = '" + origen + "' AND parada4 = '" + destino + "'"); //tipoviaje 1
-        queries.add("SELECT * FROM viaje WHERE origen = '" + origen + "' AND parada3 = '" + destino + "'"); //2
-        queries.add("SELECT * FROM viaje WHERE origen = '" + origen + "' AND parada2 = '" + destino + "'"); //3
-        queries.add("SELECT * FROM viaje WHERE origen = '" + origen + "' AND parada1 = '" + destino + "'"); //4
-        queries.add("SELECT * FROM viaje WHERE parada1 = '" + origen + "' AND destino = '" + destino + "'"); //5
-        queries.add("SELECT * FROM viaje WHERE parada1 = '" + origen + "' AND parada4 = '" + destino + "'"); //6
-        queries.add("SELECT * FROM viaje WHERE parada1 = '" + origen + "' AND parada3 = '" + destino + "'"); //7
-        queries.add("SELECT * FROM viaje WHERE parada1 = '" + origen + "' AND parada2 = '" + destino + "'"); //8
-        queries.add("SELECT * FROM viaje WHERE parada2 = '" + origen + "' AND destino = '" + destino + "'"); //9
-        queries.add("SELECT * FROM viaje WHERE parada2 = '" + origen + "' AND parada4 = '" + destino + "'"); //10
-        queries.add("SELECT * FROM viaje WHERE parada2 = '" + origen + "' AND parada3 = '" + destino + "'"); //11
-        queries.add("SELECT * FROM viaje WHERE parada3 = '" + origen + "' AND destino = '" + destino + "'"); //12
-        queries.add("SELECT * FROM viaje WHERE parada3 = '" + origen + "' AND parada4 = '" + destino + "'"); //13
-        queries.add("SELECT * FROM viaje WHERE parada4 = '" + origen + "' AND destino = '" + destino + "'"); //14
+        queries.add("SELECT * FROM viaje WHERE origen = '" + origen + "' AND destino = '" + destino + "' AND fechainicio = '" + fecha + "'"); //tipoviaje 0
+        queries.add("SELECT * FROM viaje WHERE origen = '" + origen + "' AND parada4 = '" + destino + "' AND fechainicio = '" + fecha + "'"); //tipoviaje 1
+        queries.add("SELECT * FROM viaje WHERE origen = '" + origen + "' AND parada3 = '" + destino + "' AND fechainicio = '" + fecha + "'"); //2
+        queries.add("SELECT * FROM viaje WHERE origen = '" + origen + "' AND parada2 = '" + destino + "' AND fechainicio = '" + fecha + "'"); //3
+        queries.add("SELECT * FROM viaje WHERE origen = '" + origen + "' AND parada1 = '" + destino + "' AND fechainicio = '" + fecha + "'"); //4
+        queries.add("SELECT * FROM viaje WHERE parada1 = '" + origen + "' AND destino = '" + destino + "' AND fecha1 = '" + fecha + "'"); //5
+        queries.add("SELECT * FROM viaje WHERE parada1 = '" + origen + "' AND parada4 = '" + destino + "' AND fecha1 = '" + fecha + "'"); //6
+        queries.add("SELECT * FROM viaje WHERE parada1 = '" + origen + "' AND parada3 = '" + destino + "' AND fecha1 = '" + fecha + "'"); //7
+        queries.add("SELECT * FROM viaje WHERE parada1 = '" + origen + "' AND parada2 = '" + destino + "' AND fecha1 = '" + fecha + "'"); //8
+        queries.add("SELECT * FROM viaje WHERE parada2 = '" + origen + "' AND destino = '" + destino + "' AND fecha2 = '" + fecha + "'"); //9
+        queries.add("SELECT * FROM viaje WHERE parada2 = '" + origen + "' AND parada4 = '" + destino + "' AND fecha2 = '" + fecha + "'"); //10
+        queries.add("SELECT * FROM viaje WHERE parada2 = '" + origen + "' AND parada3 = '" + destino + "' AND fecha2 = '" + fecha + "'"); //11
+        queries.add("SELECT * FROM viaje WHERE parada3 = '" + origen + "' AND destino = '" + destino + "' AND fecha3 = '" + fecha + "'"); //12
+        queries.add("SELECT * FROM viaje WHERE parada3 = '" + origen + "' AND parada4 = '" + destino + "' AND fecha3 = '" + fecha + "'"); //13
+        queries.add("SELECT * FROM viaje WHERE parada4 = '" + origen + "' AND destino = '" + destino + "' AND fecha4 = '" + fecha + "'"); //14
 
         for(int i=0; i<queries.size();i++){
         Cursor cursor = db.rawQuery(queries.get(i), null);
@@ -257,7 +257,7 @@ public class DBQueries {
         List<Reserva> reservas = new ArrayList<>();
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(context, "db", null, 1);
         SQLiteDatabase db = admin.getWritableDatabase();
-        String query = "SELECT * FROM reserva WHERE username = '" + username +"' AND (procesada = 0 OR procesada = 1 OR procesada = 2)";
+        String query = "SELECT * FROM reserva WHERE (username = '" + username +"') AND (procesada = 1 OR procesada = 2)";
         Cursor cursor = db.rawQuery(query, null);
         if (cursor.moveToFirst()) {
             do{
@@ -579,6 +579,13 @@ public class DBQueries {
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(context, "db", null, 1);
         SQLiteDatabase db = admin.getWritableDatabase();
         String query = "INSERT INTO viajeterminado(id) VALUES ('" + id + "')";
+        db.execSQL(query);
+        db.close();
+    }
+    public static void terminarReservasPendientes(String idviaje, Context context){
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(context, "db", null, 1);
+        SQLiteDatabase db = admin.getWritableDatabase();
+        String query = "UPDATE reserva SET procesada = 2 WHERE idviaje = '" + idviaje + "' AND procesada = 0";
         db.execSQL(query);
         db.close();
     }
