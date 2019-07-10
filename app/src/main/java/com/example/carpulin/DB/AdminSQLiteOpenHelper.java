@@ -16,6 +16,9 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
             "fecha1 text, fecha2 text, fecha3 text, fecha4 text, hora1 text, hora2 text, hora3 text, hora4 text, " +
             "valor1 int, valor2 int, valor3 int, valor4 int, plazas1 int, plazas2 int, plazas3 int, plazas4 int, plazas5 int, " +
             "conductor text)";
+
+    private static final String CREATE_TABLE_VIAJETERMINADO = "CREATE TABLE viajeterminado(id text PRIMARY KEY)";
+
     private static final String CREATE_TABLE_RESERVA = "CREATE TABLE reserva(id text PRIMARY KEY, " +
             "idviaje text, username text, origen text, destino text, plazas int, valor int, procesada int, " +
             "plazas1 int, plazas2 int, plazas3 int, plazas4 int, plazas5 int)"; //procesada: 0=no procesada, 1=aceptada, 2=rechazada
@@ -34,6 +37,7 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_VIAJE);
         db.execSQL(CREATE_TABLE_RESERVA);
         db.execSQL(CREATE_TABLE_VEHICULO);
+        db.execSQL(CREATE_TABLE_VIAJETERMINADO);
     }
 
     @Override

@@ -575,5 +575,20 @@ public class DBQueries {
         String query = "UPDATE vehiculo SET patente= '" + NuevoPatente + "', marca = '" + NuevoMarca + "',  modelo =  '" + NuevoModelo + "', asientos =  '" + NuevoAsientos + "', año = '" + NuevoYear + "' WHERE username = '" + username + "'";
         db.execSQL(query);
     }
+    public static void terminarViaje(String id, Context context){
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(context, "db", null, 1);
+        SQLiteDatabase db = admin.getWritableDatabase();
+        String query = "INSERT INTO viajeterminado(id) VALUES ('" + id + "')";
+        db.execSQL(query);
+        db.close();
+    }
+    public static boolean isViajeTerminado (String id, Context context ){
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(context, "db", null, 1);
+        SQLiteDatabase db = admin.getWritableDatabase();
+        String query = "SELECT id FROM viajeterminado WHERE id = '" + id + "'";
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor.moveToFirst()) return true;
+        else return false;
+    }
 
 }

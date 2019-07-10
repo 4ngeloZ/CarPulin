@@ -76,10 +76,11 @@ public class IniciarViajeActivity extends AppCompatActivity {
 
     public void continuar(View view){
         if(terminar){
+            DBQueries.terminarViaje(viaje.getId(),this);
             Intent activity = new Intent(this, ConductorActivity.class);
             activity.putExtra("conductor_entidad", conductor);
             startActivity(activity);
-            Toast.makeText(this,"Viaje terminado con éxito", Toast.LENGTH_LONG);
+            Toast.makeText(this,"Viaje terminado con éxito", Toast.LENGTH_LONG).show();
         }
         else{
             List<ReservaModelo> reservaslistas = adaptadorPasajerosSubir.getReservasListas();

@@ -137,7 +137,11 @@ public class BuscarViajeActivity extends AppCompatActivity{
                 e.printStackTrace();
             }
             if(strDate != null && !strDate.before(currentDate)) {
+                List<ViajeModelo> viajespendientes = new ArrayList<>();
                 List<ViajeModelo> viajes = DBQueries.getViajes(str_origen, str_destino, str_fecha, str_plazas, this);
+                for(int i=0;i<viajes.size();i++){
+                    if(!DBQueries.isViajeTerminado(viajes.get(i).getId(),this)) viajespendientes.add(viajes.get(i));
+                }
                 if (!viajes.isEmpty()) {
                     Intent ViajesEncontradosActivity = new Intent(this, ViajesEncontradosActivity.class);
                     ViajesEncontradosActivity.putExtra("origen_busqueda", str_origen);
