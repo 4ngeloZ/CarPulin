@@ -257,7 +257,7 @@ public class DBQueries {
         List<Reserva> reservas = new ArrayList<>();
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(context, "db", null, 1);
         SQLiteDatabase db = admin.getWritableDatabase();
-        String query = "SELECT * FROM reserva WHERE username = '" + username +"'";
+        String query = "SELECT * FROM reserva WHERE username = '" + username +"' AND (procesada = 0 OR procesada = 1 OR procesada = 2)";
         Cursor cursor = db.rawQuery(query, null);
         if (cursor.moveToFirst()) {
             do{
