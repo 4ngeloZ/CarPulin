@@ -582,6 +582,13 @@ public class DBQueries {
         db.execSQL(query);
         db.close();
     }
+    public static void terminarReservasPendientes(String idviaje, Context context){
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(context, "db", null, 1);
+        SQLiteDatabase db = admin.getWritableDatabase();
+        String query = "UPDATE reserva SET procesada = 2 WHERE idviaje = '" + idviaje + "' AND procesada = 0";
+        db.execSQL(query);
+        db.close();
+    }
     public static boolean isViajeTerminado (String id, Context context ){
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(context, "db", null, 1);
         SQLiteDatabase db = admin.getWritableDatabase();

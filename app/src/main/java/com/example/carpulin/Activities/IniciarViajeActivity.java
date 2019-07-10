@@ -81,6 +81,7 @@ public class IniciarViajeActivity extends AppCompatActivity {
     public void continuar(View view){
         if(terminar){
             DBQueries.terminarViaje(viaje.getId(),this);
+            DBQueries.terminarReservasPendientes(viaje.getId(), this);
             Intent activity = new Intent(this, ConductorActivity.class);
             activity.putExtra("conductor_entidad", conductor);
             startActivity(activity);
