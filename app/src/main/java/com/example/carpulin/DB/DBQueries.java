@@ -136,21 +136,21 @@ public class DBQueries {
         int int_plazas = Integer.parseInt(plazas);
 
         List<String> queries = new ArrayList<>();
-        queries.add("SELECT * FROM viaje WHERE origen = '" + origen + "' AND destino = '" + destino + "'"); //tipoviaje 0
-        queries.add("SELECT * FROM viaje WHERE origen = '" + origen + "' AND parada4 = '" + destino + "'"); //tipoviaje 1
-        queries.add("SELECT * FROM viaje WHERE origen = '" + origen + "' AND parada3 = '" + destino + "'"); //2
-        queries.add("SELECT * FROM viaje WHERE origen = '" + origen + "' AND parada2 = '" + destino + "'"); //3
-        queries.add("SELECT * FROM viaje WHERE origen = '" + origen + "' AND parada1 = '" + destino + "'"); //4
-        queries.add("SELECT * FROM viaje WHERE parada1 = '" + origen + "' AND destino = '" + destino + "'"); //5
-        queries.add("SELECT * FROM viaje WHERE parada1 = '" + origen + "' AND parada4 = '" + destino + "'"); //6
-        queries.add("SELECT * FROM viaje WHERE parada1 = '" + origen + "' AND parada3 = '" + destino + "'"); //7
-        queries.add("SELECT * FROM viaje WHERE parada1 = '" + origen + "' AND parada2 = '" + destino + "'"); //8
-        queries.add("SELECT * FROM viaje WHERE parada2 = '" + origen + "' AND destino = '" + destino + "'"); //9
-        queries.add("SELECT * FROM viaje WHERE parada2 = '" + origen + "' AND parada4 = '" + destino + "'"); //10
-        queries.add("SELECT * FROM viaje WHERE parada2 = '" + origen + "' AND parada3 = '" + destino + "'"); //11
-        queries.add("SELECT * FROM viaje WHERE parada3 = '" + origen + "' AND destino = '" + destino + "'"); //12
-        queries.add("SELECT * FROM viaje WHERE parada3 = '" + origen + "' AND parada4 = '" + destino + "'"); //13
-        queries.add("SELECT * FROM viaje WHERE parada4 = '" + origen + "' AND destino = '" + destino + "'"); //14
+        queries.add("SELECT * FROM viaje WHERE origen = '" + origen + "' AND destino = '" + destino + "' AND fecha = '" + fecha + "'"); //tipoviaje 0
+        queries.add("SELECT * FROM viaje WHERE origen = '" + origen + "' AND parada4 = '" + destino + "' AND fecha = '" + fecha + "'"); //tipoviaje 1
+        queries.add("SELECT * FROM viaje WHERE origen = '" + origen + "' AND parada3 = '" + destino + "' AND fecha = '" + fecha + "'"); //2
+        queries.add("SELECT * FROM viaje WHERE origen = '" + origen + "' AND parada2 = '" + destino + "' AND fecha = '" + fecha + "'"); //3
+        queries.add("SELECT * FROM viaje WHERE origen = '" + origen + "' AND parada1 = '" + destino + "' AND fecha = '" + fecha + "'"); //4
+        queries.add("SELECT * FROM viaje WHERE parada1 = '" + origen + "' AND destino = '" + destino + "' AND fecha = '" + fecha + "'"); //5
+        queries.add("SELECT * FROM viaje WHERE parada1 = '" + origen + "' AND parada4 = '" + destino + "' AND fecha = '" + fecha + "'"); //6
+        queries.add("SELECT * FROM viaje WHERE parada1 = '" + origen + "' AND parada3 = '" + destino + "' AND fecha = '" + fecha + "'"); //7
+        queries.add("SELECT * FROM viaje WHERE parada1 = '" + origen + "' AND parada2 = '" + destino + "' AND fecha = '" + fecha + "'"); //8
+        queries.add("SELECT * FROM viaje WHERE parada2 = '" + origen + "' AND destino = '" + destino + "' AND fecha = '" + fecha + "'"); //9
+        queries.add("SELECT * FROM viaje WHERE parada2 = '" + origen + "' AND parada4 = '" + destino + "' AND fecha = '" + fecha + "'"); //10
+        queries.add("SELECT * FROM viaje WHERE parada2 = '" + origen + "' AND parada3 = '" + destino + "' AND fecha = '" + fecha + "'"); //11
+        queries.add("SELECT * FROM viaje WHERE parada3 = '" + origen + "' AND destino = '" + destino + "' AND fecha = '" + fecha + "'"); //12
+        queries.add("SELECT * FROM viaje WHERE parada3 = '" + origen + "' AND parada4 = '" + destino + "' AND fecha = '" + fecha + "'"); //13
+        queries.add("SELECT * FROM viaje WHERE parada4 = '" + origen + "' AND destino = '" + destino + "' AND fecha = '" + fecha + "'"); //14
 
         for(int i=0; i<queries.size();i++){
         Cursor cursor = db.rawQuery(queries.get(i), null);
