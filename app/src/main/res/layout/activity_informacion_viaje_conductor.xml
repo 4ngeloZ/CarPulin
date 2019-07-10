@@ -35,19 +35,22 @@
                     android:id="@+id/InformacionViajeCActivity_Origen1"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="Origen" />
+                    android:text="Origen"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/InformacionViajeCActivity_Fecha1"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="Fecha" />
+                    android:text="Fecha"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/InformacionViajeCActivity_Hora1"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="Hora" />
+                    android:text="Hora"
+                    android:textSize="18sp" />
 
             </TableRow>
             <TableRow
@@ -59,19 +62,22 @@
                     android:id="@+id/InformacionViajeCActivity_Origen2"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="Origen" />
+                    android:text="Origen"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/InformacionViajeCActivity_Fecha2"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="Fecha" />
+                    android:text="Fecha"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/InformacionViajeCActivity_Hora2"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="Hora" />
+                    android:text="Hora"
+                    android:textSize="18sp" />
 
             </TableRow>
             <TableRow
@@ -83,19 +89,22 @@
                     android:id="@+id/InformacionViajeCActivity_Origen3"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="Origen" />
+                    android:text="Origen"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/InformacionViajeCActivity_Fecha3"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="Fecha" />
+                    android:text="Fecha"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/InformacionViajeCActivity_Hora3"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="Hora" />
+                    android:text="Hora"
+                    android:textSize="18sp" />
 
             </TableRow>
             <TableRow
@@ -107,19 +116,22 @@
                     android:id="@+id/InformacionViajeCActivity_Origen4"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="Origen" />
+                    android:text="Origen"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/InformacionViajeCActivity_Fecha4"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="Fecha" />
+                    android:text="Fecha"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/InformacionViajeCActivity_Hora4"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="Hora" />
+                    android:text="Hora"
+                    android:textSize="18sp" />
 
             </TableRow>
             <TableRow
@@ -131,19 +143,22 @@
                     android:id="@+id/InformacionViajeCActivity_Origen5"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="Origen" />
+                    android:text="Origen"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/InformacionViajeCActivity_Fecha5"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="Fecha" />
+                    android:text="Fecha"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/InformacionViajeCActivity_Hora5"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="Hora" />
+                    android:text="Hora"
+                    android:textSize="18sp" />
 
             </TableRow>
             <TableRow
@@ -155,19 +170,22 @@
                     android:id="@+id/InformacionViajeCActivity_Origen6"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="Origen" />
+                    android:text="Origen"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/InformacionViajeCActivity_Fecha6"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="Fecha" />
+                    android:text="Fecha"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/InformacionViajeCActivity_Hora6"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="Hora" />
+                    android:text="Hora"
+                    android:textSize="18sp" />
 
             </TableRow>
 
@@ -184,15 +202,18 @@
 
     <Button
         android:id="@+id/button_iniciar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="105dp"
+        android:layout_height="43dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:background="#323F8B"
         android:onClick="iniciarViaje"
         android:text="Iniciar"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/RecyclerReservasViajeSubir" />
