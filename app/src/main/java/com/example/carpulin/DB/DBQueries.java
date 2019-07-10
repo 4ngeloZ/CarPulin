@@ -257,7 +257,7 @@ public class DBQueries {
         List<Reserva> reservas = new ArrayList<>();
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(context, "db", null, 1);
         SQLiteDatabase db = admin.getWritableDatabase();
-        String query = "SELECT * FROM reserva WHERE (username = '" + username +"') AND (procesada = 1 OR procesada = 2 OR procesada = 0)";
+        String query = "SELECT * FROM reserva WHERE username = '" + username +"' AND procesada = 1 OR procesada = 2 OR procesada = 0";
         Cursor cursor = db.rawQuery(query, null);
         if (cursor.moveToFirst()) {
             do{
@@ -353,8 +353,7 @@ public class DBQueries {
                 "reserva.destino, reserva.plazas, viaje.fechainicio, viaje.horainicio, reserva.valor, reserva.procesada " +
                 "FROM reserva " +
                 "INNER JOIN viaje ON reserva.idviaje = viaje.id " +
-                "INNER JOIN conductor ON viaje.conductor = conductor.username " +
-                "WHERE conductor.username = '" + username + "' AND reserva.procesada = 0";
+                "WHERE viaje.conductor = '" + username + "' AND reserva.procesada = 0";
         Cursor cursor = db.rawQuery(query, null);
 
         if (cursor.moveToFirst()) {

@@ -85,7 +85,7 @@
 
             <Button
                 android:id="@+id/Reserva_aceptar"
-                android:layout_width="100dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#323F8B"
                 android:onClick="AceptarReserva"
@@ -94,7 +94,7 @@
 
             <Button
                 android:id="@+id/Reserva_rechazar"
-                android:layout_width="100dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#323F8B"
                 android:onClick="RechazarReserva"

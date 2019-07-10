@@ -67,7 +67,7 @@ public class RecyclerViewAdapterMisReservas extends RecyclerView.Adapter<Recycle
     public void onBindViewHolder(ViewHolder holder, int position) {
         int p=0;
         viaje = DBQueries.getfullViaje(listaReservas.get(position).getIdviaje(), context);
-        holder.conductor.setText("ConductorResponse: " + viaje.getConductor());
+        holder.conductor.setText("Conductor: " + viaje.getConductor());
         holder.recorrido.setText("Reserva: " + listaReservas.get(position).getOrigen() + " -> " + listaReservas.get(position).getDestino());
         if(listaReservas.get(position).getPlazas1()!=0){
             holder.horario.setText("Fecha: " + viaje.getFechaInicio() + " | Hora: " + viaje.getHoraInicio());
