@@ -12,5 +12,5 @@ tools:context=".Activities.MisViajesActivity">
     <android.support.v7.widget.RecyclerView
         android:id="@+id/RecyclerMisViajes"
         android:layout_width="388dp"
-        android:layout_height="228dp" />
+        android:layout_height="555dp" />
 </RelativeLayout>
