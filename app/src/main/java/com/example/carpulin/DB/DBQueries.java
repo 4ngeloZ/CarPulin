@@ -278,6 +278,31 @@ public class DBQueries {
         return reservas;
     }
 
+    public static List<Reserva> getMisReservasViaje(String username, String idviaje, Context context){
+        List<Reserva> reservas = new ArrayList<>();
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(context, "db", null, 1);
+        SQLiteDatabase db = admin.getWritableDatabase();
+        String query = "SELECT * FROM reserva WHERE username = '" + username +"' AND idviaje = '"+ idviaje +"'";
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor.moveToFirst()) {
+            do{
+                reservas.add(new Reserva(cursor.getString(0),
+                        cursor.getString(1),
+                        cursor.getString(2),
+                        cursor.getInt(8),
+                        cursor.getInt(9),
+                        cursor.getInt(10),
+                        cursor.getInt(11),
+                        cursor.getInt(12),
+                        cursor.getInt(6),
+                        cursor.getShort(7),
+                        cursor.getString(3),
+                        cursor.getString(4)));
+            }while(cursor.moveToNext());
+        }
+        return reservas;
+    }
+
     public static Viaje getfullViaje(String id, Context context){
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(context, "db", null, 1);
         SQLiteDatabase db = admin.getWritableDatabase();
@@ -330,6 +355,68 @@ public class DBQueries {
                 "INNER JOIN viaje ON reserva.idviaje = viaje.id " +
                 "INNER JOIN conductor ON viaje.conductor = conductor.username " +
                 "WHERE conductor.username = '" + username + "' AND reserva.procesada = 0";
+        Cursor cursor = db.rawQuery(query, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                reservas.add(new ReservaModelo(cursor.getString(0), //id
+                        cursor.getString(1),
+                        cursor.getString(2),
+                        cursor.getString(3),
+                        cursor.getString(4),
+                        cursor.getString(5),
+                        cursor.getString(6),
+                        cursor.getString(8),
+                        cursor.getString(9),
+                        cursor.getInt(7),
+                        R.drawable.user,
+                        cursor.getInt(10)));
+            } while (cursor.moveToNext());
+        }
+        return reservas;
+    }
+
+    public static List<ReservaModelo> getReservasViajeSubir(String username, String idviaje, String inicio, Context context){
+        List<ReservaModelo> reservas = new ArrayList<>();
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(context, "db", null, 1);
+        SQLiteDatabase db = admin.getWritableDatabase();
+        String query = "SELECT reserva.id, viaje.id, reserva.username, viaje.origen, viaje.destino, reserva.origen, " +
+                "reserva.destino, reserva.plazas, viaje.fechainicio, viaje.horainicio, reserva.valor, reserva.procesada " +
+                "FROM reserva " +
+                "INNER JOIN viaje ON reserva.idviaje = viaje.id " +
+                "INNER JOIN conductor ON viaje.conductor = conductor.username " +
+                "WHERE conductor.username = '" + username + "' AND reserva.procesada = 1 AND viaje.id = '" + idviaje + "' AND reserva.origen = '" + inicio + "'";
+        Cursor cursor = db.rawQuery(query, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                reservas.add(new ReservaModelo(cursor.getString(0), //id
+                        cursor.getString(1),
+                        cursor.getString(2),
+                        cursor.getString(3),
+                        cursor.getString(4),
+                        cursor.getString(5),
+                        cursor.getString(6),
+                        cursor.getString(8),
+                        cursor.getString(9),
+                        cursor.getInt(7),
+                        R.drawable.user,
+                        cursor.getInt(10)));
+            } while (cursor.moveToNext());
+        }
+        return reservas;
+    }
+
+    public static List<ReservaModelo> getReservasViajeBajar(String username, String idviaje, String fin, Context context){
+        List<ReservaModelo> reservas = new ArrayList<>();
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(context, "db", null, 1);
+        SQLiteDatabase db = admin.getWritableDatabase();
+        String query = "SELECT reserva.id, viaje.id, reserva.username, viaje.origen, viaje.destino, reserva.origen, " +
+                "reserva.destino, reserva.plazas, viaje.fechainicio, viaje.horainicio, reserva.valor, reserva.procesada " +
+                "FROM reserva " +
+                "INNER JOIN viaje ON reserva.idviaje = viaje.id " +
+                "INNER JOIN conductor ON viaje.conductor = conductor.username " +
+                "WHERE conductor.username = '" + username + "' AND reserva.procesada = 3 AND viaje.id = '" + idviaje + "' AND reserva.destino = '" + fin + "'";
         Cursor cursor = db.rawQuery(query, null);
 
         if (cursor.moveToFirst()) {
@@ -414,6 +501,12 @@ public class DBQueries {
         db.execSQL(query);
     }
 
+    public static void ReservaTerminada(String id, Context context){
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(context, "db", null, 1);
+        SQLiteDatabase db = admin.getWritableDatabase();
+        String query = "UPDATE reserva SET procesada = 3 WHERE id = '" + id + "'";
+        db.execSQL(query);
+    }
 
     public static boolean actualizarCorreoPasajero(String nuevocorreo, String username, Context context){
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(context, "db", null, 1);
@@ -481,6 +574,21 @@ public class DBQueries {
         SQLiteDatabase db = admin.getWritableDatabase();
         String query = "UPDATE vehiculo SET patente= '" + NuevoPatente + "', marca = '" + NuevoMarca + "',  modelo =  '" + NuevoModelo + "', asientos =  '" + NuevoAsientos + "', año = '" + NuevoYear + "' WHERE username = '" + username + "'";
         db.execSQL(query);
+    }
+    public static void terminarViaje(String id, Context context){
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(context, "db", null, 1);
+        SQLiteDatabase db = admin.getWritableDatabase();
+        String query = "INSERT INTO viajeterminado(id) VALUES ('" + id + "')";
+        db.execSQL(query);
+        db.close();
+    }
+    public static boolean isViajeTerminado (String id, Context context ){
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(context, "db", null, 1);
+        SQLiteDatabase db = admin.getWritableDatabase();
+        String query = "SELECT id FROM viajeterminado WHERE id = '" + id + "'";
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor.moveToFirst()) return true;
+        else return false;
     }
 
 }

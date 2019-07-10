@@ -34,93 +34,101 @@
                 android:id="@+id/InformacionViajeActivity_Nombre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Nombre" />
+                android:text="Nombre"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/InformacionViajeActivity_Vehiculo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Vehículo" />
+                android:text="Vehículo"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/InformacionViajeActivity_Calificacion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Calificación" />
+                android:text="Calificación"
+                android:textSize="18sp" />
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/InformacionViajeActivity_LayoutInformacion">
+    android:id="@+id/linearLayout2"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:orientation="horizontal"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/InformacionViajeActivity_LayoutInformacion">
 
-        <TableLayout
-            android:layout_width="300dp"
+    <TableLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content">
+
+        <TableRow
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-            <TableRow
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/InformacionViajeActivity_Origen1"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="Origen"
+                android:textSize="18sp" />
 
-                <TextView
-                    android:id="@+id/InformacionViajeActivity_Origen1"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:text="Origen" />
+            <TextView
+                android:id="@+id/InformacionViajeActivity_Destino1"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="Destino"
+                android:textSize="18sp" />
 
-                <TextView
-                    android:id="@+id/InformacionViajeActivity_Destino1"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:text="Destino" />
+            <TextView
+                android:id="@+id/InformacionViajeActivity_Precio1"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="Precio"
+                android:textSize="18sp" />
 
-                <TextView
-                    android:id="@+id/InformacionViajeActivity_Precio1"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:text="Precio" />
+        </TableRow>
 
-            </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/InformacionViajeActivity_Fecha1"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="Fecha"
+                android:textSize="18sp" />
 
-                <TextView
-                    android:id="@+id/InformacionViajeActivity_Fecha1"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:text="Fecha" />
+            <TextView
+                android:id="@+id/InformacionViajeActivity_Hora1"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="Hora"
+                android:textSize="18sp" />
 
-                <TextView
-                    android:id="@+id/InformacionViajeActivity_Hora1"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:text="Hora" />
+            <Spinner
+                android:id="@+id/InformacionViajeActivity_Plazas1"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </TableRow>
 
-                <Spinner
-                    android:id="@+id/InformacionViajeActivity_Plazas1"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-            </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </TableLayout>
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </TableLayout>
-
-    </LinearLayout>
+</LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -144,19 +152,22 @@
                     android:id="@+id/InformacionViajeActivity_Origen2"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="Origen" />
+                    android:text="Origen"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/InformacionViajeActivity_Destino2"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="Destino" />
+                    android:text="Destino"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/InformacionViajeActivity_Precio2"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="Precio" />
+                    android:text="Precio"
+                    android:textSize="18sp" />
             </TableRow>
 
             <TableRow
@@ -167,13 +178,15 @@
                     android:id="@+id/InformacionViajeActivity_Fecha2"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="Fecha" />
+                    android:text="Fecha"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/InformacionViajeActivity_Hora2"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="Hora" />
+                    android:text="Hora"
+                    android:textSize="18sp" />
 
                 <Spinner
                     android:id="@+id/InformacionViajeActivity_Plazas2"
@@ -215,19 +228,22 @@
                     android:id="@+id/InformacionViajeActivity_Origen3"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="Origen" />
+                    android:text="Origen"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/InformacionViajeActivity_Destino3"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="Destino" />
+                    android:text="Destino"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/InformacionViajeActivity_Precio3"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="Precio" />
+                    android:text="Precio"
+                    android:textSize="18sp" />
             </TableRow>
 
             <TableRow
@@ -238,13 +254,15 @@
                     android:id="@+id/InformacionViajeActivity_Fecha3"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="Fecha" />
+                    android:text="Fecha"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/InformacionViajeActivity_Hora3"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="Hora" />
+                    android:text="Hora"
+                    android:textSize="18sp" />
 
                 <Spinner
                     android:id="@+id/InformacionViajeActivity_Plazas3"
@@ -286,19 +304,22 @@
                     android:id="@+id/InformacionViajeActivity_Origen4"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="Origen" />
+                    android:text="Origen"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/InformacionViajeActivity_Destino4"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="Destino" />
+                    android:text="Destino"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/InformacionViajeActivity_Precio4"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="Precio" />
+                    android:text="Precio"
+                    android:textSize="18sp" />
             </TableRow>
 
             <TableRow
@@ -309,13 +330,15 @@
                     android:id="@+id/InformacionViajeActivity_Fecha4"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="Fecha" />
+                    android:text="Fecha"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/InformacionViajeActivity_Hora4"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="Hora" />
+                    android:text="Hora"
+                    android:textSize="18sp" />
 
                 <Spinner
                     android:id="@+id/InformacionViajeActivity_Plazas4"
@@ -357,19 +380,22 @@
                     android:id="@+id/InformacionViajeActivity_Origen5"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="Origen" />
+                    android:text="Origen"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/InformacionViajeActivity_Destino5"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="Destino" />
+                    android:text="Destino"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/InformacionViajeActivity_Precio5"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="Precio" />
+                    android:text="Precio"
+                    android:textSize="18sp" />
             </TableRow>
 
             <TableRow
@@ -380,13 +406,15 @@
                     android:id="@+id/InformacionViajeActivity_Fecha5"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="Fecha" />
+                    android:text="Fecha"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/InformacionViajeActivity_Hora5"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="Hora" />
+                    android:text="Hora"
+                    android:textSize="18sp" />
 
                 <Spinner
                     android:id="@+id/InformacionViajeActivity_Plazas5"
@@ -408,16 +436,16 @@
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_width="129dp"
+        android:layout_height="49dp"
+        android:layout_marginBottom="48dp"
         android:background="#323F8B"
-        android:textColor="#FFFFFF"
         android:onClick="Reservar"
         android:text="Reservar"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
     <LinearLayout
@@ -432,10 +460,11 @@
 
         <TextView
             android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="230dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Costo Total de la Reserva: $" />
+            android:text="Costo Total de la Reserva: $"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/InformacionViajeActivity_ValorReserva"

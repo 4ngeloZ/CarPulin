@@ -60,20 +60,20 @@ public class  AgregarVehiculoActivity extends AppCompatActivity {
 
 
 
-            if(!str_marca.isEmpty() && !str_modelo.isEmpty()
-                    && !str_patente.isEmpty() && !Integer.toString(int_sño).isEmpty()
-                    && !Integer.toString(int_asientos).isEmpty() ){
+        if(!str_marca.isEmpty() && !str_modelo.isEmpty()
+                && !str_patente.isEmpty() && !Integer.toString(int_sño).isEmpty()
+                && !Integer.toString(int_asientos).isEmpty() ){
 
-           DBQueries.ModVehiculo(conductor.getUsername(), str_marca, str_patente,str_modelo, int_asientos, int_sño, this);
+            DBQueries.ModVehiculo(conductor.getUsername(), str_marca, str_patente,str_modelo, int_asientos, int_sño, this);
 
-           vehiculo.setMarca(str_marca);
-           vehiculo.setModelo(str_modelo);
-           vehiculo.setPatente(str_patente);
-           vehiculo.setAsientos(int_asientos);
-           vehiculo.setAño(int_sño);
+            vehiculo.setMarca(str_marca);
+            vehiculo.setModelo(str_modelo);
+            vehiculo.setPatente(str_patente);
+            vehiculo.setAsientos(int_asientos);
+            vehiculo.setAño(int_sño);
 
-                Toast.makeText(this, "Vehiculo Agregado", Toast.LENGTH_LONG).show();
-          //  super.finish();
+            Toast.makeText(this, "Vehiculo Agregado", Toast.LENGTH_LONG).show();
+            //  super.finish();
         }
 
 
@@ -84,4 +84,4 @@ public class  AgregarVehiculoActivity extends AppCompatActivity {
 
 
 
-    }
+}

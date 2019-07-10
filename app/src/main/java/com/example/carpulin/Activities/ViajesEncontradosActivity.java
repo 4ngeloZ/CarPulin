@@ -14,6 +14,7 @@ import com.example.carpulin.R;
 import com.example.carpulin.RecyclerViewAdapterViajes;
 import com.example.carpulin.ViajeModelo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ViajesEncontradosActivity extends AppCompatActivity {
@@ -38,8 +39,12 @@ public class ViajesEncontradosActivity extends AppCompatActivity {
     }
 
     public List<ViajeModelo> getViajes(String origen, String destino, String fecha, String plazas){
+        List<ViajeModelo> viajespendientes = new ArrayList<>();
         List<ViajeModelo> viajes = DBQueries.getViajes(origen, destino, fecha, plazas,this);
-        return viajes;
+        for(int i=0;i<viajes.size();i++){
+            if(!DBQueries.isViajeTerminado(viajes.get(i).getId(),this)) viajespendientes.add(viajes.get(i));
+        }
+        return viajespendientes;
     }
 
     public void verInformacionViaje(View view){

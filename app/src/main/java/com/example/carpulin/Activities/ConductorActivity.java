@@ -32,20 +32,14 @@ public class ConductorActivity extends AppCompatActivity implements NavigationVi
     private TextView HeaderConductor_nombre;
     private TextView usuario;
     private ImageView HeaderConductor_foto;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_conductor);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -65,14 +59,14 @@ public class ConductorActivity extends AppCompatActivity implements NavigationVi
         HeaderConductor_foto.setImageResource(R.drawable.user);
         usuario = (TextView)findViewById(R.id.textViewUSUARIO);
 
-
-
-        usuario.setText(conductor.getUsername());
-
-
+        usuario.setText("Bienvenido conductor: " + conductor.getUsername());
 
     }
-
+    public void Crearviaje (View view){
+        Intent CrearViajeActivity= new Intent(this, CrearViajeActivity.class);
+        CrearViajeActivity.putExtra("conductor_entidad", conductor);
+        startActivity(CrearViajeActivity);
+    }
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

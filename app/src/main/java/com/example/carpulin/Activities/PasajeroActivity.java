@@ -30,6 +30,7 @@ import com.example.carpulin.R;
 public class PasajeroActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private Pasajero pasajero;
+    private TextView username;
     private TextView HeaderPasajero_username;
     private TextView HeaderPasajero_nombre;
     private ImageView HeaderPasajero_foto;
@@ -40,14 +41,7 @@ public class PasajeroActivity extends AppCompatActivity implements NavigationVie
         setContentView(R.layout.activity_pasajero);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -65,8 +59,15 @@ public class PasajeroActivity extends AppCompatActivity implements NavigationVie
         HeaderPasajero_username.setText(pasajero.getUsername());
         HeaderPasajero_nombre.setText(pasajero.getNombre());
         HeaderPasajero_foto.setImageResource(R.drawable.user);
+        username = (TextView)findViewById(R.id.textView3);
+        username.setText("Bienvenido pasajero: "+ pasajero.getUsername());
     }
+    public void BuscarViaje(View view){
+        Intent BuscarViajeActivity = new Intent(this, BuscarViajeActivity.class);
+        BuscarViajeActivity.putExtra("pasajero_entidad", pasajero);
+        startActivity(BuscarViajeActivity);
 
+    }
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
