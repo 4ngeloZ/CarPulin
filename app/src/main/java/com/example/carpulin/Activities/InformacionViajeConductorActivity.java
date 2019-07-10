@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.carpulin.DB.DBQueries;
 import com.example.carpulin.Entidades.Conductor;
@@ -19,6 +20,9 @@ import com.example.carpulin.RecyclerViewAdapterPasajerosBajar;
 import com.example.carpulin.RecyclerViewAdapterPasajerosSubir;
 import com.example.carpulin.ReservaModelo;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class InformacionViajeConductorActivity extends AppCompatActivity {
@@ -206,19 +210,32 @@ public class InformacionViajeConductorActivity extends AppCompatActivity {
     }
 
     public void iniciarViaje(View view){
-        List<ReservaModelo> reservaslistas = adaptadorPasajerosSubir.getReservasListas();
-        for(int i=0; i<reservaslistas.size();i++){
-            DBQueries.ReservaTerminada(reservaslistas.get(i).getId(),this);
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Date hoy = new Date();
+        Date strDate = null;
+        try {
+            strDate = sdf.parse(viaje.getFechaInicio());
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
-        List<ReservaModelo> reservasrechazadas = adaptadorPasajerosSubir.getReservasRechazadas();
-        for(int i=0; i<reservasrechazadas.size();i++){
-            DBQueries.ReservaRechazada(reservasrechazadas.get(i).getId(),this);
+        if(strDate.equals(hoy)) {
+            List<ReservaModelo> reservaslistas = adaptadorPasajerosSubir.getReservasListas();
+            for (int i = 0; i < reservaslistas.size(); i++) {
+                DBQueries.ReservaTerminada(reservaslistas.get(i).getId(), this);
+            }
+            List<ReservaModelo> reservasrechazadas = adaptadorPasajerosSubir.getReservasRechazadas();
+            for (int i = 0; i < reservasrechazadas.size(); i++) {
+                DBQueries.ReservaRechazada(reservasrechazadas.get(i).getId(), this);
+            }
+            Intent activity = new Intent(this, IniciarViajeActivity.class);
+            activity.putExtra("conductor_entidad", conductor);
+            activity.putExtra("viaje", idViaje);
+            activity.putExtra("num_paradas", numparadas);
+            activity.putExtra("siguiente", 1);
+            startActivity(activity);
         }
-        Intent activity = new Intent(this, IniciarViajeActivity.class);
-        activity.putExtra("conductor_entidad", conductor);
-        activity.putExtra("viaje", idViaje);
-        activity.putExtra("num_paradas", numparadas);
-        activity.putExtra("siguiente", 1);
-        startActivity(activity);
+        else{
+            Toast.makeText(this,"No puede iniciar el viaje en una fecha distinta a la publicada",Toast.LENGTH_LONG).show();
+        }
     }
 }
