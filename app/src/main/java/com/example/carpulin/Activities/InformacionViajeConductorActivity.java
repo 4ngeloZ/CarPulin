@@ -212,6 +212,12 @@ public class InformacionViajeConductorActivity extends AppCompatActivity {
     public void iniciarViaje(View view){
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         Date hoy = new Date();
+        String str_hoy = hoy.toString();
+        try {
+            hoy = sdf.parse(sdf.format(hoy));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         Date strDate = null;
         try {
             strDate = sdf.parse(viaje.getFechaInicio());
